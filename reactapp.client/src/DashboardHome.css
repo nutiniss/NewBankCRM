@@ -45,7 +45,7 @@
     font-weight: 700;
     color: var(--color2);
     line-height: 1;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.85rem;
 }
 
 .metric-note {
@@ -55,45 +55,46 @@
     margin-bottom: 0;
 }
 
-.new-clients-grid {
+.portfolio-kpis {
     display: grid;
-    gap: 0.75rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+    margin-bottom: 0.75rem;
 }
 
-.new-client-item {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    border: 1px solid rgba(152, 100, 132, 0.2);
+.portfolio-kpi-item {
+    border: 1px solid rgba(152, 100, 132, 0.22);
     border-radius: 10px;
-    padding: 0.6rem 0.75rem;
+    background: rgba(229, 187, 180, 0.18);
+    padding: 0.45rem 0.55rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
 }
 
-.client-name {
-    font-weight: 600;
-    color: var(--color2);
-}
-
-.client-meta {
-    font-size: 0.85rem;
+.portfolio-kpi-label {
+    font-size: 0.78rem;
     color: var(--color1);
+    opacity: 0.92;
 }
 
-.client-score {
+.portfolio-kpi-value {
+    font-size: 1.2rem;
     font-weight: 700;
-    color: var(--color3);
-    white-space: nowrap;
+    color: var(--color2);
+    line-height: 1.1;
 }
 
 .pie-chart-layout {
     display: flex;
     align-items: center;
-    gap: 0.9rem;
+    justify-content: center;
+    gap: 1.1rem;
     flex-wrap: wrap;
 }
 
 .opportunities-pie {
-    width: 140px;
+    width: 185px;
     aspect-ratio: 1;
     border-radius: 50%;
     background: conic-gradient(
@@ -166,6 +167,21 @@
     color: var(--color1);
 }
 
+.see-more-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color2);
+    text-decoration: none;
+}
+
+.see-more-link:hover,
+.see-more-link:focus {
+    color: var(--color3);
+    text-decoration: underline;
+}
+
 .offer-card {
     border-radius: 14px;
     border-color: rgba(70, 60, 87, 0.16);
@@ -215,5 +231,13 @@
 @media (max-width: 991.98px) {
     .dashboard-tile {
         padding: 0.85rem;
+    }
+
+    .portfolio-kpis {
+        grid-template-columns: 1fr;
+    }
+
+    .opportunities-pie {
+        width: 160px;
     }
 }
