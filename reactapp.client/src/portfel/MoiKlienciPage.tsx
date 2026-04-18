@@ -10,17 +10,17 @@ import { KlientItem } from './KlientItem'
 
 export const MoiKlienci = () => {
     const [listaKlientow, setListaKlientow] = useState<Klient[]>([
-        { id: 'K-001', imieNazwisko: 'Anna Kowalska', segment: 'Premium', wartoscPortfela: 450000, statusRelacji: 'Aktywna' },
-        { id: 'K-002', imieNazwisko: 'Piotr Nowak', segment: 'Standard', wartoscPortfela: 120000, statusRelacji: 'Aktywna' },
+        { nazwa: 'Nexon Industry', branza: 'Produkcja', dataNawiazaniaRelacji: '10.04.2026', segment: 'Premium', statusRelacji: 'Nowa' },
+        { nazwa: 'PortLine Cargo', branza: 'Transport', dataNawiazaniaRelacji: '11.04.2026', segment: 'Standard', statusRelacji: 'Aktywna' },
     ])
 
     useEffect(() => {
         const listaKlientowZApi: Klient[] = [
-            { id: 'K-003', imieNazwisko: 'Maria Wiśniewska', segment: 'VIP', wartoscPortfela: 870000, statusRelacji: 'Do kontaktu' },
-            { id: 'K-004', imieNazwisko: 'Jan Wójcik', segment: 'Premium', wartoscPortfela: 390000, statusRelacji: 'Aktywna' },
-            { id: 'K-005', imieNazwisko: 'Katarzyna Kamińska', segment: 'Standard', wartoscPortfela: 95000, statusRelacji: 'Nowa' },
+            { nazwa: 'EcoFarm Group', branza: 'Agro', dataNawiazaniaRelacji: '13.04.2026', segment: 'Premium', statusRelacji: 'Do kontaktu' },
+            { nazwa: 'MediNova', branza: 'Medycyna', dataNawiazaniaRelacji: '15.04.2026', segment: 'VIP', statusRelacji: 'Aktywna' },
+            { nazwa: 'Baltic Logistics Sp. z o.o.', branza: 'Logistyka', dataNawiazaniaRelacji: '18.03.2026', segment: 'VIP', statusRelacji: 'Aktywna' },
         ]
-        setListaKlientow(listaKlientowZApi)
+        setListaKlientow((aktualna) => [...aktualna, ...listaKlientowZApi])
     }, [])
 
     return (
@@ -33,8 +33,20 @@ export const MoiKlienci = () => {
                             <Row className="mb-3">
                                 <Col>
                                     <Form.Group>
-                                        <Form.Label>Szukaj po kliencie</Form.Label>
-                                        <Form.Control type="text" />
+                                        <Form.Label>Szukaj po nazwie klienta</Form.Label>
+                                        <Form.Control type="text" placeholder="np. MediNova" />
+                                    </Form.Group>
+                                </Col>
+                                <Col>
+                                    <Form.Group>
+                                        <Form.Label>Branża</Form.Label>
+                                        <Form.Select>
+                                            <option>Wybierz</option>
+                                            <option value="produkcja">Produkcja</option>
+                                            <option value="transport">Transport</option>
+                                            <option value="agro">Agro</option>
+                                            <option value="medycyna">Medycyna</option>
+                                        </Form.Select>
                                     </Form.Group>
                                 </Col>
                                 <Col>
@@ -48,12 +60,6 @@ export const MoiKlienci = () => {
                                         </Form.Select>
                                     </Form.Group>
                                 </Col>
-                                <Col className="col-2">
-                                    <Form.Group>
-                                        <Form.Label>Portfel od</Form.Label>
-                                        <Form.Control type="text" />
-                                    </Form.Group>
-                                </Col>
                             </Row>
                         </Form>
                     </Accordion.Body>
@@ -63,15 +69,15 @@ export const MoiKlienci = () => {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Klient</th>
+                        <th>Nazwa klienta</th>
+                        <th>Branża</th>
+                        <th>Data nawiązania relacji</th>
                         <th>Segment</th>
-                        <th>Wartość portfela</th>
                         <th>Status relacji</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {listaKlientow.map((item, index) => <KlientItem key={index} klient={item} />)}
+                    {listaKlientow.map((item) => <KlientItem key={`${item.nazwa}-${item.dataNawiazaniaRelacji}`} klient={item} />)}
                 </tbody>
             </Table>
         </Container>

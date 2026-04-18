@@ -1,6 +1,8 @@
 export type Okazja = {
-    nazwa: string,
-    klient: string,
-    etap: string,
-    wartosc: number,
-}
+    klient: string;
+    produkt: string;
+    etap: string;
+    dataZamkniecia: string;
+    wartosc?: number;
+    nazwa?: string;
+};

@@ -5,8 +5,10 @@ import { ZadanieItem } from './ZadanieItem'
 
 export const Zadania = () => {
     const listaZadan: Zadanie[] = [
-        { nazwa: 'Przygotowanie oferty', priorytet: 'Wysoki', termin: '2026-04-24', status: 'W toku' },
-        { nazwa: 'Aktualizacja danych klienta', priorytet: 'Średni', termin: '2026-04-25', status: 'Nowe' },
+        { nazwa: 'Aktualizacja analizy finansowej klienta HydroTech', priorytet: 'Wysoki', termin: '22.04.2026', status: 'W toku' },
+        { nazwa: 'Przygotowanie oferty cross-sellingowej dla MediCore', priorytet: 'Średni', termin: '24.04.2026', status: 'Nowe' },
+        { nazwa: 'Kontakt z działem prawnym ws. zabezpieczeń', priorytet: 'Wysoki', termin: '25.04.2026', status: 'Nowe' },
+        { nazwa: 'Weryfikacja dokumentów KYC dla GreenPol', priorytet: 'Niski', termin: '29.04.2026', status: 'Nowe' },
     ]
 
     return (
@@ -16,12 +18,12 @@ export const Zadania = () => {
                     <tr>
                         <th>Zadanie</th>
                         <th>Priorytet</th>
-                        <th>Termin</th>
+                        <th>Termin realizacji</th>
                         <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {listaZadan.map((item, index) => <ZadanieItem key={index} zadanie={item} />)}
+                    {listaZadan.map((item) => <ZadanieItem key={`${item.nazwa}-${item.termin}`} zadanie={item} />)}
                 </tbody>
             </Table>
         </Container>

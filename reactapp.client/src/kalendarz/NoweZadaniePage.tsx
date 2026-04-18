@@ -43,7 +43,7 @@ export const NoweZadanie = () => {
                     <Col>
                         <Form.Group>
                             <Form.Label>Opis</Form.Label>
-                            <Form.Control as="textarea" rows={3} />
+                            <Form.Control as="textarea" rows={3} placeholder="Np. wymagane dokumenty klienta" />
                         </Form.Group>
                     </Col>
                 </Row>

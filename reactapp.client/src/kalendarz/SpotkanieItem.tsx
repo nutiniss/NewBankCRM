@@ -6,12 +6,13 @@ type SpotkanieProps = {
 
 export const SpotkanieItem = (props: SpotkanieProps) => {
     const { spotkanie } = props
+
     return (
         <tr>
-            <td>{spotkanie.temat}</td>
             <td>{spotkanie.klient}</td>
-            <td>{spotkanie.data}</td>
-            <td>{spotkanie.status}</td>
+            <td>{spotkanie.dataIGodzina}</td>
+            <td>{spotkanie.tryb}</td>
+            <td>{spotkanie.status ?? 'Zaplanowane'}</td>
         </tr>
     )
 }

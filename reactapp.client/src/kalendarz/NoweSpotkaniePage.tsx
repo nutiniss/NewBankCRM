@@ -17,14 +17,18 @@ export const NoweSpotkanie = () => {
                 <Row className="mt-3 mb-3">
                     <Col>
                         <Form.Group>
-                            <Form.Label>Temat</Form.Label>
+                            <Form.Label>Nazwa klienta</Form.Label>
                             <Form.Control type="text" />
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group>
-                            <Form.Label>Klient</Form.Label>
-                            <Form.Control type="text" />
+                            <Form.Label>Tryb spotkania</Form.Label>
+                            <Form.Select>
+                                <option>Wybierz</option>
+                                <option value="zdalnie">Zdalnie</option>
+                                <option value="stacjonarnie">Stacjonarnie</option>
+                            </Form.Select>
                         </Form.Group>
                     </Col>
                 </Row>

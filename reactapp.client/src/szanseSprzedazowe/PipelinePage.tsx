@@ -3,34 +3,25 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 
+const etapy = [
+    { nazwa: 'Kontakt', liczba: 8 },
+    { nazwa: 'Oferta', liczba: 6 },
+    { nazwa: 'Negocjacje', liczba: 4 },
+    { nazwa: 'Domknięcie', liczba: 3 },
+]
+
 export const Pipeline = () => {
     return (
         <Container fluid>
             <Row className="g-3">
-                <Col md={3}>
-                    <Card>
-                        <Card.Header>Kontakt</Card.Header>
-                        <Card.Body>5 szans</Card.Body>
-                    </Card>
-                </Col>
-                <Col md={3}>
-                    <Card>
-                        <Card.Header>Oferta</Card.Header>
-                        <Card.Body>3 szanse</Card.Body>
-                    </Card>
-                </Col>
-                <Col md={3}>
-                    <Card>
-                        <Card.Header>Negocjacje</Card.Header>
-                        <Card.Body>4 szanse</Card.Body>
-                    </Card>
-                </Col>
-                <Col md={3}>
-                    <Card>
-                        <Card.Header>Domknięcie</Card.Header>
-                        <Card.Body>2 szanse</Card.Body>
-                    </Card>
-                </Col>
+                {etapy.map((etap) => (
+                    <Col md={3} key={etap.nazwa}>
+                        <Card>
+                            <Card.Header>{etap.nazwa}</Card.Header>
+                            <Card.Body>{etap.liczba} szans</Card.Body>
+                        </Card>
+                    </Col>
+                ))}
             </Row>
         </Container>
     )
