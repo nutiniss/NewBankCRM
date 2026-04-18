@@ -11,7 +11,7 @@ export const ZadanieItem = (props: ZadanieProps) => {
             <td>{zadanie.nazwa}</td>
             <td>{zadanie.priorytet}</td>
             <td>{zadanie.termin}</td>
-            <td>{zadanie.status}</td>
+            <td>{zadanie.status ?? 'Nowe'}</td>
         </tr>
     )
 }

@@ -3,42 +3,15 @@ import './App.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Table from 'react-bootstrap/Table';
 import { Link } from 'react-router-dom';
-
-type Szansa = {
-    klient: string;
-    produkt: string;
-    etap: string;
-    dataZamkniecia: string;
-};
-
-type Zadanie = {
-    nazwa: string;
-    priorytet: 'Wysoki' | 'Średni' | 'Niski';
-    termin: string;
-};
-
-type Spotkanie = {
-    klient: string;
-    dataIGodzina: string;
-    tryb: 'Stacjonarnie' | 'Zdalnie';
-};
-
-type NowyKlient = {
-    nazwa: string;
-    branza: string;
-    dataNawiazaniaRelacji: string;
-};
-
-type Oferta = {
-    tytul: string;
-    opis: string;
-    image: string;
-};
+import { Klient } from './types/portfel/klient';
+import { Okazja } from './types/szanseSprzedazowe/okazja';
+import { Zadanie } from './types/kalendarz/zadanie';
+import { Spotkanie } from './types/kalendarz/spotkanie';
+import { Oferta } from './types/pulpit/oferta';
 
 const realizacjaCelu = 68;
 const realizacjaPlanuMiesiecznego = 54;
@@ -46,14 +19,14 @@ const wartoscPortfela = '48,6 mln PLN';
 const moiKlienci = 126;
 const moiPotencjalniKlienci = 34;
 
-const nowiKlienci: NowyKlient[] = [
+const nowiKlienci: Klient[] = [
     { nazwa: 'Nexon Industry', branza: 'Produkcja', dataNawiazaniaRelacji: '10.04.2026' },
     { nazwa: 'PortLine Cargo', branza: 'Transport', dataNawiazaniaRelacji: '11.04.2026' },
     { nazwa: 'EcoFarm Group', branza: 'Agro', dataNawiazaniaRelacji: '13.04.2026' },
     { nazwa: 'MediNova', branza: 'Medycyna', dataNawiazaniaRelacji: '15.04.2026' },
 ];
 
-const szanseSprzedazowe: Szansa[] = [
+const szanseSprzedazowe: Okazja[] = [
     { klient: 'Baltic Logistics Sp. z o.o.', produkt: 'Kredyt obrotowy', etap: 'Negocjacje warunków', dataZamkniecia: '28.04.2026' },
     { klient: 'HydroTech S.A.', produkt: 'Leasing floty', etap: 'Analiza ryzyka', dataZamkniecia: '06.05.2026' },
     { klient: 'GreenPol Energia', produkt: 'Kredyt inwestycyjny', etap: 'Oferta wstępna', dataZamkniecia: '12.05.2026' },

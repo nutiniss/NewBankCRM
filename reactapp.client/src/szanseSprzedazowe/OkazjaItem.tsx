@@ -6,12 +6,13 @@ type OkazjaProps = {
 
 export const OkazjaItem = (props: OkazjaProps) => {
     const { okazja } = props
+
     return (
         <tr>
-            <td>{okazja.nazwa}</td>
             <td>{okazja.klient}</td>
+            <td>{okazja.produkt}</td>
             <td>{okazja.etap}</td>
-            <td>{okazja.wartosc.toLocaleString('pl-PL')} PLN</td>
+            <td>{okazja.dataZamkniecia}</td>
         </tr>
     )
 }

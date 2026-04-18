@@ -1,6 +1,7 @@
 export type Spotkanie = {
-    temat: string,
-    klient: string,
-    data: string,
-    status: string,
-}
+    klient: string;
+    dataIGodzina: string;
+    tryb: 'Stacjonarnie' | 'Zdalnie';
+    temat?: string;
+    status?: 'Zaplanowane' | 'Potwierdzone' | 'Zrealizowane';
+};

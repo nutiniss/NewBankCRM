@@ -1,7 +1,10 @@
 export type Klient = {
-    id: string,
-    imieNazwisko: string,
-    segment: string,
-    wartoscPortfela: number,
-    statusRelacji: string,
-}
+    nazwa: string;
+    branza: string;
+    dataNawiazaniaRelacji: string;
+    segment?: 'VIP' | 'Premium' | 'Standard';
+    wartoscPortfela?: number;
+    statusRelacji?: 'Aktywna' | 'Do kontaktu' | 'Nowa';
+    id?: string;
+    imieNazwisko?: string;
+};

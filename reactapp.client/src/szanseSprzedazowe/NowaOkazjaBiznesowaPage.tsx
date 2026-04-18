@@ -17,13 +17,13 @@ export const NowaOkazjaBiznesowa = () => {
                 <Row className="mt-3 mb-3">
                     <Col>
                         <Form.Group>
-                            <Form.Label>Nazwa okazji</Form.Label>
+                            <Form.Label>Nazwa klienta</Form.Label>
                             <Form.Control type="text" />
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group>
-                            <Form.Label>Klient</Form.Label>
+                            <Form.Label>Produkt</Form.Label>
                             <Form.Control type="text" />
                         </Form.Group>
                     </Col>
@@ -34,16 +34,17 @@ export const NowaOkazjaBiznesowa = () => {
                             <Form.Label>Etap sprzedaży</Form.Label>
                             <Form.Select>
                                 <option>Wybierz</option>
-                                <option value="kwalifikacja">Kwalifikacja</option>
+                                <option value="kontakt">Kontakt</option>
                                 <option value="oferta">Oferta</option>
                                 <option value="negocjacje">Negocjacje</option>
+                                <option value="domkniecie">Domknięcie</option>
                             </Form.Select>
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group>
-                            <Form.Label>Wartość</Form.Label>
-                            <Form.Control type="number" />
+                            <Form.Label>Planowana data zamknięcia etapu</Form.Label>
+                            <Form.Control type="date" />
                         </Form.Group>
                     </Col>
                 </Row>

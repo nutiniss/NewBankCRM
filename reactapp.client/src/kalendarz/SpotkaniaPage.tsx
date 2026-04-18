@@ -5,8 +5,10 @@ import { SpotkanieItem } from './SpotkanieItem'
 
 export const Spotkania = () => {
     const listaSpotkan: Spotkanie[] = [
-        { temat: 'Omówienie celów kwartalnych', klient: 'Anna Kowalska', data: '2026-04-22 10:00', status: 'Zaplanowane' },
-        { temat: 'Analiza ryzyka portfela', klient: 'Piotr Nowak', data: '2026-04-23 12:30', status: 'Potwierdzone' },
+        { klient: 'Baltic Logistics Sp. z o.o.', dataIGodzina: '21.04.2026, 10:30', tryb: 'Zdalnie', status: 'Potwierdzone' },
+        { klient: 'MediCore Group', dataIGodzina: '22.04.2026, 13:00', tryb: 'Stacjonarnie', status: 'Zaplanowane' },
+        { klient: 'GreenPol Energia', dataIGodzina: '23.04.2026, 09:15', tryb: 'Zdalnie', status: 'Zaplanowane' },
+        { klient: 'HydroTech S.A.', dataIGodzina: '24.04.2026, 11:45', tryb: 'Stacjonarnie', status: 'Potwierdzone' },
     ]
 
     return (
@@ -14,14 +16,14 @@ export const Spotkania = () => {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>Temat</th>
-                        <th>Klient</th>
-                        <th>Data</th>
+                        <th>Nazwa klienta</th>
+                        <th>Data i godzina</th>
+                        <th>Tryb spotkania</th>
                         <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {listaSpotkan.map((item, index) => <SpotkanieItem key={index} spotkanie={item} />)}
+                    {listaSpotkan.map((item) => <SpotkanieItem key={`${item.klient}-${item.dataIGodzina}`} spotkanie={item} />)}
                 </tbody>
             </Table>
         </Container>

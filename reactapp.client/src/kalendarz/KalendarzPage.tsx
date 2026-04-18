@@ -4,9 +4,10 @@ import { Wydarzenie } from '../types/kalendarz/wydarzenie'
 
 export const Kalendarz = () => {
     const wydarzenia: Wydarzenie[] = [
-        { data: '2026-04-20', godzina: '09:00', typ: 'Spotkanie', opis: 'Przegląd portfela klienta VIP' },
-        { data: '2026-04-20', godzina: '14:00', typ: 'Zadanie', opis: 'Kontakt z nowym leadem' },
-        { data: '2026-04-21', godzina: '11:00', typ: 'Spotkanie', opis: 'Prezentacja oferty inwestycyjnej' },
+        { data: '21.04.2026', godzina: '10:30', typ: 'Spotkanie', opis: 'Baltic Logistics Sp. z o.o. — spotkanie zdalne', klient: 'Baltic Logistics Sp. z o.o.' },
+        { data: '22.04.2026', godzina: '09:00', typ: 'Zadanie', opis: 'Aktualizacja analizy finansowej klienta HydroTech', priorytet: 'Wysoki' },
+        { data: '22.04.2026', godzina: '13:00', typ: 'Spotkanie', opis: 'MediCore Group — spotkanie stacjonarne', klient: 'MediCore Group' },
+        { data: '24.04.2026', godzina: '08:30', typ: 'Zadanie', opis: 'Przygotowanie oferty cross-sellingowej dla MediCore', priorytet: 'Średni' },
     ]
 
     return (
@@ -21,8 +22,8 @@ export const Kalendarz = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {wydarzenia.map((item, index) => (
-                        <tr key={index}>
+                    {wydarzenia.map((item) => (
+                        <tr key={`${item.data}-${item.godzina}-${item.opis}`}>
                             <td>{item.data}</td>
                             <td>{item.godzina}</td>
                             <td>{item.typ}</td>
