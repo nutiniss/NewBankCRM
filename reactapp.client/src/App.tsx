@@ -27,6 +27,12 @@ type Spotkanie = {
     tryb: 'Stacjonarnie' | 'Zdalnie';
 };
 
+type NowyKlient = {
+    nazwa: string;
+    branza: string;
+    dataNawiazaniaRelacji: string;
+};
+
 type Oferta = {
     tytul: string;
     opis: string;
@@ -34,13 +40,16 @@ type Oferta = {
 };
 
 const realizacjaCelu = 68;
+const realizacjaPlanuMiesiecznego = 54;
 const wartoscPortfela = '48,6 mln PLN';
+const moiKlienci = 126;
+const moiPotencjalniKlienci = 34;
 
-const nowiKlienci = [
-    { nazwa: 'Nexon Industry', branza: 'Produkcja', status: 'Lead kwalifikowany', potencjal: 'Wysoki' },
-    { nazwa: 'PortLine Cargo', branza: 'Transport', status: 'Po pierwszym kontakcie', potencjal: 'Średni' },
-    { nazwa: 'EcoFarm Group', branza: 'Agro', status: 'Wysłana oferta', potencjal: 'Wysoki' },
-    { nazwa: 'MediNova', branza: 'Medycyna', status: 'Analiza potrzeb', potencjal: 'Średni' },
+const nowiKlienci: NowyKlient[] = [
+    { nazwa: 'Nexon Industry', branza: 'Produkcja', dataNawiazaniaRelacji: '10.04.2026' },
+    { nazwa: 'PortLine Cargo', branza: 'Transport', dataNawiazaniaRelacji: '11.04.2026' },
+    { nazwa: 'EcoFarm Group', branza: 'Agro', dataNawiazaniaRelacji: '13.04.2026' },
+    { nazwa: 'MediNova', branza: 'Medycyna', dataNawiazaniaRelacji: '15.04.2026' },
 ];
 
 const szanseSprzedazowe: Szansa[] = [
@@ -110,30 +119,50 @@ function App() {
                     <section className="dashboard-tile">
                         <h2 className="tile-title color1">Wykonanie celu sprzedażowego</h2>
                         <p className="tile-subtitle color2">Realizacja planu kwartalnego</p>
-                        <ProgressBar now={realizacjaCelu} label={`${realizacjaCelu}%`} className="sales-progress" />
+                        <ProgressBar now={realizacjaCelu} label={`${realizacjaCelu}%`} className="sales-progress mb-3" />
+                        <p className="tile-subtitle color2">Realizacja planu miesięcznego</p>
+                        <ProgressBar now={realizacjaPlanuMiesiecznego} label={`${realizacjaPlanuMiesiecznego}%`} className="sales-progress" />
                     </section>
                 </Col>
                 <Col xl={3} md={6}>
                     <section className="dashboard-tile">
                         <h2 className="tile-title color1">Podsumowanie portfela</h2>
                         <p className="metric-value">{wartoscPortfela}</p>
-                        <p className="metric-note">Aktywnych relacji: 126 | Średnia marża: 3.9%</p>
+                        <div className="portfolio-kpis">
+                            <div className="portfolio-kpi-item">
+                                <span className="portfolio-kpi-label">Moi klienci</span>
+                                <span className="portfolio-kpi-value">{moiKlienci}</span>
+                            </div>
+                            <div className="portfolio-kpi-item">
+                                <span className="portfolio-kpi-label">Moi potencjalni klienci</span>
+                                <span className="portfolio-kpi-value">{moiPotencjalniKlienci}</span>
+                            </div>
+                        </div>
+                        <p className="metric-note">Średnia marża: 3.9%</p>
                     </section>
                 </Col>
                 <Col xl={6} md={12}>
                     <section className="dashboard-tile">
                         <h2 className="tile-title color1">Nowi klienci</h2>
-                        <div className="new-clients-grid">
-                            {nowiKlienci.map((klient) => (
-                                <div className="new-client-item" key={klient.nazwa}>
-                                    <div>
-                                        <div className="client-name">{klient.nazwa}</div>
-                                        <div className="client-meta">{klient.branza} • {klient.status}</div>
-                                    </div>
-                                    <div className="client-score">{klient.potencjal}</div>
-                                </div>
-                            ))}
-                        </div>
+                        <Table responsive hover className="dashboard-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Nazwa klienta</th>
+                                    <th>Branża</th>
+                                    <th>Data nawiązania relacji</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {nowiKlienci.map((klient) => (
+                                    <tr key={klient.nazwa}>
+                                        <td>{klient.nazwa}</td>
+                                        <td>{klient.branza}</td>
+                                        <td>{klient.dataNawiazaniaRelacji}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </Table>
+                        <a href="#" className="see-more-link">Zobacz więcej</a>
                     </section>
                 </Col>
             </Row>
@@ -153,6 +182,7 @@ function App() {
                                 ))}
                             </ul>
                         </div>
+                        <a href="#" className="see-more-link">Zobacz więcej</a>
                     </section>
                 </Col>
                 <Col xl={3} md={6}>
@@ -166,6 +196,7 @@ function App() {
                                 </div>
                             ))}
                         </div>
+                        <a href="#" className="see-more-link">Zobacz więcej</a>
                     </section>
                 </Col>
                 <Col xl={6}>
@@ -191,6 +222,7 @@ function App() {
                                 ))}
                             </tbody>
                         </Table>
+                        <a href="#" className="see-more-link">Zobacz więcej</a>
                     </section>
                 </Col>
             </Row>
@@ -219,6 +251,7 @@ function App() {
                                 ))}
                             </tbody>
                         </Table>
+                        <a href="#" className="see-more-link">Zobacz więcej</a>
                     </section>
                 </Col>
                 <Col xl={6}>
@@ -242,6 +275,7 @@ function App() {
                                 ))}
                             </tbody>
                         </Table>
+                        <a href="#" className="see-more-link">Zobacz więcej</a>
                     </section>
                 </Col>
             </Row>
