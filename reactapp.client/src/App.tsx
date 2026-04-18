@@ -116,16 +116,18 @@ function App() {
         <Container fluid className="dashboard-page pb-4">
             <Row className="g-3 mb-3 align-items-stretch">
                 <Col xl={3} md={6}>
-                    <section className="dashboard-tile">
+                    <section className="dashboard-tile sales-target-tile">
                         <h2 className="tile-title color1">Wykonanie celu sprzedażowego</h2>
-                        <p className="tile-subtitle color2">Realizacja planu kwartalnego</p>
-                        <ProgressBar now={realizacjaCelu} label={`${realizacjaCelu}%`} className="sales-progress mb-3" />
-                        <p className="tile-subtitle color2">Realizacja planu miesięcznego</p>
-                        <ProgressBar now={realizacjaPlanuMiesiecznego} label={`${realizacjaPlanuMiesiecznego}%`} className="sales-progress" />
+                        <div className="sales-progress-stack">
+                            <p className="tile-subtitle color2">Realizacja planu kwartalnego</p>
+                            <ProgressBar now={realizacjaCelu} label={`${realizacjaCelu}%`} className="sales-progress mb-3" />
+                            <p className="tile-subtitle color2">Realizacja planu miesięcznego</p>
+                            <ProgressBar now={realizacjaPlanuMiesiecznego} label={`${realizacjaPlanuMiesiecznego}%`} className="sales-progress" />
+                        </div>
                     </section>
                 </Col>
                 <Col xl={3} md={6}>
-                    <section className="dashboard-tile">
+                    <section className="dashboard-tile portfolio-summary-tile">
                         <h2 className="tile-title color1">Podsumowanie portfela</h2>
                         <p className="metric-value">{wartoscPortfela}</p>
                         <div className="portfolio-kpis">
