@@ -1,0 +1,14 @@
+﻿.logo{
+    width:35px;
+    height:35px;
+    margin-right:10px;
+}
+.card-image {
+    width: 100px;
+    height: 60px;
+    margin-right: 10px;
+}
+a{
+    text-decoration:none;
+    color:unset;
+}
