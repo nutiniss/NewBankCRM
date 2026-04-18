@@ -1,168 +1,133 @@
-:root {
-    --color1: #463c57;
-    --color2: #654767;
-    --color3: #986484;
-    --color4: #dc8ea1;
-    --color5: #e5bbb4;
+﻿.color1 {
+    color: #463c57;
 }
 
-.dashboard-page {
-    color: var(--color1);
+.color2 {
+    color: #654767;
 }
 
-.dashboard-tile {
-    background: #ffffff;
-    border: 1px solid rgba(70, 60, 87, 0.15);
-    border-radius: 16px;
-    padding: 1rem;
-    box-shadow: 0 10px 20px rgba(70, 60, 87, 0.08);
+.color3 {
+    color: #986484;
 }
 
-.tile-title {
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+.color4 {
+    color: #dc8ea1;
 }
 
-.tile-subtitle {
-    margin-bottom: 0.75rem;
+.color5 {
+    color: #e5bbb4;
+}
+
+.logo {
+    width: 100px;
+    margin-right: 10px;
+    object-fit: contain;
+}
+
+.card-image {
+    width: 100px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+.top-navbar {
+    background: linear-gradient(90deg, #463c57 0%, #654767 100%);
+    min-height: 64px;
+}
+
+.brand-section {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.brand-section:hover,
+.brand-section:focus {
+    color: #ffffff;
+}
+
+.brand-text {
+    letter-spacing: 0.03em;
+}
+
+.user-panel {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #ffffff;
+}
+
+.user-name {
     font-size: 0.95rem;
+    white-space: nowrap;
 }
 
-.sales-progress {
-    height: 1.3rem;
-    background-color: rgba(229, 187, 180, 0.35);
+.menu-navbar {
+    background-color: #986484;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-bottom: 1px solid rgba(70, 60, 87, 0.15);
+    min-height: 58px;
 }
 
-.sales-progress .progress-bar {
-    background: linear-gradient(90deg, var(--color2), var(--color3));
-    font-weight: 600;
+.menu-nav .menu-link,
+.menu-dropdown .nav-link {
+    color: #ffffff;
+    font-weight: 500;
 }
 
-.pie-chart-layout {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    flex-wrap: wrap;
+.menu-nav .menu-link:hover,
+.menu-nav .menu-link:focus,
+.menu-dropdown .nav-link:hover,
+.menu-dropdown .nav-link:focus {
+    color: #e5bbb4;
 }
 
-.opportunities-pie {
-    width: 180px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: conic-gradient(
-            var(--color2) 0% 30%,
-            var(--color3) 30% 65%,
-            var(--color4) 65% 85%,
-            var(--color5) 85% 100%
-    );
-    box-shadow: inset 0 0 0 1px rgba(70, 60, 87, 0.1);
-}
-
-.pie-legend {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 0.5rem;
-    color: var(--color1);
-}
-
-.pie-legend li {
+.company-search {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    min-width: min(100%, 360px);
 }
 
-.legend-swatch {
-    width: 12px;
-    height: 12px;
-    border-radius: 3px;
-    display: inline-block;
+.company-search-input {
+    border-color: #e5bbb4;
 }
 
-.legend-swatch.color2 {
-    background-color: var(--color2);
+.company-search-input:focus {
+    border-color: #dc8ea1;
+    box-shadow: 0 0 0 0.2rem rgba(220, 142, 161, 0.25);
 }
 
-.legend-swatch.color3 {
-    background-color: var(--color3);
+.company-search-button {
+    color: #463c57;
+    border-color: #ffffff;
+    white-space: nowrap;
 }
 
-.legend-swatch.color4 {
-    background-color: var(--color4);
+.company-search-button:hover,
+.company-search-button:focus {
+    background-color: #e5bbb4;
+    border-color: #e5bbb4;
+    color: #463c57;
 }
 
-.legend-swatch.color5 {
-    background-color: var(--color5);
-}
-
-.dashboard-table {
-    margin-top: 0.25rem;
-}
-
-.dashboard-table thead th {
-    background-color: rgba(229, 187, 180, 0.35);
-    color: var(--color1);
-    border-bottom-width: 1px;
-}
-
-.dashboard-table tbody tr {
-    vertical-align: middle;
-}
-
-.offer-card {
-    border-radius: 14px;
-    border-color: rgba(70, 60, 87, 0.16);
-}
-
-.offer-image {
-    height: 150px;
-    object-fit: cover;
-    padding: 0.75rem 0.75rem 0;
-    border-radius: 1.25rem;
-}
-
-.offer-button {
-    background-color: var(--color3);
-    border-color: var(--color3);
-}
-
-.offer-button:hover,
-.offer-button:focus {
-    background-color: var(--color2);
-    border-color: var(--color2);
-}
-
-.priority-chip {
-    display: inline-block;
-    border-radius: 999px;
-    padding: 0.2rem 0.65rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.priority-chip.wysoki {
-    background-color: rgba(152, 100, 132, 0.2);
-    color: var(--color2);
-}
-
-.priority-chip.średni {
-    background-color: rgba(220, 142, 161, 0.25);
-    color: var(--color2);
-}
-
-.priority-chip.niski {
-    background-color: rgba(229, 187, 180, 0.45);
-    color: var(--color1);
-}
-
-@media (max-width: 767.98px) {
-    .dashboard-tile {
-        padding: 0.85rem;
+@media (max-width: 991.98px) {
+    .company-search {
+        width: 100%;
+        margin-top: 0.75rem;
     }
 
-    .opportunities-pie {
-        width: 140px;
+    .company-search-button {
+        width: 100%;
+    }
+
+    .user-panel {
+        margin-left: auto;
     }
 }
