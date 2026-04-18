@@ -18,17 +18,117 @@
     color: #e5bbb4;
 }
 
-.logo{
-    width:35px;
-    height:35px;
-    margin-right:10px;
+.logo {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    object-fit: contain;
 }
+
 .card-image {
     width: 100px;
     height: 60px;
     margin-right: 10px;
 }
-a{
-    text-decoration:none;
-    color:unset;
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+.top-navbar {
+    background: linear-gradient(90deg, #463c57 0%, #654767 100%);
+    min-height: 64px;
+}
+
+.brand-section {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.brand-section:hover,
+.brand-section:focus {
+    color: #ffffff;
+}
+
+.brand-text {
+    letter-spacing: 0.03em;
+}
+
+.user-panel {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #ffffff;
+}
+
+.user-name {
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.menu-navbar {
+    background-color: #986484;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-bottom: 1px solid rgba(70, 60, 87, 0.15);
+    min-height: 58px;
+}
+
+.menu-nav .menu-link,
+.menu-dropdown .nav-link {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.menu-nav .menu-link:hover,
+.menu-nav .menu-link:focus,
+.menu-dropdown .nav-link:hover,
+.menu-dropdown .nav-link:focus {
+    color: #e5bbb4;
+}
+
+.company-search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: min(100%, 360px);
+}
+
+.company-search-input {
+    border-color: #e5bbb4;
+}
+
+.company-search-input:focus {
+    border-color: #dc8ea1;
+    box-shadow: 0 0 0 0.2rem rgba(220, 142, 161, 0.25);
+}
+
+.company-search-button {
+    color: #463c57;
+    border-color: #ffffff;
+    white-space: nowrap;
+}
+
+.company-search-button:hover,
+.company-search-button:focus {
+    background-color: #e5bbb4;
+    border-color: #e5bbb4;
+    color: #463c57;
+}
+
+@media (max-width: 991.98px) {
+    .company-search {
+        width: 100%;
+        margin-top: 0.75rem;
+    }
+
+    .company-search-button {
+        width: 100%;
+    }
+
+    .user-panel {
+        margin-left: auto;
+    }
 }
