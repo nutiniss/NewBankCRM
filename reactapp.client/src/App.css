@@ -54,6 +54,7 @@ a {
 
 .brand-text {
     letter-spacing: 0.03em;
+    padding-top: 0.5rem;
 }
 
 .user-panel {
@@ -69,10 +70,11 @@ a {
 }
 
 .menu-navbar {
-    background-color: #986484;
-    border-top: 1px solid rgba(255, 255, 255, 0.25);
-    border-bottom: 1px solid rgba(70, 60, 87, 0.15);
+    background-color: #986484;    
     min-height: 58px;
+}
+.menu-nav {
+    gap: 1rem;
 }
 
 .menu-nav .menu-link,

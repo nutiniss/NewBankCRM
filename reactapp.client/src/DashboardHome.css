@@ -82,7 +82,7 @@
     padding: 0.8rem 0.75rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     gap: 0.3rem;
 }
 
@@ -93,10 +93,11 @@
 }
 
 .portfolio-kpi-value {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 700;
     color: var(--color2);
     line-height: 1.1;
+
 }
 
 .pie-chart-layout {
@@ -105,6 +106,7 @@
     justify-content: center;
     gap: 1.1rem;
     flex-wrap: wrap;
+    flex: 1;
 }
 
 .opportunities-pie {
@@ -213,13 +215,19 @@
 .offer-button {
     background-color: var(--color3);
     border-color: var(--color3);
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
 }
 
-.offer-button:hover,
-.offer-button:focus {
-    background-color: var(--color2);
-    border-color: var(--color2);
-}
+    .offer-button:hover,
+    .offer-button:focus {
+        background-color: var(--color2);
+        border-color: var(--color2);
+        color: #fff;
+        text-decoration: none;
+    }
 
 .priority-chip {
     display: inline-block;
@@ -230,17 +238,17 @@
 }
 
 .priority-chip.wysoki {
-    background-color: rgba(152, 100, 132, 0.2);
+    background-color: rgba(221,34,52,0.4);
     color: var(--color2);
 }
 
 .priority-chip.średni {
-    background-color: rgba(220, 142, 161, 0.25);
+    background-color: rgba(219,205,62,0.4);
     color: var(--color2);
 }
 
 .priority-chip.niski {
-    background-color: rgba(229, 187, 180, 0.45);
+    background-color: rgba(86,166,70,0.4);
     color: var(--color1);
 }
 
@@ -257,3 +265,4 @@
         width: 160px;
     }
 }
+

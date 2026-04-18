@@ -9,26 +9,26 @@ export const Pipeline = () => {
             <Row className="g-3">
                 <Col md={3}>
                     <Card>
-                        <Card.Header>Kwalifikacja</Card.Header>
-                        <Card.Body>5 okazji</Card.Body>
-                    </Card>
-                </Col>
-                <Col md={3}>
-                    <Card>
-                        <Card.Header>Analiza potrzeb</Card.Header>
-                        <Card.Body>3 okazje</Card.Body>
+                        <Card.Header>Kontakt</Card.Header>
+                        <Card.Body>5 szans</Card.Body>
                     </Card>
                 </Col>
                 <Col md={3}>
                     <Card>
                         <Card.Header>Oferta</Card.Header>
-                        <Card.Body>4 okazje</Card.Body>
+                        <Card.Body>3 szanse</Card.Body>
                     </Card>
                 </Col>
                 <Col md={3}>
                     <Card>
                         <Card.Header>Negocjacje</Card.Header>
-                        <Card.Body>2 okazje</Card.Body>
+                        <Card.Body>4 szanse</Card.Body>
+                    </Card>
+                </Col>
+                <Col md={3}>
+                    <Card>
+                        <Card.Header>Domknięcie</Card.Header>
+                        <Card.Body>2 szanse</Card.Body>
                     </Card>
                 </Col>
             </Row>

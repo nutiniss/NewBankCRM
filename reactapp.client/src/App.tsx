@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Table from 'react-bootstrap/Table';
+import { Link } from 'react-router-dom';
 
 type Szansa = {
     klient: string;
@@ -60,16 +61,15 @@ const szanseSprzedazowe: Szansa[] = [
 ];
 
 const podsumowanieSzans = [
-    { etykieta: 'Nowe', wartosc: 30, kolor: 'color2' },
-    { etykieta: 'W toku', wartosc: 35, kolor: 'color3' },
-    { etykieta: 'Finalizacja', wartosc: 20, kolor: 'color4' },
-    { etykieta: 'Wygrane', wartosc: 15, kolor: 'color5' },
+    { etykieta: 'Kredyty', wartosc: 30, kolor: 'color2' },
+    { etykieta: 'Leasing', wartosc: 35, kolor: 'color3' },
+    { etykieta: 'Finansowanie handlu', wartosc: 20, kolor: 'color4' },
+    { etykieta: 'Cash Management', wartosc: 15, kolor: 'color5' },
 ];
 
 const licznikSzansPerEtap = [
     { etap: 'Kontakt', liczba: 8 },
-    { etap: 'Analiza', liczba: 6 },
-    { etap: 'Oferta', liczba: 5 },
+    { etap: 'Oferta', liczba: 6 },
     { etap: 'Negocjacje', liczba: 4 },
     { etap: 'Domknięcie', liczba: 3 },
 ];
@@ -164,7 +164,7 @@ function App() {
                                 ))}
                             </tbody>
                         </Table>
-                        <a href="#" className="see-more-link">Zobacz więcej</a>
+                        <Link to="/moi-klienci" className="see-more-link">Zobacz więcej</Link>
                     </section>
                 </Col>
             </Row>
@@ -184,7 +184,7 @@ function App() {
                                 ))}
                             </ul>
                         </div>
-                        <a href="#" className="see-more-link">Zobacz więcej</a>
+                        <Link to="/szanse-sprzedazowe" className="see-more-link">Zobacz więcej</Link>
                     </section>
                 </Col>
                 <Col xl={3} md={6}>
@@ -198,7 +198,7 @@ function App() {
                                 </div>
                             ))}
                         </div>
-                        <a href="#" className="see-more-link">Zobacz więcej</a>
+                        <Link to="/pipeline" className="see-more-link">Zobacz więcej</Link>
                     </section>
                 </Col>
                 <Col xl={6}>
@@ -224,7 +224,7 @@ function App() {
                                 ))}
                             </tbody>
                         </Table>
-                        <a href="#" className="see-more-link">Zobacz więcej</a>
+                        <Link to="/szanse-sprzedazowe" className="see-more-link">Zobacz więcej</Link>
                     </section>
                 </Col>
             </Row>
@@ -232,7 +232,7 @@ function App() {
             <Row className="g-3 mb-3 align-items-stretch">
                 <Col xl={6}>
                     <section className="dashboard-tile">
-                        <h2 className="tile-title color1">Priorytetowe zadania</h2>
+                        <h2 className="tile-title color1">Najbliższe zadania</h2>
                         <Table responsive hover className="dashboard-table mb-0">
                             <thead>
                                 <tr>
@@ -253,7 +253,7 @@ function App() {
                                 ))}
                             </tbody>
                         </Table>
-                        <a href="#" className="see-more-link">Zobacz więcej</a>
+                        <Link to="/zadania" className="see-more-link">Zobacz więcej</Link>
                     </section>
                 </Col>
                 <Col xl={6}>
@@ -277,7 +277,7 @@ function App() {
                                 ))}
                             </tbody>
                         </Table>
-                        <a href="#" className="see-more-link">Zobacz więcej</a>
+                        <Link to="/spotkania" className="see-more-link">Zobacz więcej</Link>
                     </section>
                 </Col>
             </Row>
@@ -285,7 +285,7 @@ function App() {
             <Row className="g-3">
                 <Col xs={12}>
                     <section className="dashboard-tile">
-                        <h2 className="tile-title color1">Sekcja z ofertami</h2>
+                        <h2 className="tile-title color1">Oferty</h2>
                         <Row className="g-3">
                             {oferty.map((oferta) => (
                                 <Col key={oferta.tytul} md={6} xl={3}>
@@ -294,7 +294,7 @@ function App() {
                                         <Card.Body className="d-flex flex-column">
                                             <Card.Title>{oferta.tytul}</Card.Title>
                                             <Card.Text className="flex-grow-1">{oferta.opis}</Card.Text>
-                                            <Button className="offer-button mt-2">Zaoferuj</Button>
+                                            <Link to="/nowa-okazja-biznesowa" className="btn offer-button mt-2">Zaoferuj</Link>
                                         </Card.Body>
                                     </Card>
                                 </Col>

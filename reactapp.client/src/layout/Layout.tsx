@@ -58,7 +58,7 @@ export function Layout() {
                             <NavDropdown title="Szanse sprzedażowe" id="szanse-sprzedazowe-menu" className="menu-dropdown">
                                 <NavDropdown.Item as={Link} to="/szanse-sprzedazowe">Szanse sprzedażowe</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/pipeline">Pipeline</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/nowa-okazja-biznesowa">Nowa okazja biznesowa</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/nowa-okazja-biznesowa">Nowa szansa sprzedażowa</NavDropdown.Item>
                             </NavDropdown>
 
                             <NavDropdown title="Sprawy" id="sprawy-menu" className="menu-dropdown">

@@ -14,7 +14,7 @@ export const SzanseSprzedazowe = () => {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>Nazwa okazji</th>
+                        <th>Produkt</th>
                         <th>Klient</th>
                         <th>Etap</th>
                         <th>Wartość</th>
