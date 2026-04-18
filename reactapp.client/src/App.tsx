@@ -4,238 +4,118 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import ProgressBar from 'react-bootstrap/ProgressBar';
-import Table from 'react-bootstrap/Table';
-
-type Szansa = {
-    klient: string;
-    produkt: string;
-    etap: string;
-    dataZamkniecia: string;
-};
-
-type Zadanie = {
-    nazwa: string;
-    priorytet: 'Wysoki' | 'Średni' | 'Niski';
-    termin: string;
-};
-
-type Spotkanie = {
-    klient: string;
-    dataIGodzina: string;
-    tryb: 'Stacjonarnie' | 'Zdalnie';
-};
-
-type Oferta = {
-    tytul: string;
-    opis: string;
-    image: string;
-};
-
-const realizacjaCelu = 68;
-
-const szanseSprzedazowe: Szansa[] = [
-    {
-        klient: 'Baltic Logistics Sp. z o.o.',
-        produkt: 'Kredyt obrotowy',
-        etap: 'Negocjacje warunków',
-        dataZamkniecia: '28.04.2026',
-    },
-    {
-        klient: 'HydroTech S.A.',
-        produkt: 'Leasing floty',
-        etap: 'Analiza ryzyka',
-        dataZamkniecia: '06.05.2026',
-    },
-    {
-        klient: 'GreenPol Energia',
-        produkt: 'Kredyt inwestycyjny',
-        etap: 'Oferta wstępna',
-        dataZamkniecia: '12.05.2026',
-    },
-    {
-        klient: 'MediCore Group',
-        produkt: 'Cash management',
-        etap: 'Spotkanie decyzyjne',
-        dataZamkniecia: '15.05.2026',
-    },
-];
-
-const podsumowanieSzans = [
-    { etykieta: 'Nowe', wartosc: 30, kolor: 'color2' },
-    { etykieta: 'W toku', wartosc: 35, kolor: 'color3' },
-    { etykieta: 'Finalizacja', wartosc: 20, kolor: 'color4' },
-    { etykieta: 'Wygrane', wartosc: 15, kolor: 'color5' },
-];
-
-const oferty: Oferta[] = [
-    {
-        tytul: 'Kredyt w rachunku bieżącym',
-        opis: 'Elastyczne finansowanie kapitału obrotowego, które stabilizuje płynność firmy w okresach wzmożonych wydatków.',
-        image: '/image/1.png',
-    },
-    {
-        tytul: 'Kredyt inwestycyjny',
-        opis: 'Długoterminowe wsparcie rozwoju przedsiębiorstwa z harmonogramem dopasowanym do cyklu inwestycyjnego.',
-        image: '/image/2.png',
-    },
-    {
-        tytul: 'Kredyt obrotowy',
-        opis: 'Szybki dostęp do środków na bieżące potrzeby operacyjne oraz sezonowe zwiększenie skali działalności.',
-        image: '/image/3.png',
-    },
-    {
-        tytul: 'Leasing Transport',
-        opis: 'Nowoczesna flota bez zamrażania kapitału – korzystne raty i przejrzyste warunki dla firm transportowych.',
-        image: '/image/2.png',
-    },
-];
-
-const zadaniaPriorytetowe: Zadanie[] = [
-    { nazwa: 'Aktualizacja analizy finansowej klienta HydroTech', priorytet: 'Wysoki', termin: '22.04.2026' },
-    { nazwa: 'Przygotowanie oferty cross-sellingowej dla MediCore', priorytet: 'Średni', termin: '24.04.2026' },
-    { nazwa: 'Kontakt z działem prawnym ws. zabezpieczeń', priorytet: 'Wysoki', termin: '25.04.2026' },
-    { nazwa: 'Weryfikacja dokumentów KYC dla GreenPol', priorytet: 'Niski', termin: '29.04.2026' },
-];
-
-const nadchodzaceSpotkania: Spotkanie[] = [
-    { klient: 'Baltic Logistics Sp. z o.o.', dataIGodzina: '21.04.2026, 10:30', tryb: 'Zdalnie' },
-    { klient: 'MediCore Group', dataIGodzina: '22.04.2026, 13:00', tryb: 'Stacjonarnie' },
-    { klient: 'GreenPol Energia', dataIGodzina: '23.04.2026, 09:15', tryb: 'Zdalnie' },
-    { klient: 'HydroTech S.A.', dataIGodzina: '24.04.2026, 11:45', tryb: 'Stacjonarnie' },
-];
-
 function App() {
     return (
-        <Container fluid className="dashboard-page pb-4">
-            <Row className="g-3 mb-3 align-items-stretch">
-                <Col lg={6}>
-                    <section className="dashboard-tile h-100">
-                        <h2 className="tile-title color1">Wykonanie celu sprzedażowego</h2>
-                        <p className="tile-subtitle color2">Realizacja planu kwartalnego dla segmentu korporacyjnego</p>
-                        <ProgressBar now={realizacjaCelu} label={`${realizacjaCelu}%`} className="sales-progress" />
-                    </section>
+        <Container fluid>
+            <div className="mb-3">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </div>
+            <div className="mb-3">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </div>
+            <hr />
+            <Row>
+                <Col className="mb-3">
+                    <Card>
+                        <Card.Header>Ogloszenie 1</Card.Header>
+                        <Card.Body>
+                            <Card.Text>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            </Card.Text>
+                            <Button variant="primary">Szczegóły</Button>
+                        </Card.Body>
+                    </Card>
                 </Col>
-                <Col lg={6}>
-                    <section className="dashboard-tile h-100">
-                        <h2 className="tile-title color1">Podsumowanie szans</h2>
-                        <div className="pie-chart-layout">
-                            <div className="opportunities-pie" aria-label="Podsumowanie szans sprzedażowych" role="img" />
-                            <ul className="pie-legend">
-                                {podsumowanieSzans.map((item) => (
-                                    <li key={item.etykieta}>
-                                        <span className={`legend-swatch ${item.kolor}`} />
-                                        <span>{item.etykieta}: {item.wartosc}%</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </section>
+                <Col className="mb-3">
+                    <Card>
+                        <Card.Header>Ogloszenie 2</Card.Header>
+                        <Card.Body>
+                            <Card.Text>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            </Card.Text>
+                            <Button variant="primary">Szczegóły</Button>
+                        </Card.Body>
+                    </Card>
                 </Col>
-            </Row>
-
-            <Row className="g-3 mb-3">
-                <Col xs={12}>
-                    <section className="dashboard-tile">
-                        <h2 className="tile-title color1">Szanse sprzedażowe</h2>
-                        <Table responsive hover className="dashboard-table mb-0">
-                            <thead>
-                                <tr>
-                                    <th>Nazwa klienta</th>
-                                    <th>Produkt</th>
-                                    <th>Etap</th>
-                                    <th>Planowana data zamknięcia etapu</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {szanseSprzedazowe.map((szansa) => (
-                                    <tr key={`${szansa.klient}-${szansa.produkt}`}>
-                                        <td>{szansa.klient}</td>
-                                        <td>{szansa.produkt}</td>
-                                        <td>{szansa.etap}</td>
-                                        <td>{szansa.dataZamkniecia}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </Table>
-                    </section>
+                <Col className="mb-3">
+                    <Card>
+                        <Card.Header>Ogloszenie 3</Card.Header>
+                        <Card.Body>
+                            <Card.Text>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            </Card.Text>
+                            <Button variant="primary">Szczegóły</Button>
+                        </Card.Body>
+                    </Card>
                 </Col>
-            </Row>
-
-            <Row className="g-3 mb-3">
-                <Col xs={12}>
-                    <section className="dashboard-tile">
-                        <h2 className="tile-title color1">Sekcja z ofertami</h2>
-                        <Row className="g-3">
-                            {oferty.map((oferta) => (
-                                <Col key={oferta.tytul} md={6} xl={3}>
-                                    <Card className="offer-card h-100">
-                                        <Card.Img variant="top" src={oferta.image} alt={oferta.tytul} className="offer-image" />
-                                        <Card.Body className="d-flex flex-column">
-                                            <Card.Title>{oferta.tytul}</Card.Title>
-                                            <Card.Text className="flex-grow-1">{oferta.opis}</Card.Text>
-                                            <Button className="offer-button mt-2">Zaoferuj</Button>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                            ))}
-                        </Row>
-                    </section>
+                <Col className="mb-3">
+                    <Card>
+                        <Card.Header>Ogloszenie 4</Card.Header>
+                        <Card.Body>
+                            <Card.Text>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            </Card.Text>
+                            <Button variant="primary">Szczegóły</Button>
+                        </Card.Body>
+                    </Card>
                 </Col>
             </Row>
-
-            <Row className="g-3">
-                <Col xl={6}>
-                    <section className="dashboard-tile h-100">
-                        <h2 className="tile-title color1">Priorytetowe zadania</h2>
-                        <Table responsive hover className="dashboard-table mb-0">
-                            <thead>
-                                <tr>
-                                    <th>Nazwa zadania</th>
-                                    <th>Priorytet</th>
-                                    <th>Termin realizacji</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {zadaniaPriorytetowe.map((zadanie) => (
-                                    <tr key={zadanie.nazwa}>
-                                        <td>{zadanie.nazwa}</td>
-                                        <td>
-                                            <span className={`priority-chip ${zadanie.priorytet.toLowerCase()}`}>{zadanie.priorytet}</span>
-                                        </td>
-                                        <td>{zadanie.termin}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </Table>
-                    </section>
+            <hr />
+            <Row>
+                <Col className="mb-3">
+                    <Card style={{ width: '18rem' }}>
+                        <Card.Img variant="top" src="/image/1.png" className="card-image" />
+                        <Card.Body>
+                            <Card.Title>Towar1</Card.Title>
+                            <Card.Text>
+                                Some quick example text to build on the card title and make up the
+                                bulk of the card's content.
+                            </Card.Text>
+                            <Button variant="primary">Go somewhere</Button>
+                        </Card.Body>
+                    </Card>
                 </Col>
-
-                <Col xl={6}>
-                    <section className="dashboard-tile h-100">
-                        <h2 className="tile-title color1">Nadchodzące spotkania</h2>
-                        <Table responsive hover className="dashboard-table mb-0">
-                            <thead>
-                                <tr>
-                                    <th>Nazwa klienta</th>
-                                    <th>Data i godzina</th>
-                                    <th>Stacjonarnie/Zdalnie</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {nadchodzaceSpotkania.map((spotkanie) => (
-                                    <tr key={`${spotkanie.klient}-${spotkanie.dataIGodzina}`}>
-                                        <td>{spotkanie.klient}</td>
-                                        <td>{spotkanie.dataIGodzina}</td>
-                                        <td>{spotkanie.tryb}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </Table>
-                    </section>
+                <Col className="mb-3">
+                    <Card style={{ width: '18rem' }}>
+                        <Card.Img variant="top" src="/image/1.png" className="card-image" />
+                        <Card.Body>
+                            <Card.Title>Towar2</Card.Title>
+                            <Card.Text>
+                                Some quick example text to build on the card title and make up the
+                                bulk of the card's content.
+                            </Card.Text>
+                            <Button variant="primary">Go somewhere</Button>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col className="mb-3">
+                    <Card style={{ width: '18rem' }}>
+                        <Card.Img variant="top" src="/image/1.png" className="card-image" />
+                        <Card.Body>
+                            <Card.Title>Towar3</Card.Title>
+                            <Card.Text>
+                                Some quick example text to build on the card title and make up the
+                                bulk of the card's content.
+                            </Card.Text>
+                            <Button variant="primary">Go somewhere</Button>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col className="mb-3">
+                    <Card style={{ width: '18rem' }}>
+                        <Card.Img variant="top" src="/image/1.png" className="card-image" />
+                        <Card.Body>
+                            <Card.Title>Towar4</Card.Title>
+                            <Card.Text>
+                                Some quick example text to build on the card title and make up the
+                                bulk of the card's content.
+                            </Card.Text>
+                            <Button variant="primary">Go somewhere</Button>
+                        </Card.Body>
+                    </Card>
                 </Col>
             </Row>
-        </Container>
+        </Container> 
     );
 }
 
