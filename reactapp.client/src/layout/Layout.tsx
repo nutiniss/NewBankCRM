@@ -5,18 +5,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Outlet, Link } from 'react-router-dom';
-import Image from 'react-bootstrap/Image';
 
 export function Layout() {
     return (
         <div className="app">
             <Navbar expand="lg" className="bg-body-tertiary">
                 <Container fluid>
-                    {/*<Navbar.Brand>*/}
-                    {/*    <Link to="/" className="d-block">*/}
-                    {/*        <Image src="/image/1.png" className="logo"/>*/}
-                    {/*    </Link>*/}
-                    {/*</Navbar.Brand>*/}
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
@@ -27,47 +21,55 @@ export function Layout() {
                             <Nav.Link>
                                 <Link to="/" className="d-block">Pulpit</Link>
                             </Nav.Link>
-                            <NavDropdown title="Magazyn" id="magazyn">
+
+                            <NavDropdown title="Mój portfel" id="moj-portfel">
                                 <NavDropdown.Item>
-                                    <Link to="/towary" className="d-block">Towary</Link>
+                                    <Link to="/moi-klienci" className="d-block">Moi klienci</Link>
                                 </NavDropdown.Item>
-                                <NavDropdown.Divider />
                                 <NavDropdown.Item>
-                                    <Link to="/towar" className="d-block">Towar</Link>
+                                    <Link to="/nowy-klient-potencjalny" className="d-block">Nowy klient potencjalny</Link>
                                 </NavDropdown.Item>
-                            </NavDropdown>
-                            <NavDropdown title="Kadry" id="kadry">
                                 <NavDropdown.Item>
-                                    <Link to="/pracownicy" className="d-block">Pracownicy</Link>
-                                </NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item>
-                                    <Link to="/pracownik" className="d-block">Pracownik</Link>
+                                    <Link to="/analiza-portfela" className="d-block">Analiza portfela</Link>
                                 </NavDropdown.Item>
                             </NavDropdown>
-                            <NavDropdown title="Transport" id="transport">
+
+                            <NavDropdown title="Kalendarz" id="kalendarz-menu">
                                 <NavDropdown.Item>
-                                    <Link to="/samochody" className="d-block">Samochody</Link>
+                                    <Link to="/kalendarz" className="d-block">Kalendarz</Link>
                                 </NavDropdown.Item>
-                                <NavDropdown.Divider />
                                 <NavDropdown.Item>
-                                    <Link to="/samochod" className="d-block">Dodaj samochód</Link>
+                                    <Link to="/spotkania" className="d-block">Spotkania</Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item>
+                                    <Link to="/zadania" className="d-block">Zadania</Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item>
+                                    <Link to="/nowe-spotkanie" className="d-block">Nowe spotkanie</Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item>
+                                    <Link to="/nowe-zadanie" className="d-block">Nowe zadanie</Link>
                                 </NavDropdown.Item>
                             </NavDropdown>
-                            <NavDropdown title="Inne 1" id="inne1">
+
+                            <NavDropdown title="Szanse sprzedażowe" id="szanse-sprzedazowe-menu">
                                 <NavDropdown.Item>
-                                    <Link to="/pracownicy" className="d-block">Inne 1.1.</Link>
+                                    <Link to="/szanse-sprzedazowe" className="d-block">Szanse sprzedażowe</Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item>
-                                    <Link to="/pracownik" className="d-block">Inne 1.2.</Link>
+                                    <Link to="/pipeline" className="d-block">Pipeline</Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item>
+                                    <Link to="/nowa-okazja-biznesowa" className="d-block">Nowa okazja biznesowa</Link>
                                 </NavDropdown.Item>
                             </NavDropdown>
-                            <NavDropdown title="Inne 2" id="inne2">
+
+                            <NavDropdown title="Sprawy" id="sprawy-menu">
                                 <NavDropdown.Item>
-                                    <Link to="/pracownicy" className="d-block">Inne 2.1.</Link>
+                                    <Link to="/sprawy" className="d-block">Sprawy</Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item>
-                                    <Link to="/pracownik" className="d-block">Inne 2.2.</Link>
+                                    <Link to="/nowa-sprawa" className="d-block">Nowa sprawa</Link>
                                 </NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
@@ -85,7 +87,7 @@ export function Layout() {
             </Navbar>
             <div className="px-3">
                 <Container fluid>
-                    <Outlet/>
+                    <Outlet />
                 </Container>
             </div>
         </div>

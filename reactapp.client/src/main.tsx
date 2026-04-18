@@ -2,67 +2,67 @@ import React from 'react';
 import ReactDOM from "react-dom/client";
 import App from './App.jsx';
 import './index.css';
-//import {
-//    createBrowserRouter,
-//    RouterProvider,
-//} from "react-router-dom";
-import { Towar } from './towar/TowarPage';
-import { Towary } from './towar/TowaryPage';
-import { Pracownik } from './pracownik/PracownikPage';
-import { Pracownicy } from './pracownik/PracownicyPage';
-import { Samochod } from './samochod/SamochodPage';
-import { Samochody } from './samochod/SamochodyPage';
 import { Layout } from './layout/Layout.jsx';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
-//const router = createBrowserRouter([
-//    {
-//        path: "/",
-//        element: <App/>,
-//    },
-//    {
-//        path: "/towar",
-//        element: <Towar />,
-//    },
-//    {
-//        path: "/towary",
-//        element: <Towary />
-//    },
-//    {
-//        path: "/pracownik",
-//        element: <Pracownik />
-//    },
-//    {
-//        path: "/pracownicy",
-//        element: <Pracownicy />
-//    }
-//]);
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { MoiKlienci } from './portfel/MoiKlienciPage';
+import { NowyKlientPotencjalny } from './portfel/NowyKlientPotencjalnyPage';
+import { AnalizaPortfela } from './portfel/AnalizaPortfelaPage';
+import { Kalendarz } from './kalendarz/KalendarzPage';
+import { Spotkania } from './kalendarz/SpotkaniaPage';
+import { Zadania } from './kalendarz/ZadaniaPage';
+import { NoweSpotkanie } from './kalendarz/NoweSpotkaniePage';
+import { NoweZadanie } from './kalendarz/NoweZadaniePage';
+import { SzanseSprzedazowe } from './szanseSprzedazowe/SzanseSprzedazowePage';
+import { Pipeline } from './szanseSprzedazowe/PipelinePage';
+import { NowaOkazjaBiznesowa } from './szanseSprzedazowe/NowaOkazjaBiznesowaPage';
+import { Sprawy } from './sprawy/SprawyPage';
+import { NowaSprawa } from './sprawy/NowaSprawaPage';
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
-        {/*<RouterProvider router={router} />*/}
         <BrowserRouter>
             <Routes>
-                <Route path='/' element={ <Layout/>}>
-                    <Route index element={<App/> }/>
+                <Route path='/' element={<Layout />}>
+                    <Route index element={<App />} />
                 </Route>
-                <Route path='/towary' element={<Layout />}>
-                    <Route index element={<Towary />} />
+                <Route path='/moi-klienci' element={<Layout />}>
+                    <Route index element={<MoiKlienci />} />
                 </Route>
-                <Route path='/pracownicy' element={<Layout />}>
-                    <Route index element={<Pracownicy />} />
+                <Route path='/nowy-klient-potencjalny' element={<Layout />}>
+                    <Route index element={<NowyKlientPotencjalny />} />
                 </Route>
-                <Route path='/towar' element={<Layout />}>
-                    <Route index element={<Towar />} />
+                <Route path='/analiza-portfela' element={<Layout />}>
+                    <Route index element={<AnalizaPortfela />} />
                 </Route>
-                <Route path='/pracownik' element={<Layout />}>
-                    <Route index element={<Pracownik />} />
+                <Route path='/kalendarz' element={<Layout />}>
+                    <Route index element={<Kalendarz />} />
                 </Route>
-                <Route path='/samochod' element={<Layout />}>
-                    <Route index element={<Samochod />} />
+                <Route path='/spotkania' element={<Layout />}>
+                    <Route index element={<Spotkania />} />
                 </Route>
-                <Route path='/samochody' element={<Layout />}>
-                    <Route index element={<Samochody />} />
+                <Route path='/zadania' element={<Layout />}>
+                    <Route index element={<Zadania />} />
+                </Route>
+                <Route path='/nowe-spotkanie' element={<Layout />}>
+                    <Route index element={<NoweSpotkanie />} />
+                </Route>
+                <Route path='/nowe-zadanie' element={<Layout />}>
+                    <Route index element={<NoweZadanie />} />
+                </Route>
+                <Route path='/szanse-sprzedazowe' element={<Layout />}>
+                    <Route index element={<SzanseSprzedazowe />} />
+                </Route>
+                <Route path='/pipeline' element={<Layout />}>
+                    <Route index element={<Pipeline />} />
+                </Route>
+                <Route path='/nowa-okazja-biznesowa' element={<Layout />}>
+                    <Route index element={<NowaOkazjaBiznesowa />} />
+                </Route>
+                <Route path='/sprawy' element={<Layout />}>
+                    <Route index element={<Sprawy />} />
+                </Route>
+                <Route path='/nowa-sprawa' element={<Layout />}>
+                    <Route index element={<NowaSprawa />} />
                 </Route>
             </Routes>
         </BrowserRouter>
