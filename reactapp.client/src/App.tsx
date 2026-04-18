@@ -1,4 +1,5 @@
 import './DashboardHome.css';
+import './App.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -68,22 +69,22 @@ const oferty: Oferta[] = [
     {
         tytul: 'Kredyt w rachunku bieżącym',
         opis: 'Elastyczne finansowanie kapitału obrotowego, które wzmacnia płynność firmy i pozwala szybciej reagować na potrzeby rynku.',
-        image: '/image/1.png',
+        image: '/image/krb.png',
     },
     {
         tytul: 'Kredyt inwestycyjny',
         opis: 'Długoterminowe wsparcie rozwoju przedsiębiorstwa z harmonogramem spłat dopasowanym do cyklu inwestycji.',
-        image: '/image/2.png',
+        image: '/image/kredytInwestycyjny.png',
     },
     {
         tytul: 'Kredyt obrotowy',
         opis: 'Szybki dostęp do środków na bieżące wydatki operacyjne i sezonowe zwiększenie skali działalności.',
-        image: '/image/3.png',
+        image: '/image/kredytObrotowy.png',
     },
     {
         tytul: 'Leasing Transport',
         opis: 'Nowoczesna flota bez angażowania własnego kapitału, z przewidywalnymi kosztami i uproszczonym procesem decyzyjnym.',
-        image: '/image/2.png',
+        image: '/image/leasing.png',
     },
 ];
 
