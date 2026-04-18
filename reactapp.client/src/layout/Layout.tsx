@@ -85,7 +85,7 @@ export function Layout() {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            <div className="px-3">
+            <div className="px-3 mt-2">
                 <Container fluid>
                     <Outlet />
                 </Container>
