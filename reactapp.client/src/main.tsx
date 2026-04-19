@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from "react-dom/client";
-import App from './App.jsx';
+import App from './DashboardHome.js';
 import './index.css';
 import { Layout } from './layout/Layout.jsx';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
