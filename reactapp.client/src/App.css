@@ -1,21 +1,35 @@
-﻿.color1 {
-    color: #463c57;
+:root {
+    --color1: #463c57;
+    --color1-rgb: 70, 60, 87;
+    --color2: #654767;
+    --color2-rgb: 101, 71, 103;
+    --color3: #986484;
+    --color3-rgb: 152, 100, 132;
+    --color4: #dc8ea1;
+    --color4-rgb: 220, 142, 161;
+    --color5: #e5bbb4;
+    --color5-rgb: 229, 187, 180;
+    --color-white: #ffffff;
+}
+
+.color1 {
+    color: var(--color1);
 }
 
 .color2 {
-    color: #654767;
+    color: var(--color2);
 }
 
 .color3 {
-    color: #986484;
+    color: var(--color3);
 }
 
 .color4 {
-    color: #dc8ea1;
+    color: var(--color4);
 }
 
 .color5 {
-    color: #e5bbb4;
+    color: var(--color5);
 }
 
 .logo {
@@ -36,20 +50,20 @@ a {
 }
 
 .top-navbar {
-    background: linear-gradient(90deg, #463c57 0%, #654767 100%);
+    background: linear-gradient(90deg, var(--color1) 0%, var(--color2) 100%);
     min-height: 64px;
 }
 
 .brand-section {
     display: flex;
     align-items: center;
-    color: #ffffff;
+    color: var(--color-white);
     font-weight: 600;
 }
 
 .brand-section:hover,
 .brand-section:focus {
-    color: #ffffff;
+    color: var(--color-white);
 }
 
 .brand-text {
@@ -61,7 +75,7 @@ a {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    color: #ffffff;
+    color: var(--color-white);
 }
 
 .user-name {
@@ -70,7 +84,7 @@ a {
 }
 
 .menu-navbar {
-    background-color: #986484;    
+    background-color: var(--color3);    
     min-height: 58px;
 }
 .menu-nav {
@@ -79,7 +93,7 @@ a {
 
 .menu-nav .menu-link,
 .menu-dropdown .nav-link {
-    color: #ffffff;
+    color: var(--color-white);
     font-weight: 500;
 }
 
@@ -87,7 +101,7 @@ a {
 .menu-nav .menu-link:focus,
 .menu-dropdown .nav-link:hover,
 .menu-dropdown .nav-link:focus {
-    color: #e5bbb4;
+    color: var(--color5);
 }
 
 .company-search {
@@ -98,25 +112,25 @@ a {
 }
 
 .company-search-input {
-    border-color: #e5bbb4;
+    border-color: var(--color5);
 }
 
 .company-search-input:focus {
-    border-color: #dc8ea1;
-    box-shadow: 0 0 0 0.2rem rgba(220, 142, 161, 0.25);
+    border-color: var(--color4);
+    box-shadow: 0 0 0 0.2rem rgba(var(--color4-rgb), 0.25);
 }
 
 .company-search-button {
-    color: #463c57;
-    border-color: #ffffff;
+    color: var(--color1);
+    border-color: var(--color-white);
     white-space: nowrap;
 }
 
 .company-search-button:hover,
 .company-search-button:focus {
-    background-color: #e5bbb4;
-    border-color: #e5bbb4;
-    color: #463c57;
+    background-color: var(--color5);
+    border-color: var(--color5);
+    color: var(--color1);
 }
 
 @media (max-width: 991.98px) {
@@ -132,4 +146,39 @@ a {
     .user-panel {
         margin-left: auto;
     }
+}
+/* Buttons on form subpages aligned with NewBank color palette */
+.btn-primary {
+    background-color: var(--color2);
+    border-color: var(--color2);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.show {
+    background-color: var(--color1);
+    border-color: var(--color1);
+}
+
+.btn-primary:focus-visible,
+.btn-info:focus-visible {
+    box-shadow: 0 0 0 0.2rem rgba(var(--color3-rgb), 0.35);
+}
+
+.btn-info {
+    background-color: var(--color5);
+    border-color: var(--color5);
+    color: var(--color1);
+}
+
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active,
+.btn-info.active,
+.btn-info.show {
+    background-color: var(--color4);
+    border-color: var(--color4);
+    color: var(--color1);
 }
