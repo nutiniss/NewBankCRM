@@ -7,12 +7,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Outlet, Link } from 'react-router-dom';
 
-export function Layout() {
-    const [searchCompany, setSearchCompany] = useState('');
-
-    const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-    };
+export function Layout() {    
 
     return (
         <div className="app d-flex flex-column min-vh-100">
@@ -69,14 +64,12 @@ export function Layout() {
                             </NavDropdown>
                         </Nav>
 
-                        <Form className="company-search" onSubmit={handleSearchSubmit}>
+                        <Form className="company-search" >
                             <Form.Control
                                 type="search"
                                 placeholder="Wyszukaj klienta po nazwie firmy"
                                 className="company-search-input"
-                                aria-label="Wyszukaj klienta po nazwie firmy"
-                                value={searchCompany}
-                                onChange={(event) => setSearchCompany(event.target.value)}
+                                aria-label="Wyszukaj klienta po nazwie firmy"                                
                             />
                             <Button type="submit" variant="light" className="company-search-button">Szukaj</Button>
                         </Form>
