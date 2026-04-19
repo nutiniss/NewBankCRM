@@ -24,7 +24,10 @@ export function Layout() {
                     </Navbar.Brand>
 
                     <div className="user-panel">
-                        <span className="user-name">A.Doradca (72722)</span>
+                        <span className="user-name">
+                            <i className="bi bi-person-circle user-name-icon" aria-hidden="true"></i>
+                            <span>A.Doradca (72722)</span>
+                        </span>
                         <Button variant="outline-light" size="sm">Wyloguj</Button>
                     </div>
                 </Container>
