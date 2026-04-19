@@ -19,8 +19,7 @@ export function Layout() {
             <Navbar expand="lg" className="top-navbar px-3">
                 <Container fluid>
                     <Navbar.Brand as={Link} to="/" className="brand-section">
-                        <img src="/image/logo.png" alt="NewBank CRM" className="logo" />
-                        <span className="brand-text">NewBank CRM</span>
+                        <img src="/image/logo.png" alt="NewBank CRM" className="logo" />                        
                     </Navbar.Brand>
 
                     <div className="user-panel">

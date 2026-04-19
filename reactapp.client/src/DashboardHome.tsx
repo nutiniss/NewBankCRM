@@ -237,7 +237,7 @@ function App() {
                                 <tr>
                                     <th>Nazwa klienta</th>
                                     <th>Data i godzina</th>
-                                    <th>Stacjonarnie/Zdalnie</th>
+                                    <th>Tryb spotkania</th>
                                 </tr>
                             </thead>
                             <tbody>
