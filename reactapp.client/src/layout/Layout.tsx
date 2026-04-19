@@ -15,7 +15,7 @@ export function Layout() {
     };
 
     return (
-        <div className="app">
+        <div className="app d-flex flex-column min-vh-100">
             <Navbar expand="lg" className="top-navbar px-3">
                 <Container fluid>
                     <Navbar.Brand as={Link} to="/" className="brand-section">
@@ -84,11 +84,28 @@ export function Layout() {
                 </Container>
             </Navbar>
 
-            <div className="px-3 mt-3">
+            <main className="px-3 mt-3 flex-grow-1">
                 <Container fluid>
                     <Outlet />
                 </Container>
-            </div>
+            </main>
+
+            <footer className="app-footer px-3 py-2 mt-3">
+                <Container fluid className="app-footer-content">
+                    <span className="app-footer-brand">NewBank CRM</span>
+                    <div className="app-footer-actions">
+                        <Link to="/nowa-okazja-biznesowa" className="btn btn-outline-light btn-sm">
+                            Nowa szansa sprzedażowa
+                        </Link>
+                        <Link to="/nowe-spotkanie" className="btn btn-outline-light btn-sm">
+                            Nowe spotkanie
+                        </Link>
+                        <Link to="/nowe-zadanie" className="btn btn-outline-light btn-sm">
+                            Nowe zadanie
+                        </Link>
+                    </div>
+                </Container>
+            </footer>
         </div>
     );
 }

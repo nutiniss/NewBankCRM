@@ -173,3 +173,40 @@ a {
     border-color: var(--color4);
     color: var(--color1);
 }
+
+.app-footer {
+    background: linear-gradient(90deg, var(--color1) 0%, var(--color2) 100%);
+    color: var(--color-white);
+}
+
+.app-footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.app-footer-brand {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.app-footer-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 767.98px) {
+    .app-footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .app-footer-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
