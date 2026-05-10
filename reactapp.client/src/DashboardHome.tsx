@@ -7,7 +7,6 @@ import Card from 'react-bootstrap/Card';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Table from 'react-bootstrap/Table';
 import { Link } from 'react-router-dom';
-import { PieChart } from 'react-minimal-pie-chart';
 import { Klient } from './types/portfel/klient';
 import { Okazja } from './types/szanseSprzedazowe/okazja';
 import { Zadanie } from './types/kalendarz/zadanie';
@@ -35,10 +34,10 @@ const szanseSprzedazowe: Okazja[] = [
 ];
 
 const podsumowanieSzans = [
-    { title: 'Kredyty', value: 30, color: 'var(--color2)', legendClass: 'color2' },
-    { title: 'Leasing', value: 35, color: 'var(--color3)', legendClass: 'color3' },
-    { title: 'Finansowanie handlu', value: 20, color: 'var(--color4)', legendClass: 'color4' },
-    { title: 'Cash Management', value: 15, color: 'var(--color5)', legendClass: 'color5' },
+    { etykieta: 'Kredyty', wartosc: 30, kolor: 'color2' },
+    { etykieta: 'Leasing', wartosc: 35, kolor: 'color3' },
+    { etykieta: 'Finansowanie handlu', wartosc: 20, kolor: 'color4' },
+    { etykieta: 'Cash Management', wartosc: 15, kolor: 'color5' },
 ];
 
 const licznikSzansPerEtap = [
@@ -148,20 +147,12 @@ function App() {
                     <section className="dashboard-tile">
                         <h2 className="tile-title color1">Podsumowanie szans</h2>
                         <div className="pie-chart-layout">
-                            <div className="opportunities-pie" aria-label="Podsumowanie szans sprzedażowych" role="img">
-                                <PieChart
-                                    data={podsumowanieSzans}
-                                    animate
-                                    lineWidth={100}
-                                    paddingAngle={1}
-                                    segmentsStyle={{ transition: 'stroke 0.3s ease', cursor: 'default' }}
-                                />
-                            </div>
+                            <div className="opportunities-pie" aria-label="Podsumowanie szans sprzedażowych" role="img" />
                             <ul className="pie-legend">
                                 {podsumowanieSzans.map((item) => (
-                                    <li key={item.title}>
-                                        <span className={`legend-swatch ${item.legendClass}`} />
-                                        <span>{item.title}: {item.value}%</span>
+                                    <li key={item.etykieta}>
+                                        <span className={`legend-swatch ${item.kolor}`} />
+                                        <span>{item.etykieta}: {item.wartosc}%</span>
                                     </li>
                                 ))}
                             </ul>
