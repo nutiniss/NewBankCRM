@@ -19,10 +19,10 @@ const moiKlienci = 126;
 const moiPotencjalniKlienci = 34;
 
 const nowiKlienci: Klient[] = [
-    { nazwa: 'Nexon Industry', branza: 'Produkcja', dataNawiazaniaRelacji: '10.04.2026' },
-    { nazwa: 'PortLine Cargo', branza: 'Transport', dataNawiazaniaRelacji: '11.04.2026' },
-    { nazwa: 'EcoFarm Group', branza: 'Agro', dataNawiazaniaRelacji: '13.04.2026' },
-    { nazwa: 'MediNova', branza: 'Medycyna', dataNawiazaniaRelacji: '15.04.2026' },
+    { nazwa: 'Nexon Industry', status: 'Klient', branza: 'Produkcja', dataNawiazaniaRelacji: '10.04.2026' },
+    { nazwa: 'PortLine Cargo', status: 'Klient', branza: 'Transport', dataNawiazaniaRelacji: '11.04.2026' },
+    { nazwa: 'EcoFarm Group', status: 'Prospekt', branza: 'Agro', dataNawiazaniaRelacji: '13.04.2026' },
+    { nazwa: 'MediNova', status: 'Klient', branza: 'Medycyna', dataNawiazaniaRelacji: '15.04.2026' },
 ];
 
 const szanseSprzedazowe: Okazja[] = [
