@@ -216,8 +216,8 @@ a {
     top: 1rem;
     border-radius: 0.75rem;
     padding: 1rem;
-    background: var(--color4);
-    color: var(--color-white);
+    background: #EEDADF;
+    color: var(--color1);
 }
 
 .side-banner-title {
