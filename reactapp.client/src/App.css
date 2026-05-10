@@ -201,10 +201,9 @@ a {
 
 
 .layout-main-grid {
-    --side-banner-width: 280px;
-    --side-banner-collapsed-width: 3.25rem;
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 1rem;
     align-items: start;
 }
 
@@ -213,22 +212,12 @@ a {
 }
 
 .layout-side-banner {
-    position: static;
-    border-radius: 0;
+    position: sticky;
+    top: 1rem;
+    border-radius: 0.75rem;
     padding: 1rem;
     background: #EEDADF;
     color: var(--color1);
-    transition: width 0.2s ease, padding 0.2s ease;
-}
-
-.side-banner-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color1);
-    border-color: rgba(var(--color1-rgb), 0.2);
-    border-radius: 0;
-    margin-bottom: 0.85rem;
 }
 
 .side-banner-title {
@@ -292,50 +281,14 @@ a {
     text-decoration: none;
 }
 
-@media (min-width: 992px) {
-    .layout-main-grid {
-        padding-right: calc(var(--side-banner-width) + 1rem);
-    }
-
-    .layout-main-grid:has(.layout-side-banner-collapsed) {
-        padding-right: calc(var(--side-banner-collapsed-width) + 1rem);
-    }
-
-    .layout-side-banner {
-        position: fixed;
-        top: 138px;
-        right: 0;
-        bottom: 0;
-        z-index: 1020;
-        width: var(--side-banner-width);
-        overflow-y: auto;
-        box-shadow: -0.25rem 0 1rem rgba(var(--color1-rgb), 0.12);
-    }
-
-    .layout-side-banner-collapsed {
-        width: var(--side-banner-collapsed-width);
-        padding-right: 0.5rem;
-        padding-left: 0.5rem;
-        overflow: hidden;
-    }
-
-    .layout-side-banner-collapsed .side-banner-content {
-        display: none;
-    }
-
-    .layout-side-banner-collapsed .side-banner-toggle {
-        width: 100%;
-    }
-}
-
 @media (max-width: 991.98px) {
-    .layout-side-banner {
-        order: 2;
-        margin-top: 1rem;
+    .layout-main-grid {
+        grid-template-columns: minmax(0, 1fr);
     }
 
-    .layout-side-banner-collapsed .side-banner-content {
-        display: none;
+    .layout-side-banner {
+        position: static;
+        order: 2;
     }
 }
 

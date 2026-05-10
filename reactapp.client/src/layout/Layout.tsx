@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
@@ -32,8 +31,7 @@ const oferty: Oferta[] = [
     },
 ];
 
-export function Layout() {
-    const [isSideBannerCollapsed, setIsSideBannerCollapsed] = useState(false);
+export function Layout() {    
 
     return (
         <div className="app d-flex flex-column min-vh-100">
@@ -110,38 +108,19 @@ export function Layout() {
                             <Outlet />
                         </section>
 
-                        <aside className={`layout-side-banner${isSideBannerCollapsed ? ' layout-side-banner-collapsed' : ''}`}>
-                            <Button
-                                type="button"
-                                variant="light"
-                                size="sm"
-                                className="side-banner-toggle"
-                                aria-expanded={!isSideBannerCollapsed}
-                                aria-controls="side-banner-offers"
-                                onClick={() => setIsSideBannerCollapsed((isCollapsed) => !isCollapsed)}
-                            >
-                                <i
-                                    className={`bi ${isSideBannerCollapsed ? 'bi-chevron-left' : 'bi-chevron-right'}`}
-                                    aria-hidden="true"
-                                ></i>
-                                <span className="visually-hidden">
-                                    {isSideBannerCollapsed ? 'Rozwiń panel ofert' : 'Zwiń panel ofert'}
-                                </span>
-                            </Button>
-                            <div id="side-banner-offers" className="side-banner-content" aria-hidden={isSideBannerCollapsed}>
-                                <h2 className="side-banner-title">Oferty</h2>
-                                <div className="side-offers-list">
-                                    {oferty.map((oferta) => (
-                                        <Card className="offer-card side-offer-card" key={oferta.tytul}>
-                                            <Card.Img variant="top" src={oferta.image} alt={oferta.tytul} className="offer-image side-offer-image" />
-                                            <Card.Body className="d-flex flex-column">
-                                                <Card.Title className="side-offer-title">{oferta.tytul}</Card.Title>
-                                                <Card.Text className="side-offer-text">{oferta.opis}</Card.Text>
-                                                <Link to="/nowa-okazja-biznesowa" className="btn offer-button mt-2">Zaoferuj</Link>
-                                            </Card.Body>
-                                        </Card>
-                                    ))}
-                                </div>
+                        <aside className="layout-side-banner">
+                            <h2 className="side-banner-title">Oferty</h2>
+                            <div className="side-offers-list">
+                                {oferty.map((oferta) => (
+                                    <Card className="offer-card side-offer-card" key={oferta.tytul}>
+                                        <Card.Img variant="top" src={oferta.image} alt={oferta.tytul} className="offer-image side-offer-image" />
+                                        <Card.Body className="d-flex flex-column">
+                                            <Card.Title className="side-offer-title">{oferta.tytul}</Card.Title>
+                                            <Card.Text className="side-offer-text">{oferta.opis}</Card.Text>
+                                            <Link to="/nowa-okazja-biznesowa" className="btn offer-button mt-2">Zaoferuj</Link>
+                                        </Card.Body>
+                                    </Card>
+                                ))}
                             </div>
                         </aside>
                     </div>
