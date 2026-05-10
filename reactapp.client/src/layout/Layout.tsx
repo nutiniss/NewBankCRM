@@ -79,7 +79,16 @@ export function Layout() {
 
             <main className="px-3 mt-3 flex-grow-1">
                 <Container fluid>
-                    <Outlet />
+                    <div className="layout-main-grid">
+                        <section className="layout-main-content">
+                            <Outlet />
+                        </section>
+
+                        <aside className="layout-side-banner">
+                            <p >BANER</p>
+                            <h2>Oferta miesiąca</h2>
+                        </aside>
+                    </div>
                 </Container>
             </main>
 
