@@ -124,9 +124,9 @@ export function Layout() {
                                     className={`bi ${isSideBannerCollapsed ? 'bi-chevron-left' : 'bi-chevron-right'}`}
                                     aria-hidden="true"
                                 ></i>
-                                <span className="side-banner-toggle-text" aria-hidden="true">
-                                    {isSideBannerCollapsed ? 'Rozwiń' : 'Zwiń'}
-                                </span>
+                                {/*<span className="side-banner-toggle-text" aria-hidden="true">*/}
+                                {/*    {isSideBannerCollapsed ? 'Rozwiń' : 'Zwiń'}*/}
+                                {/*</span>*/}
                                 <span className="visually-hidden">
                                     {isSideBannerCollapsed ? 'Rozwiń panel ofert' : 'Zwiń panel ofert'}
                                 </span>

@@ -206,7 +206,7 @@ a {
 
 .layout-main-grid {
     --side-banner-width: 280px;
-    --side-banner-collapsed-width: 2.5rem;
+    --side-banner-collapsed-width: 1.75rem;
     display: grid;
     grid-template-columns: minmax(0, 1fr) var(--side-banner-width);
     gap: 1rem;
