@@ -177,6 +177,7 @@ a {
 .app-footer {
     background: linear-gradient(90deg, var(--color1) 0%, var(--color2) 100%);
     color: var(--color-white);
+
 }
 
 .app-footer-content {
@@ -205,7 +206,7 @@ a {
 }
 
 .layout-main-grid {
-    --side-banner-width: 280px;
+    --side-banner-width: 320px;
     --side-banner-collapsed-width: 1.75rem;
     display: grid;
     grid-template-columns: minmax(0, 1fr) var(--side-banner-width);
@@ -447,7 +448,7 @@ a {
     padding: 1rem;
     border: 1px solid rgba(var(--color1-rgb), 0.08);
     border-radius: 1rem;
-    background: rgba(var(--color5-rgb), 0.12);
+/*    background: rgba(var(--color5-rgb), 0.12);*/
 }
 
 .lead-address-group + .lead-address-group {

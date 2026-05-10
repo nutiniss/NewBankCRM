@@ -291,9 +291,7 @@ export const MoiKlienci = () => {
             && filtrLiczbowy(klient.przychodyNetto, filtry.przychodyNettoOd, filtry.przychodyNettoDo)
             && filtrLiczbowy(klient.liczbaPracownikow, filtry.pracownicyOd, '')
             && filtrDatyRelacji(klient.dataNawiazaniaRelacji, filtry.dataRelacjiOd, filtry.dataRelacjiDo)
-    }), [listaKlientow, filtry])
-
-    const branze = useMemo(() => [...new Set(listaKlientow.map((klient) => klient.branza))].sort((a, b) => a.localeCompare(b, 'pl-PL')), [listaKlientow])
+    }), [listaKlientow, filtry])   
 
     return (
         <Container fluid>
@@ -324,7 +322,11 @@ export const MoiKlienci = () => {
                                         <Form.Label>Branża</Form.Label>
                                         <Form.Select value={filtry.branza} onChange={(event) => zmienFiltr('branza', event.target.value)}>
                                             <option value="">Wszystkie</option>
-                                            {branze.map((branza) => <option key={branza}>{branza}</option>)}
+                                            <option>Agro</option>
+                                            <option>Logistyka</option>
+                                            <option>Medycyna</option>
+                                            <option>Produkcja</option>
+                                            <option>Transport</option>
                                         </Form.Select>
                                     </Form.Group>
                                 </Col>

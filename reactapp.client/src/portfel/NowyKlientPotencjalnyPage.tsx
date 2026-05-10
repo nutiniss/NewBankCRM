@@ -250,11 +250,11 @@ export const NowyKlientPotencjalny = () => {
                                         </div>
                                         <AddressFields prefix="leadCorrespondenceAddress" />
                                     </div>
-                                    <Row className="g-3">
-                                        <Col md={6} lg={4}>
-                                            <Form.Check className="lead-check" type="checkbox" id="leadForeignAddress" label="Adres zagraniczny" />
-                                        </Col>
-                                    </Row>
+                                    {/*<Row className="g-3">*/}
+                                    {/*    <Col md={6} lg={4}>*/}
+                                    {/*        <Form.Check className="lead-check" type="checkbox" id="leadForeignAddress" label="Adres zagraniczny" />*/}
+                                    {/*    </Col>*/}
+                                    {/*</Row>*/}
                                 </Section>
                             </Col>
                         </Row>
@@ -333,7 +333,7 @@ export const NowyKlientPotencjalny = () => {
                                         <Col xs={12}>
                                             <Form.Group controlId="leadModifiedBy">
                                                 <Form.Label>Osoba modyfikująca</Form.Label>
-                                                <Form.Control type="text" placeholder="Wiśniewski Krzysztof" />
+                                                <Form.Control type="text" />
                                             </Form.Group>
                                         </Col>
                                     </Row>
@@ -427,7 +427,7 @@ export const NowyKlientPotencjalny = () => {
                                             </Form.Group>
                                         </Col>
                                         <Col xs={12}>
-                                            <Form.Check className="lead-check" type="checkbox" id="leadNotInLiquidation" label="W likwidacji / w upadłości / wykreślony z rejestru: nie dotyczy" />
+                                            <Form.Check className="lead-check" type="checkbox" id="leadNotInLiquidation" label="W likwidacji / w upadłości / wykreślony z rejestru" />
                                         </Col>
                                         <Col xs={12}>
                                             <Form.Group controlId="leadLastDataRefresh">
