@@ -16,9 +16,6 @@ type SectionProps = {
 
 type AddressFieldsProps = {
     prefix: string
-    postalPlaceholder?: string
-    cityPlaceholder?: string
-    streetPlaceholder?: string
 }
 
 const Section = ({ title, icon, children }: SectionProps) => (
@@ -36,7 +33,7 @@ const Section = ({ title, icon, children }: SectionProps) => (
     </Card>
 )
 
-const AddressFields = ({ prefix, postalPlaceholder = '00-121', cityPlaceholder = 'Warszawa', streetPlaceholder = 'Sienna' }: AddressFieldsProps) => (
+const AddressFields = ({ prefix}: AddressFieldsProps) => (
     <Row className="g-3">
         <Col md={4} xl={3}>
             <Form.Group controlId={`${prefix}Country`}>
@@ -52,49 +49,49 @@ const AddressFields = ({ prefix, postalPlaceholder = '00-121', cityPlaceholder =
         <Col md={4} xl={3}>
             <Form.Group controlId={`${prefix}Region`}>
                 <Form.Label>Województwo / region</Form.Label>
-                <Form.Control type="text" placeholder="Mazowieckie" />
+                <Form.Control type="text" />
             </Form.Group>
         </Col>
         <Col md={4} xl={3}>
             <Form.Group controlId={`${prefix}County`}>
                 <Form.Label>Powiat</Form.Label>
-                <Form.Control type="text" placeholder="Warszawa" />
+                <Form.Control type="text" />
             </Form.Group>
         </Col>
         <Col md={4} xl={3}>
             <Form.Group controlId={`${prefix}Community`}>
                 <Form.Label>Gmina</Form.Label>
-                <Form.Control type="text" placeholder="Warszawa" />
+                <Form.Control type="text"  />
             </Form.Group>
         </Col>
         <Col sm={5} md={3} xl={2}>
             <Form.Group controlId={`${prefix}PostalCode`}>
                 <Form.Label>Kod pocztowy</Form.Label>
-                <Form.Control type="text" placeholder={postalPlaceholder} />
+                <Form.Control type="text" />
             </Form.Group>
         </Col>
         <Col sm={7} md={5} xl={4}>
             <Form.Group controlId={`${prefix}City`}>
                 <Form.Label>Miejscowość</Form.Label>
-                <Form.Control type="text" placeholder={cityPlaceholder} />
+                <Form.Control type="text" />
             </Form.Group>
         </Col>
         <Col md={4} xl={3}>
             <Form.Group controlId={`${prefix}Street`}>
                 <Form.Label>Ulica</Form.Label>
-                <Form.Control type="text" placeholder={streetPlaceholder} />
+                <Form.Control type="text"  />
             </Form.Group>
         </Col>
         <Col sm={6} md={3} xl={1}>
             <Form.Group controlId={`${prefix}BuildingNumber`}>
                 <Form.Label>Nr bud.</Form.Label>
-                <Form.Control type="text" placeholder="39" />
+                <Form.Control type="text"  />
             </Form.Group>
         </Col>
         <Col sm={6} md={3} xl={2}>
             <Form.Group controlId={`${prefix}ApartmentNumber`}>
                 <Form.Label>Nr lokalu</Form.Label>
-                <Form.Control type="text" placeholder="12" />
+                <Form.Control type="text" />
             </Form.Group>
         </Col>
     </Row>
@@ -106,9 +103,7 @@ export const NowyKlientPotencjalny = () => {
             <Form>
                 <div className="new-lead-toolbar mb-4">
                     <div>
-                        <p className="text-uppercase text-muted small mb-1">Portfel / Klienci potencjalni</p>
                         <h1 className="new-lead-title mb-0">Dodaj klienta potencjalnego</h1>
-                        <p className="text-muted mb-0">Uzupełnij kartę prospekta w układzie zgodnym z widokiem klienta.</p>
                     </div>
                     <div className="new-lead-actions">
                         <Button variant="primary" className="me-2">Dodaj</Button>
@@ -126,13 +121,13 @@ export const NowyKlientPotencjalny = () => {
                                         <Col lg={8}>
                                             <Form.Group controlId="leadCompanyName">
                                                 <Form.Label>Nazwa</Form.Label>
-                                                <Form.Control type="text" placeholder="np. Accenture Sp. z o.o." />
+                                                <Form.Control type="text" placeholder="np. Firma Sp. z o.o." />
                                             </Form.Group>
                                         </Col>
                                         <Col sm={6} lg={4}>
                                             <Form.Group controlId="leadShortName">
                                                 <Form.Label>Nazwa skrócona</Form.Label>
-                                                <Form.Control type="text" placeholder="np. Accenture" />
+                                                <Form.Control type="text" placeholder="np. Firma" />
                                             </Form.Group>
                                         </Col>
                                         <Col sm={6} lg={4} xl={3}>
@@ -216,7 +211,7 @@ export const NowyKlientPotencjalny = () => {
                                         <Col lg={8}>
                                             <Form.Group controlId="leadCapitalGroup">
                                                 <Form.Label>Nazwa grupy</Form.Label>
-                                                <Form.Control type="text" placeholder="np. Grupa Kapitałowa Accenture" />
+                                                <Form.Control type="text" placeholder="np. Grupa Kapitałowa Firma AB" />
                                             </Form.Group>
                                         </Col>
                                         <Col sm={6} lg={4}>
