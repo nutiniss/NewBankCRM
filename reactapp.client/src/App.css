@@ -200,11 +200,21 @@ a {
 }
 
 
+.layout-main-container {
+    padding-right: 0;
+}
+
 .layout-main-grid {
+    --side-banner-width: 280px;
+    --side-banner-collapsed-width: 2.5rem;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 280px;
+    grid-template-columns: minmax(0, 1fr) var(--side-banner-width);
     gap: 1rem;
     align-items: start;
+}
+
+.layout-main-grid:has(.layout-side-banner-collapsed) {
+    grid-template-columns: minmax(0, 1fr) var(--side-banner-collapsed-width);
 }
 
 .layout-main-content {
@@ -213,11 +223,58 @@ a {
 
 .layout-side-banner {
     position: sticky;
-    top: 1rem;
-    border-radius: 0.75rem;
-    padding: 1rem;
+    top: 0;
+    display: flex;
+    align-self: start;
+    height: 100vh;
+    min-height: 24rem;
+    border-radius: 0;
     background: #EEDADF;
     color: var(--color1);
+    overflow: hidden;
+    box-shadow: -0.25rem 0 1rem rgba(var(--color1-rgb), 0.12);
+}
+
+.side-banner-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex: 0 0 var(--side-banner-collapsed-width);
+    width: var(--side-banner-collapsed-width);
+    min-height: 100%;
+    color: var(--color1);
+    background: rgba(var(--color-white), 0.5);
+    border: 0;
+    border-right: 1px solid rgba(var(--color1-rgb), 0.16);
+    border-radius: 0;
+}
+
+.side-banner-toggle:hover,
+.side-banner-toggle:focus {
+    color: var(--color1);
+    background: rgba(var(--color-white), 0.75);
+}
+
+.side-banner-toggle i {
+    font-size: 1rem;
+}
+
+.side-banner-toggle-text {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+.side-banner-content {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 1rem;
+    overflow-y: auto;
 }
 
 .side-banner-title {
@@ -281,16 +338,37 @@ a {
     text-decoration: none;
 }
 
+.layout-side-banner-collapsed {
+    justify-self: end;
+}
+
+.layout-side-banner-collapsed .side-banner-content {
+    display: none;
+}
+
 @media (max-width: 991.98px) {
-    .layout-main-grid {
+    .layout-main-container {
+        padding-right: calc(var(--bs-gutter-x) * 0.5);
+    }
+
+    .layout-main-grid,
+    .layout-main-grid:has(.layout-side-banner-collapsed) {
         grid-template-columns: minmax(0, 1fr);
     }
 
     .layout-side-banner {
         position: static;
         order: 2;
+        height: auto;
+        min-height: 0;
+        margin-top: 1rem;
+    }
+
+    .side-banner-toggle {
+        min-height: 12rem;
     }
 }
+
 
 @media (max-width: 767.98px) {
     .app-footer-content {
