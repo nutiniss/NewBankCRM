@@ -3,7 +3,6 @@ import './App.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Table from 'react-bootstrap/Table';
 import { PieChart } from 'react-minimal-pie-chart';
@@ -12,7 +11,6 @@ import { Klient } from './types/portfel/klient';
 import { Okazja } from './types/szanseSprzedazowe/okazja';
 import { Zadanie } from './types/kalendarz/zadanie';
 import { Spotkanie } from './types/kalendarz/spotkanie';
-import { Oferta } from './types/pulpit/oferta';
 
 const realizacjaCelu = 68;
 const realizacjaPlanuMiesiecznego = 54;
@@ -46,29 +44,6 @@ const licznikSzansPerEtap = [
     { etap: 'Oferta', liczba: 6 },
     { etap: 'Negocjacje', liczba: 4 },
     { etap: 'Domknięcie', liczba: 3 },
-];
-
-const oferty: Oferta[] = [
-    {
-        tytul: 'Kredyt w rachunku bieżącym',
-        opis: 'Elastyczne finansowanie kapitału obrotowego, które wzmacnia płynność firmy i pozwala szybciej reagować na potrzeby rynku.',
-        image: '/image/krb.png',
-    },
-    {
-        tytul: 'Kredyt inwestycyjny',
-        opis: 'Długoterminowe wsparcie rozwoju przedsiębiorstwa z harmonogramem spłat dopasowanym do cyklu inwestycji.',
-        image: '/image/kredytInwestycyjny.png',
-    },
-    {
-        tytul: 'Kredyt obrotowy',
-        opis: 'Szybki dostęp do środków na bieżące wydatki operacyjne i sezonowe zwiększenie skali działalności.',
-        image: '/image/kredytObrotowy.png',
-    },
-    {
-        tytul: 'Leasing Transport',
-        opis: 'Nowoczesna flota bez angażowania własnego kapitału, z przewidywalnymi kosztami i uproszczonym procesem decyzyjnym.',
-        image: '/image/leasing.png',
-    },
 ];
 
 const zadaniaPriorytetowe: Zadanie[] = [
@@ -259,28 +234,6 @@ function App() {
                             </tbody>
                         </Table>
                         <Link to="/spotkania" className="see-more-link">Zobacz więcej</Link>
-                    </section>
-                </Col>
-            </Row>
-
-            <Row className="g-3">
-                <Col xs={12}>
-                    <section className="dashboard-tile">
-                        <h2 className="tile-title color1">Oferty</h2>
-                        <Row className="g-3">
-                            {oferty.map((oferta) => (
-                                <Col key={oferta.tytul} md={6} xl={3}>
-                                    <Card className="offer-card h-100">
-                                        <Card.Img variant="top" src={oferta.image} alt={oferta.tytul} className="offer-image" />
-                                        <Card.Body className="d-flex flex-column">
-                                            <Card.Title>{oferta.tytul}</Card.Title>
-                                            <Card.Text className="flex-grow-1">{oferta.opis}</Card.Text>
-                                            <Link to="/nowa-okazja-biznesowa" className="btn offer-button mt-2">Zaoferuj</Link>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                            ))}
-                        </Row>
                     </section>
                 </Col>
             </Row>
