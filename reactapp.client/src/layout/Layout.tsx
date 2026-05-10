@@ -1,10 +1,35 @@
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Outlet, Link } from 'react-router-dom';
+import type { Oferta } from '../types/pulpit/oferta';
+
+const oferty: Oferta[] = [
+    {
+        tytul: 'Kredyt w rachunku bieżącym',
+        opis: 'Elastyczne finansowanie kapitału obrotowego, które wzmacnia płynność firmy i pozwala szybciej reagować na potrzeby rynku.',
+        image: '/image/krb.png',
+    },
+    {
+        tytul: 'Kredyt inwestycyjny',
+        opis: 'Długoterminowe wsparcie rozwoju przedsiębiorstwa z harmonogramem spłat dopasowanym do cyklu inwestycji.',
+        image: '/image/kredytInwestycyjny.png',
+    },
+    {
+        tytul: 'Kredyt obrotowy',
+        opis: 'Szybki dostęp do środków na bieżące wydatki operacyjne i sezonowe zwiększenie skali działalności.',
+        image: '/image/kredytObrotowy.png',
+    },
+    {
+        tytul: 'Leasing Transport',
+        opis: 'Nowoczesna flota bez angażowania własnego kapitału, z przewidywalnymi kosztami i uproszczonym procesem decyzyjnym.',
+        image: '/image/leasing.png',
+    },
+];
 
 export function Layout() {    
 
@@ -84,8 +109,19 @@ export function Layout() {
                         </section>
 
                         <aside className="layout-side-banner">
-                            <p >BANER</p>
-                            <h2>Oferta miesiąca</h2>
+                            <h2 className="side-banner-title">Oferty</h2>
+                            <div className="side-offers-list">
+                                {oferty.map((oferta) => (
+                                    <Card className="offer-card side-offer-card" key={oferta.tytul}>
+                                        <Card.Img variant="top" src={oferta.image} alt={oferta.tytul} className="offer-image side-offer-image" />
+                                        <Card.Body className="d-flex flex-column">
+                                            <Card.Title className="side-offer-title">{oferta.tytul}</Card.Title>
+                                            <Card.Text className="side-offer-text">{oferta.opis}</Card.Text>
+                                            <Link to="/nowa-okazja-biznesowa" className="btn offer-button mt-2">Zaoferuj</Link>
+                                        </Card.Body>
+                                    </Card>
+                                ))}
+                            </div>
                         </aside>
                     </div>
                 </Container>

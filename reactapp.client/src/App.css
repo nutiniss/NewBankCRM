@@ -202,7 +202,7 @@ a {
 
 .layout-main-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 200px;
+    grid-template-columns: minmax(0, 1fr) 280px;
     gap: 1rem;
     align-items: start;
 }
@@ -219,6 +219,68 @@ a {
     background: var(--color4);
     color: var(--color-white);
 }
+
+.side-banner-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.85rem;
+}
+
+.side-offers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.offer-card {
+    border-radius: 14px;
+    border-color: rgba(var(--color1-rgb), 0.16);
+    color: var(--color1);
+}
+
+.offer-image {
+    height: 150px;
+    object-fit: cover;
+    padding: 0.75rem 0.75rem 0;
+    border-radius: 1.25rem;
+}
+
+.side-offer-card {
+    overflow: hidden;
+}
+
+.side-offer-image {
+    height: 105px;
+}
+
+.side-offer-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.side-offer-text {
+    font-size: 0.82rem;
+    line-height: 1.35;
+    margin-bottom: 0;
+}
+
+.offer-button {
+    background-color: var(--color3);
+    border-color: var(--color3);
+    color: var(--color-white);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.offer-button:hover,
+.offer-button:focus {
+    background-color: var(--color2);
+    border-color: var(--color2);
+    color: var(--color-white);
+    text-decoration: none;
+}
+
 @media (max-width: 991.98px) {
     .layout-main-grid {
         grid-template-columns: minmax(0, 1fr);
