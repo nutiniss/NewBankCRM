@@ -151,9 +151,7 @@ function App() {
                             <div className="opportunities-pie" aria-label="Podsumowanie szans sprzedażowych" role="img">
                                 <PieChart
                                     data={podsumowanieSzans}
-                                    lineWidth={56}
-                                    paddingAngle={2}
-                                    rounded
+                                    lineWidth={100}                                    
                                     startAngle={-90}
                                     animate
                                 />
