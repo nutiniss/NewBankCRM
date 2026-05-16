@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Pracownik } from '../types/pracownik/pracownik';
 import { PracownikItem } from './PracownikItem';
@@ -99,20 +100,26 @@ export const Pracownicy = () => {
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-            <Table striped bordered hover>
+            <div className="business-table-shell">
+                <Table responsive hover className="business-table">
                 <thead>
                     <tr>
                         <th>Imię</th>
                         <th>Nazwisko</th>
                         <th>Stanowisko</th>
                         <th>Płaca brutto</th>
+                        <th className="business-table-actions-header">Akcje</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {listaPracownikow.map((item, index) => <PracownikItem key={index} pracownik={ item }/>
+                    {listaPracownikow.map((item, index) => <PracownikItem key={index} pracownik={item} editPath={`/pracownik?nazwisko=${encodeURIComponent(item.nazwisko)}&tryb=edycja`} />
                     )}
                 </tbody>
             </Table>
+            </div>
+            <div className="table-actions-footer">
+                <Link to="/pracownik" className="btn btn-primary business-table-new-button">Nowy pracownik</Link>
+            </div>
         </Container>
     )
 }

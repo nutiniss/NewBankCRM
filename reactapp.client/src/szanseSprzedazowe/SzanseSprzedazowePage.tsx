@@ -1,5 +1,6 @@
 import Table from 'react-bootstrap/Table'
 import Container from 'react-bootstrap/Container'
+import { Link } from 'react-router-dom'
 import { Okazja } from '../types/szanseSprzedazowe/okazja'
 import { OkazjaItem } from './OkazjaItem'
 
@@ -13,19 +14,25 @@ export const SzanseSprzedazowe = () => {
 
     return (
         <Container fluid>
-            <Table striped bordered hover>
+            <div className="business-table-shell">
+                <Table responsive hover className="business-table">
                 <thead>
                     <tr>
                         <th>Nazwa klienta</th>
                         <th>Produkt</th>
                         <th>Etap</th>
                         <th>Planowana data zamknięcia etapu</th>
+                                            <th className="business-table-actions-header">Akcje</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {listaOkazji.map((item) => <OkazjaItem key={`${item.klient}-${item.produkt}`} okazja={item} />)}
+                    {listaOkazji.map((item) => <OkazjaItem key={`${item.klient}-${item.produkt}`} okazja={item} editPath={`/nowa-okazja-biznesowa?klient=${encodeURIComponent(item.klient)}&produkt=${encodeURIComponent(item.produkt)}&tryb=edycja`} />)}
                 </tbody>
             </Table>
+            </div>
+            <div className="table-actions-footer">
+                <Link to="/nowa-okazja-biznesowa" className="btn btn-primary business-table-new-button">Nowa szansa sprzedażowa</Link>
+            </div>
         </Container>
     )
 }

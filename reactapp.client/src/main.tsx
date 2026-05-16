@@ -17,6 +17,12 @@ import { Pipeline } from './szanseSprzedazowe/PipelinePage';
 import { NowaOkazjaBiznesowa } from './szanseSprzedazowe/NowaOkazjaBiznesowaPage';
 import { Sprawy } from './sprawy/SprawyPage';
 import { NowaSprawa } from './sprawy/NowaSprawaPage';
+import { Towary } from './towar/TowaryPage';
+import { Towar } from './towar/TowarPage';
+import { Samochody } from './samochod/SamochodyPage';
+import { Samochod } from './samochod/SamochodPage';
+import { Pracownicy } from './pracownik/PracownicyPage';
+import { Pracownik } from './pracownik/PracownikPage';
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
@@ -63,6 +69,24 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
                 </Route>
                 <Route path='/nowa-sprawa' element={<Layout />}>
                     <Route index element={<NowaSprawa />} />
+                </Route>
+                <Route path='/towary' element={<Layout />}>
+                    <Route index element={<Towary />} />
+                </Route>
+                <Route path='/towar' element={<Layout />}>
+                    <Route index element={<Towar />} />
+                </Route>
+                <Route path='/samochody' element={<Layout />}>
+                    <Route index element={<Samochody />} />
+                </Route>
+                <Route path='/samochod' element={<Layout />}>
+                    <Route index element={<Samochod />} />
+                </Route>
+                <Route path='/pracownicy' element={<Layout />}>
+                    <Route index element={<Pracownicy />} />
+                </Route>
+                <Route path='/pracownik' element={<Layout />}>
+                    <Route index element={<Pracownik />} />
                 </Route>
             </Routes>
         </BrowserRouter>

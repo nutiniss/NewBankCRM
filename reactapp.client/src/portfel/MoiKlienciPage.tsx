@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom'
 import { useEffect, useMemo, useState } from 'react'
 import { Klient } from '../types/portfel/klient'
 import { KlientItem } from './KlientItem'
@@ -505,7 +506,8 @@ export const MoiKlienci = () => {
             <div className="mb-2 text-muted">
                 Wyniki: {listaPoFiltrowaniu.length} z {listaKlientow.length}
             </div>
-            <Table striped bordered hover responsive>
+            <div className="business-table-shell">
+                <Table responsive hover className="business-table">
                 <thead>
                     <tr>
                         <th>Nazwa klienta</th>
@@ -517,17 +519,22 @@ export const MoiKlienci = () => {
                         <th>Status MBO</th>
                         <th>Kredytowy</th>
                         <th>Kraj</th>
+                        <th className="business-table-actions-header">Akcje</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {listaPoFiltrowaniu.map((item) => <KlientItem key={`${item.nazwa}-${item.dataNawiazaniaRelacji}`} klient={item} />)}
+                    {listaPoFiltrowaniu.map((item) => <KlientItem key={`${item.nazwa}-${item.dataNawiazaniaRelacji}`} klient={item} editPath={`/nowy-klient-potencjalny?klient=${encodeURIComponent(item.nazwa)}&tryb=edycja`} />)}
                     {listaPoFiltrowaniu.length === 0 && (
                         <tr>
-                            <td colSpan={9} className="text-center text-muted">Brak klientów spełniających wybrane kryteria.</td>
+                            <td colSpan={10} className="text-center text-muted">Brak klientów spełniających wybrane kryteria.</td>
                         </tr>
                     )}
                 </tbody>
             </Table>
+            </div>
+            <div className="table-actions-footer">
+                <Link to="/nowy-klient-potencjalny" className="btn btn-primary business-table-new-button">Nowy klient</Link>
+            </div>
         </Container>
     )
 }

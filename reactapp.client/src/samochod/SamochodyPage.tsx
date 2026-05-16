@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Samochod } from '../types/samochod/samochod';
 import { SamochodItem } from './SamochodItem';
@@ -88,20 +89,26 @@ export const Samochody = () => {
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-            <Table striped bordered hover>
+            <div className="business-table-shell">
+                <Table responsive hover className="business-table">
                 <thead>
                     <tr>
                         <th>VIN</th>
                         <th>Numer rejestracyjny</th>
                         <th>Opis</th>
                         <th>Cena</th>
+                        <th className="business-table-actions-header">Akcje</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {listaSamochodow.map((item, index) => <SamochodItem key={index} samochod={item} />
+                    {listaSamochodow.map((item, index) => <SamochodItem key={index} samochod={item} editPath={`/samochod?vin=${encodeURIComponent(item.vin)}&tryb=edycja`} />
                     )}
                 </tbody>
             </Table>
+            </div>
+            <div className="table-actions-footer">
+                <Link to="/samochod" className="btn btn-primary business-table-new-button">Nowy samochód</Link>
+            </div>
         </Container>
     )
 }
