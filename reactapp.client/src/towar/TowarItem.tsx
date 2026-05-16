@@ -1,17 +1,23 @@
-import { Towar } from "../types/towar/towar"
+import { Link } from 'react-router-dom'
+import { Towar } from '../types/towar/towar'
+
 type TowarProps = {
-    //tu można dodać coś jeszcze
-    //liczba: number,
     towar: Towar
+    editPath: string
 }
 
 export const TowarItem = (props: TowarProps) => {
-    const { towar } = props; //z propsa pobieramy sam towar
-    return (<tr>
-        <td>{towar.kod}</td>
-        <td>{towar.nazwa}</td>
-        <td>{towar.kategoria}</td>
-        <td>{towar.pkwiu}</td>
-        <td>{towar.cena}</td>
-    </tr>)
+    const { towar, editPath } = props
+    return (
+        <tr>
+            <td>{towar.kod}</td>
+            <td>{towar.kategoria}</td>
+            <td>{towar.nazwa}</td>
+            <td>{towar.pkwiu}</td>
+            <td>{towar.cena}</td>
+            <td className="business-table-actions-cell">
+                <Link to={editPath} className="btn btn-outline-primary btn-sm table-action-button">Edytuj</Link>
+            </td>
+        </tr>
+    )
 }

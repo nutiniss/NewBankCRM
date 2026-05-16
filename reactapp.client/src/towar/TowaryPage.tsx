@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Towar } from '../types/towar/towar';
 import { TowarItem } from './TowarItem';
@@ -106,7 +107,8 @@ export const Towary = () => {
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-            <Table striped bordered hover>
+            <div className="business-table-shell">
+                <Table responsive hover className="business-table">
                 <thead>
                     <tr>
                         <th>Kod</th>
@@ -114,14 +116,19 @@ export const Towary = () => {
                         <th>Nazwa</th>
                         <th>PKWIU</th>
                         <th>Cena</th>
+                        <th className="business-table-actions-header">Akcje</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {listaTowarow.map((item, index) => <TowarItem key={index} towar={item }/>
+                    {listaTowarow.map((item, index) => <TowarItem key={index} towar={item} editPath={`/towar?kod=${encodeURIComponent(item.kod)}&tryb=edycja`} />
                     )}
                 {/*    Iterujemy po tablicy obiektów z listy towarów i dla każdego towaru zwracamy komponent, atrybut key jest używany przez react do zrozumienia tego elementu i każdy element jest dodawany, usuwany lub zmieniany*/}
                 </tbody>
             </Table>
+            </div>
+            <div className="table-actions-footer">
+                <Link to="/towar" className="btn btn-primary business-table-new-button">Nowy towar</Link>
+            </div>
         </Container>
     )
 }

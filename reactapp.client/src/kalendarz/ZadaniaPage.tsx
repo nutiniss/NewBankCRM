@@ -1,5 +1,6 @@
 import Table from 'react-bootstrap/Table'
 import Container from 'react-bootstrap/Container'
+import { Link } from 'react-router-dom'
 import { Zadanie } from '../types/kalendarz/zadanie'
 import { ZadanieItem } from './ZadanieItem'
 
@@ -13,19 +14,25 @@ export const Zadania = () => {
 
     return (
         <Container fluid>
-            <Table striped bordered hover>
+            <div className="business-table-shell">
+                <Table responsive hover className="business-table">
                 <thead>
                     <tr>
                         <th>Zadanie</th>
                         <th>Priorytet</th>
                         <th>Termin realizacji</th>
                         <th>Status</th>
+                                            <th className="business-table-actions-header">Akcje</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {listaZadan.map((item) => <ZadanieItem key={`${item.nazwa}-${item.termin}`} zadanie={item} />)}
+                    {listaZadan.map((item) => <ZadanieItem key={`${item.nazwa}-${item.termin}`} zadanie={item} editPath={`/nowe-zadanie?zadanie=${encodeURIComponent(item.nazwa)}&tryb=edycja`} />)}
                 </tbody>
             </Table>
+            </div>
+            <div className="table-actions-footer">
+                <Link to="/nowe-zadanie" className="btn btn-primary business-table-new-button">Nowe zadanie</Link>
+            </div>
         </Container>
     )
 }
