@@ -1,4 +1,6 @@
 :root {
+    scrollbar-color: var(--color3) rgba(var(--color5-rgb), 0.28);
+    scrollbar-width: thin;
     --color1: #463c57;
     --color1-rgb: 70, 60, 87;
     --color2: #654767;
@@ -10,6 +12,32 @@
     --color5: #e5bbb4;
     --color5-rgb: 229, 187, 180;
     --color-white: #ffffff;
+}
+
+
+* {
+    scrollbar-color: var(--color3) rgba(var(--color5-rgb), 0.28);
+    scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+    width: 0.7rem;
+    height: 0.7rem;
+}
+
+*::-webkit-scrollbar-track {
+    background: rgba(var(--color5-rgb), 0.28);
+    border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--color3), var(--color2));
+    border: 2px solid rgba(var(--color5-rgb), 0.28);
+    border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--color4), var(--color2));
 }
 
 .logo {
@@ -662,10 +690,18 @@ a {
 }
 
 .table-view-layout {
+    --table-filters-width: clamp(250px, 22vw, 300px);
+    --table-filters-collapsed-width: 3rem;
     display: grid;
-    grid-template-columns: minmax(250px, 300px) minmax(0, 1fr);
+    grid-template-columns: var(--table-filters-width) minmax(0, 1fr);
     gap: 1rem;
     align-items: start;
+    margin-left: -1rem;
+    transition: grid-template-columns 0.25s ease;
+}
+
+.table-view-layout:has(.table-filters-sidebar .accordion-button.collapsed) {
+    grid-template-columns: var(--table-filters-collapsed-width) minmax(0, 1fr);
 }
 
 .table-filters-sidebar {
@@ -675,6 +711,12 @@ a {
     max-height: calc(100vh - 2rem);
     overflow-y: auto;
     z-index: 5;
+    transition: width 0.25s ease;
+}
+
+.table-view-layout:has(.table-filters-sidebar .accordion-button.collapsed) .table-filters-sidebar {
+    width: var(--table-filters-collapsed-width);
+    overflow: hidden;
 }
 
 .table-filters-sidebar .accordion {
@@ -695,6 +737,16 @@ a {
     color: var(--color-white);
     font-weight: 700;
     letter-spacing: 0.02em;
+    min-height: 3rem;
+}
+
+.table-view-layout:has(.table-filters-sidebar .accordion-button.collapsed) .table-filters-sidebar .accordion-button {
+    align-items: center;
+    justify-content: center;
+    min-height: 13rem;
+    padding: 0.75rem 0;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
 }
 
 .table-filters-sidebar .accordion-button:not(.collapsed) {
@@ -705,6 +757,16 @@ a {
 
 .table-filters-sidebar .accordion-button::after {
     filter: brightness(0) invert(1);
+}
+
+.table-view-layout:has(.table-filters-sidebar .accordion-button.collapsed) .table-filters-sidebar .accordion-button::after {
+    margin-bottom: 0.5rem;
+    margin-left: 0;
+    transform: rotate(90deg);
+}
+
+.table-view-layout:has(.table-filters-sidebar .accordion-button.collapsed) .table-filters-sidebar .accordion-button.collapsed::after {
+    transform: rotate(270deg);
 }
 
 .table-filters-sidebar .accordion-body {
@@ -748,13 +810,31 @@ a {
 }
 
 @media (max-width: 991.98px) {
-    .table-view-layout {
+    .table-view-layout,
+    .table-view-layout:has(.table-filters-sidebar .accordion-button.collapsed) {
         grid-template-columns: minmax(0, 1fr);
+        margin-left: 0;
     }
 
-    .table-filters-sidebar {
+    .table-filters-sidebar,
+    .table-view-layout:has(.table-filters-sidebar .accordion-button.collapsed) .table-filters-sidebar {
         position: static;
+        width: auto;
         max-height: none;
         overflow: visible;
+    }
+
+    .table-view-layout:has(.table-filters-sidebar .accordion-button.collapsed) .table-filters-sidebar .accordion-button {
+        min-height: 3rem;
+        padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
+        writing-mode: horizontal-tb;
+        transform: none;
+    }
+
+    .table-view-layout:has(.table-filters-sidebar .accordion-button.collapsed) .table-filters-sidebar .accordion-button::after,
+    .table-view-layout:has(.table-filters-sidebar .accordion-button.collapsed) .table-filters-sidebar .accordion-button.collapsed::after {
+        margin-bottom: 0;
+        margin-left: auto;
+        transform: none;
     }
 }
