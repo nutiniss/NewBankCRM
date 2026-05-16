@@ -121,9 +121,8 @@ export const NoweSpotkanie = () => {
         <Container fluid className="new-meeting-page pb-4">
             <Form>
                 <div className="new-meeting-toolbar mb-4">
-                    <div>
-                        <p className="new-meeting-eyebrow mb-1">Kalendarz</p>
-                        <h1 className="new-meeting-title mb-0">Dodaj nowe spotkanie</h1>
+                    <div>                        
+                        <h1 className="new-meeting-eyebrow mb-1">Dodaj nowe spotkanie</h1>
                     </div>
                     <div className="new-meeting-actions">
                         <Button variant="info" className="me-2">Anuluj</Button>

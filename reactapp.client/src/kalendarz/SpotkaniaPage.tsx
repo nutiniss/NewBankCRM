@@ -40,8 +40,7 @@ export const Spotkania = () => {
                         </Row></Form></Accordion.Body></Accordion.Item>
                     </Accordion>
                 </aside>
-                <main className="table-content-area">
-                    <div className="table-results-count text-muted">Wyniki: {listaPoFiltrowaniu.length} z {listaSpotkan.length}</div>
+                <main className="table-content-area">                    
                     <div className="business-table-shell">
                         <Table responsive hover className="business-table">
                             <thead><tr><th>Nazwa klienta</th><th>Data i godzina</th><th>Tryb spotkania</th><th>Status</th><th className="business-table-actions-header">Akcje</th></tr></thead>

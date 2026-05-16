@@ -115,7 +115,7 @@ export const NowyKlientPotencjalny = () => {
                     <Tab eventKey="basic" title="Dane podstawowe">
                         <Row className="g-4 align-items-stretch">
                             <Col xs={12}>
-                                <Section title="Dane podstawowe" icon="↗">
+                                <Section title="Dane podstawowe" icon="🗎">
                                     <h3 className="lead-subsection-title">Informacje o podmiocie</h3>
                                     <Row className="g-3">
                                         <Col lg={8}>
@@ -234,7 +234,7 @@ export const NowyKlientPotencjalny = () => {
                     <Tab eventKey="addresses" title="Dane adresowe">
                         <Row className="g-4 align-items-stretch">
                             <Col xs={12}>
-                                <Section title="Dane adresowe" icon="⌁">
+                                <Section title="Dane adresowe" icon="🖂">
                                     <div className="lead-address-group">
                                         <h3 className="lead-subsection-title">Adres siedziby</h3>
                                         <AddressFields prefix="leadRegisteredAddress" />
@@ -263,7 +263,7 @@ export const NowyKlientPotencjalny = () => {
                     <Tab eventKey="financial" title="Informacje finansowe">
                         <Row className="g-4 align-items-stretch">
                             <Col xs={12} xl={7}>
-                                <Section title="Dane finansowe" icon="≋">
+                                <Section title="Dane finansowe" icon="$">
                                     <Row className="g-3">
                                         <Col md={6} xl={4}>
                                             <Form.Group controlId="leadIncomePotential">
@@ -345,7 +345,7 @@ export const NowyKlientPotencjalny = () => {
                     <Tab eventKey="details" title="Szczegóły">
                         <Row className="g-4 align-items-stretch">
                             <Col xs={12} xl={7}>
-                                <Section title="Dane segmentacyjne i sektorowe" icon="↗">
+                                <Section title="Dane segmentacyjne i sektorowe" icon="#">
                                     <Row className="g-3">
                                         <Col md={6}>
                                             <Form.Group controlId="leadLegalForm">

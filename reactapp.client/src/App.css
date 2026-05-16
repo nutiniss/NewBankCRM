@@ -259,7 +259,7 @@ a {
     min-height: 24rem;
     border-radius: 0;
     background: #EEDADF;
-    color: var(--color1);
+    color: var(--color2);
     overflow: hidden;
     box-shadow: -0.25rem 0 1rem rgba(var(--color1-rgb), 0.12);
 }
@@ -420,7 +420,7 @@ a {
     align-items: flex-start;
     justify-content: space-between;
     gap: 1rem;
-    padding: 1.25rem;
+    padding: 1rem;
     border: 1px solid rgba(var(--color1-rgb), 0.08);
     border-radius: 1rem;
     background: linear-gradient(135deg, rgba(var(--color5-rgb), 0.42), rgba(255, 255, 255, 0.96));
@@ -429,7 +429,7 @@ a {
 
 .new-lead-title {
     color: var(--color1);
-    font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+    font-size: clamp(1rem, 1.4vw, 2rem);
     font-weight: 700;
 }
 
@@ -627,9 +627,9 @@ a {
     vertical-align: middle;
 }
 
-.business-table thead tr {
-    background: linear-gradient(90deg, var(--color1) 0%, var(--color2) 100%);
-}
+    .business-table thead tr {
+        background: linear-gradient(90deg, var(--color1) 0%, var(--color2) 70%);        
+    }
 
 .business-table thead th {
     border: 0;
@@ -848,7 +848,7 @@ a {
     align-items: flex-start;
     justify-content: space-between;
     gap: 1rem;
-    padding: 1.25rem;
+    padding: 1rem;
     border: 1px solid rgba(var(--color1-rgb), 0.08);
     border-radius: 1rem;
     background: linear-gradient(135deg, rgba(var(--color5-rgb), 0.42), rgba(255, 255, 255, 0.96));
@@ -856,16 +856,16 @@ a {
 }
 
 .new-meeting-eyebrow {
-    color: rgba(var(--color1-rgb), 0.62);
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 .new-meeting-title {
     color: var(--color1);
-    font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+    font-size: clamp(1rem, 1.4vw, 2rem);
     font-weight: 700;
 }
 

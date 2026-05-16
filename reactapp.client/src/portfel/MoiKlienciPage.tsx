@@ -506,10 +506,7 @@ export const MoiKlienci = () => {
             </Accordion>
                 </aside>
                 <main className="table-content-area">
-
-            <div className="table-results-count text-muted">
-                Wyniki: {listaPoFiltrowaniu.length} z {listaKlientow.length}
-            </div>
+                            
             <div className="business-table-shell">
                 <Table responsive hover className="business-table">
                 <thead>
