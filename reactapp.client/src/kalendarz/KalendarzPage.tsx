@@ -1,15 +1,23 @@
-import Table from 'react-bootstrap/Table'
+import Accordion from 'react-bootstrap/Accordion'
+import Button from 'react-bootstrap/Button'
+import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
+import Form from 'react-bootstrap/Form'
+import Row from 'react-bootstrap/Row'
+import Table from 'react-bootstrap/Table'
 import { Link } from 'react-router-dom'
+import { useMemo, useState } from 'react'
 import { Wydarzenie } from '../types/kalendarz/wydarzenie'
 
+const wydarzenia: Wydarzenie[] = [
+    { data: '21.04.2026', godzina: '10:30', typ: 'Spotkanie', opis: 'Baltic Logistics Sp. z o.o. — spotkanie zdalne', klient: 'Baltic Logistics Sp. z o.o.' },
+    { data: '22.04.2026', godzina: '09:00', typ: 'Zadanie', opis: 'Aktualizacja analizy finansowej klienta HydroTech', priorytet: 'Wysoki' },
+    { data: '22.04.2026', godzina: '13:00', typ: 'Spotkanie', opis: 'MediCore Group — spotkanie stacjonarne', klient: 'MediCore Group' },
+    { data: '24.04.2026', godzina: '08:30', typ: 'Zadanie', opis: 'Przygotowanie oferty cross-sellingowej dla MediCore', priorytet: 'Średni' },
+]
+
 export const Kalendarz = () => {
-    const wydarzenia: Wydarzenie[] = [
-        { data: '21.04.2026', godzina: '10:30', typ: 'Spotkanie', opis: 'Baltic Logistics Sp. z o.o. — spotkanie zdalne', klient: 'Baltic Logistics Sp. z o.o.' },
-        { data: '22.04.2026', godzina: '09:00', typ: 'Zadanie', opis: 'Aktualizacja analizy finansowej klienta HydroTech', priorytet: 'Wysoki' },
-        { data: '22.04.2026', godzina: '13:00', typ: 'Spotkanie', opis: 'MediCore Group — spotkanie stacjonarne', klient: 'MediCore Group' },
-        { data: '24.04.2026', godzina: '08:30', typ: 'Zadanie', opis: 'Przygotowanie oferty cross-sellingowej dla MediCore', priorytet: 'Średni' },
-    ]
+    const [filtry, setFiltry] = useState({ fraza: '', typ: '', priorytet: '' })
 
     const getEditPath = (wydarzenie: Wydarzenie) => {
         if (wydarzenie.typ === 'Spotkanie') {
@@ -19,37 +27,44 @@ export const Kalendarz = () => {
         return `/nowe-zadanie?termin=${encodeURIComponent(wydarzenie.data)}&tryb=edycja`
     }
 
+    const listaPoFiltrowaniu = useMemo(() => wydarzenia.filter((wydarzenie) => {
+        const fraza = filtry.fraza.toLowerCase()
+        return (!fraza || [wydarzenie.data, wydarzenie.godzina, wydarzenie.opis, wydarzenie.klient].some((wartosc) => wartosc?.toLowerCase().includes(fraza)))
+            && (!filtry.typ || wydarzenie.typ === filtry.typ)
+            && (!filtry.priorytet || wydarzenie.priorytet === filtry.priorytet)
+    }), [filtry])
+
     return (
         <Container fluid>
-            <div className="business-table-shell">
-                <Table responsive hover className="business-table">
-                    <thead>
-                        <tr>
-                            <th>Data</th>
-                            <th>Godzina</th>
-                            <th>Typ</th>
-                            <th>Opis</th>
-                            <th className="business-table-actions-header">Akcje</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {wydarzenia.map((item) => (
-                            <tr key={`${item.data}-${item.godzina}-${item.opis}`}>
-                                <td>{item.data}</td>
-                                <td>{item.godzina}</td>
-                                <td>{item.typ}</td>
-                                <td>{item.opis}</td>
-                                <td className="business-table-actions-cell">
-                                    <Link to={getEditPath(item)} className="btn btn-outline-primary btn-sm table-action-button">Edytuj</Link>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </Table>
-            </div>
-            <div className="table-actions-footer">
-                <Link to="/nowe-spotkanie" className="btn btn-primary business-table-new-button">Nowe spotkanie</Link>
-                <Link to="/nowe-zadanie" className="btn btn-info business-table-new-button">Nowe zadanie</Link>
+            <div className="table-view-layout">
+                <aside className="table-filters-sidebar">
+                    <Accordion defaultActiveKey="filtrowanie"><Accordion.Item eventKey="filtrowanie"><Accordion.Header>Filtrowanie i sortowanie</Accordion.Header><Accordion.Body><Form><Row className="mb-3">
+                        <Col><Form.Group><Form.Label>Szukaj po opisie, kliencie lub dacie</Form.Label><Form.Control type="text" value={filtry.fraza} onChange={(event) => setFiltry({ ...filtry, fraza: event.target.value })} /></Form.Group></Col>
+                        <Col><Form.Group><Form.Label>Typ</Form.Label><Form.Select value={filtry.typ} onChange={(event) => setFiltry({ ...filtry, typ: event.target.value })}><option value="">Wszystkie</option><option>Spotkanie</option><option>Zadanie</option></Form.Select></Form.Group></Col>
+                        <Col><Form.Group><Form.Label>Priorytet zadania</Form.Label><Form.Select value={filtry.priorytet} onChange={(event) => setFiltry({ ...filtry, priorytet: event.target.value })}><option value="">Wszystkie</option><option>Wysoki</option><option>Średni</option><option>Niski</option></Form.Select></Form.Group></Col>
+                        <Col><Button variant="outline-secondary" type="button" onClick={() => setFiltry({ fraza: '', typ: '', priorytet: '' })}>Wyczyść filtry</Button></Col>
+                    </Row></Form></Accordion.Body></Accordion.Item></Accordion>
+                </aside>
+                <main className="table-content-area">
+                    <div className="table-results-count text-muted">Wyniki: {listaPoFiltrowaniu.length} z {wydarzenia.length}</div>
+                    <div className="business-table-shell">
+                        <Table responsive hover className="business-table">
+                            <thead>
+                                <tr><th>Data</th><th>Godzina</th><th>Typ</th><th>Opis</th><th className="business-table-actions-header">Akcje</th></tr>
+                            </thead>
+                            <tbody>
+                                {listaPoFiltrowaniu.map((item) => (
+                                    <tr key={`${item.data}-${item.godzina}-${item.opis}`}>
+                                        <td>{item.data}</td><td>{item.godzina}</td><td>{item.typ}</td><td>{item.opis}</td>
+                                        <td className="business-table-actions-cell"><Link to={getEditPath(item)} className="btn btn-outline-primary btn-sm table-action-button">Edytuj</Link></td>
+                                    </tr>
+                                ))}
+                                {listaPoFiltrowaniu.length === 0 && <tr><td colSpan={5} className="text-center text-muted">Brak wydarzeń spełniających wybrane kryteria.</td></tr>}
+                            </tbody>
+                        </Table>
+                    </div>
+                    <div className="table-actions-footer"><Link to="/nowe-spotkanie" className="btn btn-primary business-table-new-button">Nowe spotkanie</Link><Link to="/nowe-zadanie" className="btn btn-info business-table-new-button">Nowe zadanie</Link></div>
+                </main>
             </div>
         </Container>
     )

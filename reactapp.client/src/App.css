@@ -585,7 +585,7 @@ a {
 }
 
 .business-table-shell {
-    margin-top: 1rem;
+    margin-top: 0;
     overflow: hidden;
     border: 1px solid rgba(var(--color1-rgb), 0.12);
     border-radius: 18px;
@@ -599,9 +599,13 @@ a {
     vertical-align: middle;
 }
 
+.business-table thead tr {
+    background: linear-gradient(90deg, var(--color1) 0%, var(--color2) 100%);
+}
+
 .business-table thead th {
     border: 0;
-    background: linear-gradient(90deg, var(--color1) 0%, var(--color2) 100%);
+    background: transparent;
     color: var(--color-white);
     font-size: 0.78rem;
     font-weight: 700;
@@ -655,4 +659,102 @@ a {
     padding-inline: 1.25rem;
     font-weight: 700;
     box-shadow: 0 8px 18px rgba(var(--color1-rgb), 0.12);
+}
+
+.table-view-layout {
+    display: grid;
+    grid-template-columns: minmax(250px, 300px) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+}
+
+.table-filters-sidebar {
+    position: sticky;
+    top: 1rem;
+    align-self: start;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    z-index: 5;
+}
+
+.table-filters-sidebar .accordion {
+    --bs-accordion-border-color: rgba(var(--color1-rgb), 0.12);
+    --bs-accordion-border-radius: 18px;
+    --bs-accordion-inner-border-radius: 18px;
+    box-shadow: 0 14px 32px rgba(var(--color1-rgb), 0.10);
+}
+
+.table-filters-sidebar .accordion-item {
+    border: 0;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.table-filters-sidebar .accordion-button {
+    background: linear-gradient(90deg, var(--color1) 0%, var(--color2) 100%);
+    color: var(--color-white);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.table-filters-sidebar .accordion-button:not(.collapsed) {
+    background: linear-gradient(90deg, var(--color1) 0%, var(--color2) 100%);
+    color: var(--color-white);
+    box-shadow: none;
+}
+
+.table-filters-sidebar .accordion-button::after {
+    filter: brightness(0) invert(1);
+}
+
+.table-filters-sidebar .accordion-body {
+    background: rgba(var(--color5-rgb), 0.16);
+}
+
+.table-filters-sidebar .row {
+    --bs-gutter-y: 0.85rem;
+}
+
+.table-filters-sidebar .row > * {
+    flex: 0 0 100%;
+    max-width: 100%;
+    width: 100%;
+}
+
+.table-filters-sidebar .form-label {
+    color: rgba(var(--color1-rgb), 0.78);
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+.table-filters-sidebar .form-control,
+.table-filters-sidebar .form-select {
+    border-color: rgba(var(--color1-rgb), 0.18);
+    border-radius: 0.75rem;
+}
+
+.table-filters-sidebar .form-control:focus,
+.table-filters-sidebar .form-select:focus {
+    border-color: var(--color4);
+    box-shadow: 0 0 0 0.2rem rgba(var(--color4-rgb), 0.22);
+}
+
+.table-content-area {
+    min-width: 0;
+}
+
+.table-results-count {
+    margin-bottom: 0.75rem;
+}
+
+@media (max-width: 991.98px) {
+    .table-view-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .table-filters-sidebar {
+        position: static;
+        max-height: none;
+        overflow: visible;
+    }
 }

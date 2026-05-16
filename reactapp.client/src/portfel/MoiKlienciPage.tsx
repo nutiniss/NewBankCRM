@@ -296,6 +296,8 @@ export const MoiKlienci = () => {
 
     return (
         <Container fluid>
+            <div className="table-view-layout">
+                <aside className="table-filters-sidebar">
             <Accordion defaultActiveKey="filtrowanie" className="mb-3">
                 <Accordion.Item eventKey="filtrowanie">
                     <Accordion.Header>Filtrowanie i sortowanie</Accordion.Header>
@@ -502,8 +504,10 @@ export const MoiKlienci = () => {
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
+                </aside>
+                <main className="table-content-area">
 
-            <div className="mb-2 text-muted">
+            <div className="table-results-count text-muted">
                 Wyniki: {listaPoFiltrowaniu.length} z {listaKlientow.length}
             </div>
             <div className="business-table-shell">
@@ -534,6 +538,8 @@ export const MoiKlienci = () => {
             </div>
             <div className="table-actions-footer">
                 <Link to="/nowy-klient-potencjalny" className="btn btn-primary business-table-new-button">Nowy klient</Link>
+            </div>
+                </main>
             </div>
         </Container>
     )
