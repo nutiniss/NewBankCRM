@@ -838,3 +838,282 @@ a {
         transform: none;
     }
 }
+
+.new-meeting-page {
+    color: #2d2935;
+}
+
+.new-meeting-toolbar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem;
+    border: 1px solid rgba(var(--color1-rgb), 0.08);
+    border-radius: 1rem;
+    background: linear-gradient(135deg, rgba(var(--color5-rgb), 0.42), rgba(255, 255, 255, 0.96));
+    box-shadow: 0 0.5rem 1.5rem rgba(var(--color1-rgb), 0.08);
+}
+
+.new-meeting-eyebrow {
+    color: rgba(var(--color1-rgb), 0.62);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.new-meeting-title {
+    color: var(--color1);
+    font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+    font-weight: 700;
+}
+
+.new-meeting-actions {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.meeting-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+}
+
+.meeting-section-card {
+    border: 1px solid rgba(var(--color1-rgb), 0.08);
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1.25rem rgba(var(--color1-rgb), 0.08);
+}
+
+.meeting-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.meeting-section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.meeting-section-title h2 {
+    margin: 0;
+    color: var(--color1);
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.meeting-section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.75rem;
+    background: rgba(var(--color5-rgb), 0.55);
+    color: var(--color2);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.meeting-section-info {
+    color: rgba(var(--color1-rgb), 0.58);
+    font-size: 1.15rem;
+}
+
+.meeting-subsection-title {
+    margin-bottom: 1rem;
+    color: var(--color1);
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.new-meeting-page .form-label {
+    color: rgba(var(--color1-rgb), 0.74);
+    font-weight: 600;
+}
+
+.new-meeting-page .form-control,
+.new-meeting-page .form-select {
+    border-color: rgba(var(--color1-rgb), 0.18);
+    border-radius: 0.75rem;
+}
+
+.new-meeting-page .form-control:focus,
+.new-meeting-page .form-select:focus {
+    border-color: var(--color4);
+    box-shadow: 0 0 0 0.2rem rgba(var(--color4-rgb), 0.22);
+}
+
+.new-meeting-page textarea.form-control {
+    min-height: 8rem;
+    resize: vertical;
+}
+
+.new-meeting-page select[multiple] {
+    min-height: 7.5rem;
+}
+
+.meeting-check {
+    padding: 0.8rem 0.9rem 0.8rem 2.35rem;
+    border: 1px solid rgba(var(--color1-rgb), 0.1);
+    border-radius: 0.75rem;
+    background: rgba(var(--color5-rgb), 0.18);
+    font-weight: 600;
+}
+
+.meeting-check .form-check-input:checked,
+.meeting-related-check .form-check-input:checked {
+    background-color: #2f8f46;
+    border-color: #2f8f46;
+}
+
+.meeting-reminder-group {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+}
+
+.meeting-reminder-group .btn {
+    border-color: rgba(var(--color2-rgb), 0.45);
+    color: var(--color2);
+    font-weight: 700;
+}
+
+.meeting-reminder-group .btn-check:checked + .btn,
+.meeting-reminder-group .btn:hover,
+.meeting-reminder-group .btn:focus {
+    background-color: var(--color2);
+    border-color: var(--color2);
+    color: var(--color-white);
+}
+
+.meeting-tabs {
+    flex-wrap: nowrap;
+    gap: 0.35rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-bottom-color: rgba(var(--color1-rgb), 0.12);
+}
+
+.meeting-tabs .nav-link {
+    color: var(--color1);
+    white-space: nowrap;
+    border-radius: 0.9rem 0.9rem 0 0;
+    border-color: transparent;
+    font-weight: 700;
+}
+
+.meeting-tabs .nav-link:hover,
+.meeting-tabs .nav-link:focus {
+    border-color: rgba(var(--color5-rgb), 0.75);
+    color: var(--color2);
+}
+
+.meeting-tabs .nav-link.active {
+    color: var(--color1);
+    background: rgba(var(--color5-rgb), 0.32);
+    border-color: rgba(var(--color1-rgb), 0.12) rgba(var(--color1-rgb), 0.12) #ffffff;
+}
+
+.meeting-upload-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1.5rem;
+    border: 1px dashed rgba(var(--color2-rgb), 0.38);
+    border-radius: 1rem;
+    background: rgba(var(--color5-rgb), 0.14);
+    text-align: center;
+}
+
+.meeting-upload-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 999px;
+    background: rgba(var(--color5-rgb), 0.65);
+    color: var(--color2);
+    font-size: 1.55rem;
+    font-weight: 800;
+}
+
+.meeting-upload-box h3 {
+    margin: 0;
+    color: var(--color1);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.meeting-upload-box p {
+    max-width: 28rem;
+    margin: 0;
+    color: rgba(var(--color1-rgb), 0.65);
+}
+
+.meeting-related-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.meeting-related-row {
+    display: grid;
+    grid-template-columns: auto minmax(8rem, 0.8fr) minmax(12rem, 1.3fr);
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem;
+    border: 1px solid rgba(var(--color1-rgb), 0.08);
+    border-radius: 0.9rem;
+    background: rgba(var(--color5-rgb), 0.12);
+}
+
+.meeting-related-check {
+    margin: 0;
+}
+
+.meeting-related-label {
+    color: var(--color1);
+    font-weight: 700;
+}
+
+@media (max-width: 767.98px) {
+    .new-meeting-toolbar {
+        flex-direction: column;
+    }
+
+    .new-meeting-actions,
+    .new-meeting-actions .btn {
+        width: 100%;
+    }
+
+    .new-meeting-actions {
+        flex-direction: column-reverse;
+        gap: 0.5rem;
+    }
+
+    .new-meeting-actions .btn {
+        margin-right: 0 !important;
+    }
+
+    .meeting-related-row {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .meeting-related-row .form-select {
+        grid-column: 1 / -1;
+    }
+
+    .meeting-reminder-group {
+        grid-template-columns: 1fr;
+    }
+}
