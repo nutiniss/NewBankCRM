@@ -6,14 +6,17 @@ import Container from 'react-bootstrap/Container'
 
 export const NoweZadanie = () => {
     return (
-        <Container fluid>
+        <Container fluid className="new-meeting-page pb-4">
             <Form>
-                <Row>
-                    <Col>
+                <div className="new-task-toolbar mb-4">
+                    <div>
+                        <h1 className="new-task-title">Dodaj nowe zadanie</h1>
+                    </div>
+                    <div className="new-task-actions">
                         <Button variant="primary" className="me-2">Zapisz zadanie</Button>
                         <Button variant="info">Anuluj</Button>
-                    </Col>
-                </Row>
+                    </div>
+                </div>
                 <Row className="mt-3 mb-3">
                     <Col>
                         <Form.Group>
