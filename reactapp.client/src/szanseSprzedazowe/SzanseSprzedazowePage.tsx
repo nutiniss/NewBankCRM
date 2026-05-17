@@ -46,8 +46,7 @@ export const SzanseSprzedazowe = () => {
                         </Accordion.Item>
                     </Accordion>
                 </aside>
-                <main className="table-content-area">
-                    <div className="table-results-count text-muted">Wyniki: {listaPoFiltrowaniu.length} z {listaOkazji.length}</div>
+                <main className="table-content-area">                    
                     <div className="business-table-shell">
                         <Table responsive hover className="business-table">
                             <thead>

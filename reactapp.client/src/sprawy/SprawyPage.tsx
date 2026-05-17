@@ -60,7 +60,6 @@ export const Sprawy = () => {
                     </Accordion>
                 </aside>
                 <main className="table-content-area">
-                    <div className="table-results-count text-muted">Wyniki: {listaPoFiltrowaniu.length} z {listaSpraw.length}</div>
                     <div className="business-table-shell">
                         <Table responsive hover className="business-table">
                             <thead>

@@ -122,7 +122,7 @@ export const NoweSpotkanie = () => {
             <Form>
                 <div className="new-meeting-toolbar mb-4">
                     <div>                        
-                        <h1 className="new-meeting-eyebrow mb-1">Dodaj nowe spotkanie</h1>
+                        <h1 className="new-meeting-eyebrow mb-0">Dodaj nowe spotkanie</h1>
                     </div>
                     <div className="new-meeting-actions">
                         <Button variant="info" className="me-2">Anuluj</Button>
@@ -144,6 +144,7 @@ export const NoweSpotkanie = () => {
                                         </Form.Select>
                                     </Form.Group>
                                 </Col>
+
                                 <Col xs={12}>
                                     <Form.Check className="meeting-check" type="checkbox" id="meetingAllDay" label="Spotkanie całodniowe" />
                                 </Col>
@@ -259,7 +260,6 @@ export const NoweSpotkanie = () => {
                                                             <option key={goal}>{goal}</option>
                                                         ))}
                                                     </Form.Select>
-                                                    <Form.Text>Przytrzymaj Ctrl/Cmd, aby zaznaczyć kilka celów.</Form.Text>
                                                 </Form.Group>
                                             </Col>
                                             <Col xs={12}>
@@ -413,6 +413,7 @@ export const NoweSpotkanie = () => {
                                     </Col>
                                 </Row>
                             </Section>
+
                         </div>
                     </Col>
                 </Row>

@@ -37,7 +37,6 @@ export const Zadania = () => {
                     </Form></Accordion.Body></Accordion.Item></Accordion>
                 </aside>
                 <main className="table-content-area">
-                    <div className="table-results-count text-muted">Wyniki: {listaPoFiltrowaniu.length} z {listaZadan.length}</div>
                     <div className="business-table-shell">
                         <Table responsive hover className="business-table">
                             <thead><tr><th>Zadanie</th><th>Priorytet</th><th>Termin realizacji</th><th>Status</th><th className="business-table-actions-header">Akcje</th></tr></thead>
