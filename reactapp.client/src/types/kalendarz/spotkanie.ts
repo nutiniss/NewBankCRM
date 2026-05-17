@@ -1,7 +1,9 @@
 export type Spotkanie = {
-    klient: string;
+    firma: string;
+    typ: 'Spotkanie' | 'Rozmowa telefoniczna' | 'Spotkanie wewnętrzne';
     dataIGodzina: string;
-    tryb: 'Stacjonarnie' | 'Zdalnie';
-    temat?: string;
-    status?: 'Zaplanowane' | 'Potwierdzone' | 'Zrealizowane';
+    miejsce: 'Bank' | 'Siedziba klienta' | 'Inne';
+    temat: string;
+    organizator: string;
+    status?: 'Zaplanowane' | 'Zakończone' | 'Anulowane';
 };
