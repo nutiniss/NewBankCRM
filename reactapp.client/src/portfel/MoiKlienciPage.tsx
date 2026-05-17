@@ -1,8 +1,6 @@
 import Accordion from 'react-bootstrap/Accordion'
 import Table from 'react-bootstrap/Table'
 import Form from 'react-bootstrap/Form'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
@@ -298,19 +296,15 @@ export const MoiKlienci = () => {
         <Container fluid>
             <div className="table-view-layout">
                 <aside className="table-filters-sidebar">
-            <Accordion defaultActiveKey="filtrowanie" className="mb-3">
-                <Accordion.Item eventKey="filtrowanie">
-                    <Accordion.Header>Filtrowanie i sortowanie</Accordion.Header>
-                    <Accordion.Body>
-                        <Form>
-                            <Row className="g-3 mb-3">
-                                <Col md={6} xl={4}>
+                    <Accordion defaultActiveKey="filtrowanie" className="mb-3">
+                        <Accordion.Item eventKey="filtrowanie">
+                            <Accordion.Header>Filtrowanie i sortowanie</Accordion.Header>
+                            <Accordion.Body>
+                                <Form className="table-filters-form">
                                     <Form.Group controlId="clientSearch">
                                         <Form.Label>Szukaj po nazwie, NIP, REGON, KRS, LEI lub PKD</Form.Label>
                                         <Form.Control type="text" placeholder="np. MediNova albo 49.41" value={filtry.fraza} onChange={(event) => zmienFiltr('fraza', event.target.value)} />
                                     </Form.Group>
-                                </Col>
-                                <Col sm={6} md={3} xl={2}>
                                     <Form.Group controlId="clientStatus">
                                         <Form.Label>Status</Form.Label>
                                         <Form.Select value={filtry.status} onChange={(event) => zmienFiltr('status', event.target.value)}>
@@ -319,8 +313,6 @@ export const MoiKlienci = () => {
                                             <option>Prospekt</option>
                                         </Form.Select>
                                     </Form.Group>
-                                </Col>
-                                <Col sm={6} md={3} xl={2}>
                                     <Form.Group controlId="clientIndustry">
                                         <Form.Label>Branża</Form.Label>
                                         <Form.Select value={filtry.branza} onChange={(event) => zmienFiltr('branza', event.target.value)}>
@@ -332,8 +324,6 @@ export const MoiKlienci = () => {
                                             <option>Transport</option>
                                         </Form.Select>
                                     </Form.Group>
-                                </Col>
-                                <Col sm={6} md={3} xl={2}>
                                     <Form.Group controlId="clientSegment">
                                         <Form.Label>Segment klienta</Form.Label>
                                         <Form.Select value={filtry.segment} onChange={(event) => zmienFiltr('segment', event.target.value)}>
@@ -344,8 +334,6 @@ export const MoiKlienci = () => {
                                             <option>Prospekt strategiczny</option>
                                         </Form.Select>
                                     </Form.Group>
-                                </Col>
-                                <Col sm={6} md={3} xl={2}>
                                     <Form.Group controlId="clientRelationStatus">
                                         <Form.Label>Status relacji</Form.Label>
                                         <Form.Select value={filtry.statusRelacji} onChange={(event) => zmienFiltr('statusRelacji', event.target.value)}>
@@ -355,10 +343,6 @@ export const MoiKlienci = () => {
                                             <option>Nowa</option>
                                         </Form.Select>
                                     </Form.Group>
-                                </Col>
-                            </Row>
-                            <Row className="g-3 mb-3">
-                                <Col sm={6} lg={3} xl={2}>
                                     <Form.Group controlId="clientMboStatus">
                                         <Form.Label>Status MBO</Form.Label>
                                         <Form.Select value={filtry.statusMbo} onChange={(event) => zmienFiltr('statusMbo', event.target.value)}>
@@ -368,8 +352,6 @@ export const MoiKlienci = () => {
                                             <option>Nowy</option>
                                         </Form.Select>
                                     </Form.Group>
-                                </Col>
-                                <Col sm={6} lg={3} xl={2}>
                                     <Form.Group controlId="clientCreditworthy">
                                         <Form.Label>Kredytowy</Form.Label>
                                         <Form.Select value={filtry.kredytowy} onChange={(event) => zmienFiltr('kredytowy', event.target.value)}>
@@ -379,8 +361,6 @@ export const MoiKlienci = () => {
                                             <option>Do weryfikacji</option>
                                         </Form.Select>
                                     </Form.Group>
-                                </Col>
-                                <Col sm={6} lg={3} xl={2}>
                                     <Form.Group controlId="clientCountry">
                                         <Form.Label>Kraj</Form.Label>
                                         <Form.Select value={filtry.kraj} onChange={(event) => zmienFiltr('kraj', event.target.value)}>
@@ -391,8 +371,6 @@ export const MoiKlienci = () => {
                                             <option>Słowacja</option>
                                         </Form.Select>
                                     </Form.Group>
-                                </Col>
-                                <Col sm={6} lg={3} xl={3}>
                                     <Form.Group controlId="clientLegalForm">
                                         <Form.Label>Forma prawna</Form.Label>
                                         <Form.Select value={filtry.formaPrawna} onChange={(event) => zmienFiltr('formaPrawna', event.target.value)}>
@@ -403,8 +381,6 @@ export const MoiKlienci = () => {
                                             <option>Spółka komandytowa</option>
                                         </Form.Select>
                                     </Form.Group>
-                                </Col>
-                                <Col sm={6} lg={3} xl={1}>
                                     <Form.Group controlId="clientJdgFlag">
                                         <Form.Label>Flaga JDG</Form.Label>
                                         <Form.Select value={filtry.flagaJdg} onChange={(event) => zmienFiltr('flagaJdg', event.target.value)}>
@@ -413,10 +389,6 @@ export const MoiKlienci = () => {
                                             <option>Tak</option>
                                         </Form.Select>
                                     </Form.Group>
-                                </Col>
-                            </Row>
-                            <Row className="g-3 mb-3">
-                                <Col md={6} xl={3}>
                                     <Form.Group controlId="clientPkdSection">
                                         <Form.Label>Sekcja PKD głównego</Form.Label>
                                         <Form.Select value={filtry.sekcjaPkd} onChange={(event) => zmienFiltr('sekcjaPkd', event.target.value)}>
@@ -427,8 +399,6 @@ export const MoiKlienci = () => {
                                             <option>F - Budownictwo</option>
                                         </Form.Select>
                                     </Form.Group>
-                                </Col>
-                                <Col sm={6} md={3} xl={2}>
                                     <Form.Group controlId="clientCmisStatus">
                                         <Form.Label>Status CMIS</Form.Label>
                                         <Form.Select value={filtry.statusCmis} onChange={(event) => zmienFiltr('statusCmis', event.target.value)}>
@@ -438,8 +408,6 @@ export const MoiKlienci = () => {
                                             <option>Do weryfikacji</option>
                                         </Form.Select>
                                     </Form.Group>
-                                </Col>
-                                <Col sm={6} md={3} xl={2}>
                                     <Form.Group controlId="clientGroupRole">
                                         <Form.Label>Rola w grupie</Form.Label>
                                         <Form.Select value={filtry.rolaWGrupie} onChange={(event) => zmienFiltr('rolaWGrupie', event.target.value)}>
@@ -449,61 +417,41 @@ export const MoiKlienci = () => {
                                             <option>Jednostka samodzielna</option>
                                         </Form.Select>
                                     </Form.Group>
-                                </Col>
-                                <Col sm={6} md={3} xl={3}>
                                     <Form.Group controlId="clientCapitalGroup">
                                         <Form.Label>Nazwa grupy</Form.Label>
                                         <Form.Control type="text" placeholder="np. Holding" value={filtry.grupaKapitalowa} onChange={(event) => zmienFiltr('grupaKapitalowa', event.target.value)} />
                                     </Form.Group>
-                                </Col>
-                                <Col sm={6} md={3} xl={2}>
                                     <Form.Group controlId="clientCity">
                                         <Form.Label>Miejscowość</Form.Label>
                                         <Form.Control type="text" placeholder="np. Gdańsk" value={filtry.miejscowosc} onChange={(event) => zmienFiltr('miejscowosc', event.target.value)} />
                                     </Form.Group>
-                                </Col>
-                            </Row>
-                            <Row className="g-3 align-items-end">
-                                <Col sm={6} md={3} xl={2}>
                                     <Form.Group controlId="clientRevenueFrom">
                                         <Form.Label>Przychody netto od</Form.Label>
                                         <Form.Control type="number" min="0" value={filtry.przychodyNettoOd} onChange={(event) => zmienFiltr('przychodyNettoOd', event.target.value)} />
                                     </Form.Group>
-                                </Col>
-                                <Col sm={6} md={3} xl={2}>
                                     <Form.Group controlId="clientRevenueTo">
                                         <Form.Label>Przychody netto do</Form.Label>
                                         <Form.Control type="number" min="0" value={filtry.przychodyNettoDo} onChange={(event) => zmienFiltr('przychodyNettoDo', event.target.value)} />
                                     </Form.Group>
-                                </Col>
-                                <Col sm={6} md={3} xl={2}>
                                     <Form.Group controlId="clientEmployeesFrom">
                                         <Form.Label>Liczba pracowników od</Form.Label>
                                         <Form.Control type="number" min="0" value={filtry.pracownicyOd} onChange={(event) => zmienFiltr('pracownicyOd', event.target.value)} />
                                     </Form.Group>
-                                </Col>
-                                <Col sm={6} md={3} xl={2}>
                                     <Form.Group controlId="clientRelationDateFrom">
                                         <Form.Label>Relacja od</Form.Label>
                                         <Form.Control type="date" value={filtry.dataRelacjiOd} onChange={(event) => zmienFiltr('dataRelacjiOd', event.target.value)} />
                                     </Form.Group>
-                                </Col>
-                                <Col sm={6} md={3} xl={2}>
                                     <Form.Group controlId="clientRelationDateTo">
                                         <Form.Label>Relacja do</Form.Label>
                                         <Form.Control type="date" value={filtry.dataRelacjiDo} onChange={(event) => zmienFiltr('dataRelacjiDo', event.target.value)} />
                                     </Form.Group>
-                                </Col>
-                                <Col sm={6} md={3} xl={2}>
                                     <Button variant="outline-secondary" type="button" onClick={() => setFiltry(pusteFiltry)}>
                                         Wyczyść filtry
                                     </Button>
-                                </Col>
-                            </Row>
-                        </Form>
-                    </Accordion.Body>
-                </Accordion.Item>
-            </Accordion>
+                                </Form>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                    </Accordion>
                 </aside>
                 <main className="table-content-area">
                             
