@@ -1,9 +1,7 @@
 import Accordion from 'react-bootstrap/Accordion'
 import Button from 'react-bootstrap/Button'
-import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
-import Row from 'react-bootstrap/Row'
 import Table from 'react-bootstrap/Table'
 import { Link } from 'react-router-dom'
 import { useMemo, useState } from 'react'
@@ -32,38 +30,30 @@ export const Sprawy = () => {
                         <Accordion.Item eventKey="filtrowanie">
                             <Accordion.Header>Filtrowanie i sortowanie</Accordion.Header>
                             <Accordion.Body>
-                                <Form>
-                                    <Row className="mb-3">
-                                        <Col>
-                                            <Form.Group>
-                                                <Form.Label>Szukaj po numerze lub tytule</Form.Label>
-                                                <Form.Control type="text" value={filtry.fraza} onChange={(event) => setFiltry({ ...filtry, fraza: event.target.value })} />
-                                            </Form.Group>
-                                        </Col>
-                                        <Col>
-                                            <Form.Group>
-                                                <Form.Label>Priorytet</Form.Label>
-                                                <Form.Select value={filtry.priorytet} onChange={(event) => setFiltry({ ...filtry, priorytet: event.target.value })}>
-                                                    <option value="">Wszystkie</option>
-                                                    <option>Wysoki</option>
-                                                    <option>Średni</option>
-                                                    <option>Niski</option>
-                                                </Form.Select>
-                                            </Form.Group>
-                                        </Col>
-                                        <Col>
-                                            <Form.Group>
-                                                <Form.Label>Status</Form.Label>
-                                                <Form.Select value={filtry.status} onChange={(event) => setFiltry({ ...filtry, status: event.target.value })}>
-                                                    <option value="">Wszystkie</option>
-                                                    <option>Otwarte</option>
-                                                    <option>W toku</option>
-                                                    <option>Zamknięte</option>
-                                                </Form.Select>
-                                            </Form.Group>
-                                        </Col>
-                                        <Col><Button variant="outline-secondary" type="button" onClick={() => setFiltry({ fraza: '', priorytet: '', status: '' })}>Wyczyść filtry</Button></Col>
-                                    </Row>
+                                <Form className="table-filters-form">
+                                    <Form.Group>
+                                        <Form.Label>Szukaj po numerze lub tytule</Form.Label>
+                                        <Form.Control type="text" value={filtry.fraza} onChange={(event) => setFiltry({ ...filtry, fraza: event.target.value })} />
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label>Priorytet</Form.Label>
+                                        <Form.Select value={filtry.priorytet} onChange={(event) => setFiltry({ ...filtry, priorytet: event.target.value })}>
+                                            <option value="">Wszystkie</option>
+                                            <option>Wysoki</option>
+                                            <option>Średni</option>
+                                            <option>Niski</option>
+                                        </Form.Select>
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label>Status</Form.Label>
+                                        <Form.Select value={filtry.status} onChange={(event) => setFiltry({ ...filtry, status: event.target.value })}>
+                                            <option value="">Wszystkie</option>
+                                            <option>Otwarte</option>
+                                            <option>W toku</option>
+                                            <option>Zamknięte</option>
+                                        </Form.Select>
+                                    </Form.Group>
+                                    <Button variant="outline-secondary" type="button" onClick={() => setFiltry({ fraza: '', priorytet: '', status: '' })}>Wyczyść filtry</Button>
                                 </Form>
                             </Accordion.Body>
                         </Accordion.Item>
