@@ -44,6 +44,15 @@ export const Kalendarz = () => {
                     </Form></Accordion.Body></Accordion.Item></Accordion>
                 </aside>
                 <main className="table-content-area">
+                    <div className="table-toolbar mb-3">
+                        <div>
+                            <h1 className="table-toolbar-title">Kalendarz</h1>
+                        </div>
+                        <div className="table-toolbar-actions">
+                            <Link to="/nowe-spotkanie" className="btn btn-primary business-table-new-button">Dodaj spotkanie</Link>
+                            <Link to="/nowe-zadanie" className="btn btn-info business-table-new-button">Dodaj zadanie</Link>
+                        </div>
+                    </div>
                     <div className="table-results-count text-muted">Wyniki: {listaPoFiltrowaniu.length} z {wydarzenia.length}</div>
                     <div className="business-table-shell">
                         <Table responsive hover className="business-table">
@@ -61,7 +70,6 @@ export const Kalendarz = () => {
                             </tbody>
                         </Table>
                     </div>
-                    <div className="table-actions-footer"><Link to="/nowe-spotkanie" className="btn btn-primary business-table-new-button">Nowe spotkanie</Link><Link to="/nowe-zadanie" className="btn btn-info business-table-new-button">Nowe zadanie</Link></div>
                 </main>
             </div>
         </Container>
