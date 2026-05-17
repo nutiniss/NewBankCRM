@@ -43,6 +43,14 @@ export const Spotkania = () => {
                     </Accordion>
                 </aside>
                 <main className="table-content-area">
+                    <div className="table-toolbar mb-3">
+                        <div>
+                            <h1 className="table-toolbar-title">Spotkania</h1>
+                        </div>
+                        <div className="table-toolbar-actions">
+                            <Link to="/nowe-spotkanie" className="btn btn-primary business-table-new-button">Dodaj spotkanie</Link>
+                        </div>
+                    </div>
                     <div className="business-table-shell">
                         <Table responsive hover className="business-table">
                             <thead><tr><th>Firma</th><th>Typ</th><th>Data i godzina</th><th>Miejsce</th><th>Temat</th><th>Organizator</th><th>Status</th><th className="business-table-actions-header">Akcje</th></tr></thead>
@@ -52,7 +60,6 @@ export const Spotkania = () => {
                             </tbody>
                         </Table>
                     </div>
-                    <div className="table-actions-footer"><Link to="/nowe-spotkanie" className="btn btn-primary business-table-new-button">Nowe spotkanie</Link></div>
                 </main>
             </div>
         </Container>

@@ -71,6 +71,14 @@ export const Towary = () => {
                     </Accordion>
                 </aside>
                 <main className="table-content-area">
+                    <div className="table-toolbar mb-3">
+                        <div>
+                            <h1 className="table-toolbar-title">Towary</h1>
+                        </div>
+                        <div className="table-toolbar-actions">
+                            <Link to="/towar" className="btn btn-primary business-table-new-button">Dodaj towar</Link>
+                        </div>
+                    </div>
                     <div className="table-results-count text-muted">Wyniki: {listaPoFiltrowaniu.length} z {listaTowarow.length}</div>
                     <div className="business-table-shell">
                         <Table responsive hover className="business-table">
@@ -89,9 +97,6 @@ export const Towary = () => {
                                 {listaPoFiltrowaniu.length === 0 && <tr><td colSpan={6} className="text-center text-muted">Brak towarów spełniających wybrane kryteria.</td></tr>}
                             </tbody>
                         </Table>
-                    </div>
-                    <div className="table-actions-footer">
-                        <Link to="/towar" className="btn btn-primary business-table-new-button">Nowy towar</Link>
                     </div>
                 </main>
             </div>
