@@ -54,10 +54,10 @@ const zadaniaPriorytetowe: Zadanie[] = [
 ];
 
 const nadchodzaceSpotkania: Spotkanie[] = [
-    { klient: 'Baltic Logistics Sp. z o.o.', dataIGodzina: '21.04.2026, 10:30', tryb: 'Zdalnie' },
-    { klient: 'MediCore Group', dataIGodzina: '22.04.2026, 13:00', tryb: 'Stacjonarnie' },
-    { klient: 'GreenPol Energia', dataIGodzina: '23.04.2026, 09:15', tryb: 'Zdalnie' },
-    { klient: 'HydroTech S.A.', dataIGodzina: '24.04.2026, 11:45', tryb: 'Stacjonarnie' },
+    { firma: 'Baltic Logistics Sp. z o.o.', typ: 'Spotkanie', dataIGodzina: '21.04.2026, 10:30', miejsce: 'Bank', temat: 'Analiza potrzeb finansowych', organizator: 'Anna Kowalska' },
+    { firma: 'MediCore Group', typ: 'Spotkanie', dataIGodzina: '22.04.2026, 13:00', miejsce: 'Siedziba klienta', temat: 'Obsługa posprzedażowa', organizator: 'Marlena Chrobak' },
+    { firma: 'GreenPol Energia', typ: 'Rozmowa telefoniczna', dataIGodzina: '23.04.2026, 09:15', miejsce: 'Inne', temat: 'Dokumenty klienta', organizator: 'Sławomir Sroka' },
+    { firma: 'HydroTech S.A.', typ: 'Spotkanie', dataIGodzina: '24.04.2026, 11:45', miejsce: 'Bank', temat: 'Negocjacje zabezpieczeń', organizator: 'Violetta Chmielewska' },
 ];
 
 function App() {
@@ -218,17 +218,17 @@ function App() {
                         <Table responsive hover className="dashboard-table mb-0">
                             <thead>
                                 <tr>
-                                    <th>Nazwa klienta</th>
+                                    <th>Firma</th>
                                     <th>Data i godzina</th>
-                                    <th>Tryb spotkania</th>
+                                    <th>Miejsce</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {nadchodzaceSpotkania.map((spotkanie) => (
-                                    <tr key={`${spotkanie.klient}-${spotkanie.dataIGodzina}`}>
-                                        <td>{spotkanie.klient}</td>
+                                    <tr key={`${spotkanie.firma}-${spotkanie.dataIGodzina}`}>
+                                        <td>{spotkanie.firma}</td>
                                         <td>{spotkanie.dataIGodzina}</td>
-                                        <td>{spotkanie.tryb}</td>
+                                        <td>{spotkanie.miejsce}</td>
                                     </tr>
                                 ))}
                             </tbody>
