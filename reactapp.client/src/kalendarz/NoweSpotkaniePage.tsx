@@ -144,7 +144,6 @@ export const NoweSpotkanie = () => {
                                         </Form.Select>
                                     </Form.Group>
                                 </Col>
-
                                 <Col xs={12}>
                                     <Form.Check className="meeting-check" type="checkbox" id="meetingAllDay" label="Spotkanie całodniowe" />
                                 </Col>

@@ -130,7 +130,7 @@ export const NoweZadanie = () => {
                 </div>
 
                 <Row className="g-4 align-items-stretch">
-                    <Col xl={4} lg={5}>
+                    <Col xl={4} lg={6}>
                         <Section title="Szczegóły zadania" icon="☷">
                             <Row className="g-3">
                                 <Col xs={12}>
@@ -212,7 +212,7 @@ export const NoweZadanie = () => {
                         </Section>
                     </Col>
 
-                    <Col xl={4} lg={7}>
+                    <Col xl={4} lg={6}>
                         <div className="meeting-stack">
                             <Section title="Plan realizacji" icon="◎">
                                 <Tabs defaultActiveKey="description" id="task-plan-tabs" className="meeting-tabs mb-3">
@@ -261,7 +261,7 @@ export const NoweZadanie = () => {
                                 </Tabs>
                             </Section>
 
-                            <Section title="Powiązania" icon="↔">
+                            <Section title="Powiązania" icon="⧉">
                                 <div className="meeting-related-list">
                                     <RelatedObjectRow id="taskCompany" label="Klient" placeholder="Wybierz klienta" options={companies} />
                                     <RelatedObjectRow id="taskOpportunity" label="Szansa sprzedażowa" placeholder="Wybierz szansę" options={salesOpportunities} />
