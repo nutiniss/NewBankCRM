@@ -734,6 +734,15 @@ a {
     background: rgba(var(--color5-rgb), 0.16);
 }
 
+.table-filters-form {
+    display: grid;
+    gap: 0.85rem;
+}
+
+.table-filters-form .btn {
+    width: 100%;
+}
+
 .table-filters-sidebar .row {
     --bs-gutter-y: 0.85rem;
 }
