@@ -290,7 +290,7 @@ export const MoiKlienci = () => {
             && filtrLiczbowy(klient.przychodyNetto, filtry.przychodyNettoOd, filtry.przychodyNettoDo)
             && filtrLiczbowy(klient.liczbaPracownikow, filtry.pracownicyOd, '')
             && filtrDatyRelacji(klient.dataNawiazaniaRelacji, filtry.dataRelacjiOd, filtry.dataRelacjiDo)
-    }), [listaKlientow, filtry])
+    }), [listaKlientow, filtry])   
 
     return (
         <Container fluid>
@@ -454,15 +454,7 @@ export const MoiKlienci = () => {
                     </Accordion>
                 </aside>
                 <main className="table-content-area">
-                    <div className="table-toolbar mb-3">
-                        <div>
-                            <h1 className="table-toolbar-title">Moi klienci</h1>
-                        </div>
-                        <div className="table-toolbar-actions">
-                            <Link to="/nowy-klient-potencjalny" className="btn btn-primary business-table-new-button">Dodaj klienta</Link>
-                        </div>
-                    </div>
-
+                            
             <div className="business-table-shell">
                 <Table responsive hover className="business-table">
                 <thead>
@@ -488,6 +480,9 @@ export const MoiKlienci = () => {
                     )}
                 </tbody>
             </Table>
+            </div>
+            <div className="table-actions-footer">
+                <Link to="/nowy-klient-potencjalny" className="btn btn-primary business-table-new-button">Nowy klient</Link>
             </div>
                 </main>
             </div>
