@@ -46,15 +46,7 @@ export const SzanseSprzedazowe = () => {
                         </Accordion.Item>
                     </Accordion>
                 </aside>
-                <main className="table-content-area">
-                    <div className="table-toolbar mb-3">
-                        <div>
-                            <h1 className="table-toolbar-title">Szanse sprzedażowe</h1>
-                        </div>
-                        <div className="table-toolbar-actions">
-                            <Link to="/nowa-okazja-biznesowa" className="btn btn-primary business-table-new-button">Dodaj szansę sprzedażową</Link>
-                        </div>
-                    </div>
+                <main className="table-content-area">                    
                     <div className="business-table-shell">
                         <Table responsive hover className="business-table">
                             <thead>
@@ -71,6 +63,9 @@ export const SzanseSprzedazowe = () => {
                                 {listaPoFiltrowaniu.length === 0 && <tr><td colSpan={5} className="text-center text-muted">Brak szans spełniających wybrane kryteria.</td></tr>}
                             </tbody>
                         </Table>
+                    </div>
+                    <div className="table-actions-footer">
+                        <Link to="/nowa-okazja-biznesowa" className="btn btn-primary business-table-new-button">Nowa szansa sprzedażowa</Link>
                     </div>
                 </main>
             </div>

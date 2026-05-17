@@ -37,14 +37,6 @@ export const Zadania = () => {
                     </Form></Accordion.Body></Accordion.Item></Accordion>
                 </aside>
                 <main className="table-content-area">
-                    <div className="table-toolbar mb-3">
-                        <div>
-                            <h1 className="table-toolbar-title">Zadania</h1>
-                        </div>
-                        <div className="table-toolbar-actions">
-                            <Link to="/nowe-zadanie" className="btn btn-primary business-table-new-button">Dodaj zadanie</Link>
-                        </div>
-                    </div>
                     <div className="business-table-shell">
                         <Table responsive hover className="business-table">
                             <thead><tr><th>Zadanie</th><th>Priorytet</th><th>Termin realizacji</th><th>Status</th><th className="business-table-actions-header">Akcje</th></tr></thead>
@@ -54,6 +46,7 @@ export const Zadania = () => {
                             </tbody>
                         </Table>
                     </div>
+                    <div className="table-actions-footer"><Link to="/nowe-zadanie" className="btn btn-primary business-table-new-button">Nowe zadanie</Link></div>
                 </main>
             </div>
         </Container>

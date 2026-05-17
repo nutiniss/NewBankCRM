@@ -70,14 +70,6 @@ export const Pracownicy = () => {
                     </Accordion>
                 </aside>
                 <main className="table-content-area">
-                    <div className="table-toolbar mb-3">
-                        <div>
-                            <h1 className="table-toolbar-title">Pracownicy</h1>
-                        </div>
-                        <div className="table-toolbar-actions">
-                            <Link to="/pracownik" className="btn btn-primary business-table-new-button">Dodaj pracownika</Link>
-                        </div>
-                    </div>
                     <div className="table-results-count text-muted">Wyniki: {listaPoFiltrowaniu.length} z {listaPracownikow.length}</div>
                     <div className="business-table-shell">
                         <Table responsive hover className="business-table">
@@ -95,6 +87,9 @@ export const Pracownicy = () => {
                                 {listaPoFiltrowaniu.length === 0 && <tr><td colSpan={5} className="text-center text-muted">Brak pracowników spełniających wybrane kryteria.</td></tr>}
                             </tbody>
                         </Table>
+                    </div>
+                    <div className="table-actions-footer">
+                        <Link to="/pracownik" className="btn btn-primary business-table-new-button">Nowy pracownik</Link>
                     </div>
                 </main>
             </div>

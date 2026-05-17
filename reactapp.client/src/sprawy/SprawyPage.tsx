@@ -60,14 +60,6 @@ export const Sprawy = () => {
                     </Accordion>
                 </aside>
                 <main className="table-content-area">
-                    <div className="table-toolbar mb-3">
-                        <div>
-                            <h1 className="table-toolbar-title">Sprawy</h1>
-                        </div>
-                        <div className="table-toolbar-actions">
-                            <Link to="/nowa-sprawa" className="btn btn-primary business-table-new-button">Dodaj sprawę</Link>
-                        </div>
-                    </div>
                     <div className="business-table-shell">
                         <Table responsive hover className="business-table">
                             <thead>
@@ -84,6 +76,9 @@ export const Sprawy = () => {
                                 {listaPoFiltrowaniu.length === 0 && <tr><td colSpan={5} className="text-center text-muted">Brak spraw spełniających wybrane kryteria.</td></tr>}
                             </tbody>
                         </Table>
+                    </div>
+                    <div className="table-actions-footer">
+                        <Link to="/nowa-sprawa" className="btn btn-primary business-table-new-button">Nowa sprawa</Link>
                     </div>
                 </main>
             </div>

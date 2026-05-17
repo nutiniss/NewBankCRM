@@ -93,7 +93,7 @@ a {
     gap: 0.4rem;
     font-size: 0.95rem;
     white-space: nowrap;
-
+    
 }
 
 .user-name-icon {
@@ -582,7 +582,7 @@ a {
 }
 
     .business-table thead tr {
-        background: linear-gradient(90deg, var(--color1) 0%, var(--color2) 70%);
+        background: linear-gradient(90deg, var(--color1) 0%, var(--color2) 70%);        
     }
 
 .business-table thead th {
@@ -628,6 +628,13 @@ a {
     color: var(--color-white);
 }
 
+.table-actions-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
 
 .business-table-new-button {
     padding-inline: 1.25rem;
@@ -794,8 +801,7 @@ a {
 
 .new-lead-toolbar,
 .new-meeting-toolbar,
-.new-task-toolbar,
-.table-toolbar {
+.new-task-toolbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -810,8 +816,7 @@ a {
 .new-lead-title,
 .new-meeting-eyebrow,
 .new-meeting-title,
-.new-task-title,
-.table-toolbar-title {
+.new-task-title {
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -824,8 +829,7 @@ a {
 
 .new-lead-actions,
 .new-meeting-actions,
-.new-task-actions,
-.table-toolbar-actions {
+.new-task-actions {
     display: flex;
     align-items: center;
     white-space: nowrap;
@@ -1052,8 +1056,7 @@ a {
 @media (max-width: 767.98px) {
     .new-lead-toolbar,
     .new-meeting-toolbar,
-    .new-task-toolbar,
-    .table-toolbar {
+    .new-task-toolbar {
         flex-direction: column;
     }
 
@@ -1062,24 +1065,20 @@ a {
     .new-meeting-actions,
     .new-meeting-actions .btn,
     .new-task-actions,
-    .new-task-actions .btn,
-    .table-toolbar-actions,
-    .table-toolbar-actions .btn {
+    .new-task-actions .btn {
         width: 100%;
     }
 
     .new-lead-actions,
     .new-meeting-actions,
-    .new-task-actions,
-    .table-toolbar-actions {
+    .new-task-actions {
         flex-direction: column-reverse;
         gap: 0.5rem;
     }
 
     .new-lead-actions .btn,
     .new-meeting-actions .btn,
-    .new-task-actions .btn,
-    .table-toolbar-actions .btn {
+    .new-task-actions .btn {
         margin-right: 0 !important;
     }
 
