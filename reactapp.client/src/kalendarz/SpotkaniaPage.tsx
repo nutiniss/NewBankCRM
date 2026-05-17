@@ -1,9 +1,7 @@
 import Accordion from 'react-bootstrap/Accordion'
 import Button from 'react-bootstrap/Button'
-import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
-import Row from 'react-bootstrap/Row'
 import Table from 'react-bootstrap/Table'
 import { Link } from 'react-router-dom'
 import { useMemo, useState } from 'react'
@@ -32,12 +30,12 @@ export const Spotkania = () => {
             <div className="table-view-layout">
                 <aside className="table-filters-sidebar">
                     <Accordion defaultActiveKey="filtrowanie">
-                        <Accordion.Item eventKey="filtrowanie"><Accordion.Header>Filtrowanie i sortowanie</Accordion.Header><Accordion.Body><Form><Row className="mb-3">
-                            <Col><Form.Group><Form.Label>Szukaj po kliencie lub terminie</Form.Label><Form.Control type="text" value={filtry.fraza} onChange={(event) => setFiltry({ ...filtry, fraza: event.target.value })} /></Form.Group></Col>
-                            <Col><Form.Group><Form.Label>Tryb spotkania</Form.Label><Form.Select value={filtry.tryb} onChange={(event) => setFiltry({ ...filtry, tryb: event.target.value })}><option value="">Wszystkie</option><option>Stacjonarnie</option><option>Zdalnie</option></Form.Select></Form.Group></Col>
-                            <Col><Form.Group><Form.Label>Status</Form.Label><Form.Select value={filtry.status} onChange={(event) => setFiltry({ ...filtry, status: event.target.value })}><option value="">Wszystkie</option><option>Zaplanowane</option><option>Potwierdzone</option><option>Zrealizowane</option></Form.Select></Form.Group></Col>
-                            <Col><Button variant="outline-secondary" type="button" onClick={() => setFiltry({ fraza: '', tryb: '', status: '' })}>Wyczyść filtry</Button></Col>
-                        </Row></Form></Accordion.Body></Accordion.Item>
+                        <Accordion.Item eventKey="filtrowanie"><Accordion.Header>Filtrowanie i sortowanie</Accordion.Header><Accordion.Body><Form className="table-filters-form">
+                            <Form.Group><Form.Label>Szukaj po kliencie lub terminie</Form.Label><Form.Control type="text" value={filtry.fraza} onChange={(event) => setFiltry({ ...filtry, fraza: event.target.value })} /></Form.Group>
+                            <Form.Group><Form.Label>Tryb spotkania</Form.Label><Form.Select value={filtry.tryb} onChange={(event) => setFiltry({ ...filtry, tryb: event.target.value })}><option value="">Wszystkie</option><option>Stacjonarnie</option><option>Zdalnie</option></Form.Select></Form.Group>
+                            <Form.Group><Form.Label>Status</Form.Label><Form.Select value={filtry.status} onChange={(event) => setFiltry({ ...filtry, status: event.target.value })}><option value="">Wszystkie</option><option>Zaplanowane</option><option>Potwierdzone</option><option>Zrealizowane</option></Form.Select></Form.Group>
+                            <Button variant="outline-secondary" type="button" onClick={() => setFiltry({ fraza: '', tryb: '', status: '' })}>Wyczyść filtry</Button>
+                        </Form></Accordion.Body></Accordion.Item>
                     </Accordion>
                 </aside>
                 <main className="table-content-area">                    

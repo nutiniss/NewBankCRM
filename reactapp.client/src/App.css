@@ -102,7 +102,6 @@ a {
 }
 
 .menu-navbar {
-    background-color: var(--color2);
     background: linear-gradient(90deg, var(--color1) 0%, var(--color2) 100%);
     min-height: 58px;
 }
@@ -451,7 +450,6 @@ a {
     padding: 1rem;
     border: 1px solid rgba(var(--color1-rgb), 0.08);
     border-radius: 1rem;
-/*    background: rgba(var(--color5-rgb), 0.12);*/
 }
 
 .lead-address-group + .lead-address-group {
@@ -743,15 +741,6 @@ a {
     width: 100%;
 }
 
-.table-filters-sidebar .row {
-    --bs-gutter-y: 0.85rem;
-}
-
-.table-filters-sidebar .row > * {
-    flex: 0 0 100%;
-    max-width: 100%;
-    width: 100%;
-}
 
 .table-filters-sidebar .form-label {
     color: rgba(var(--color1-rgb), 0.78);

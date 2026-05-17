@@ -1,8 +1,6 @@
 import Accordion from 'react-bootstrap/Accordion';
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
@@ -44,41 +42,29 @@ export const Towary = () => {
                         <Accordion.Item eventKey="filtrowanie">
                             <Accordion.Header>Filtrowanie i sortowanie</Accordion.Header>
                             <Accordion.Body>
-                                <Form>
-                                    <Row className="mb-3">
-                                        <Col>
-                                            <Form.Group>
-                                                <Form.Label>Szukaj po nazwie, kodzie lub PKWiU</Form.Label>
-                                                <Form.Control type="text" value={filtry.fraza} onChange={(event) => setFiltry({ ...filtry, fraza: event.target.value })} />
-                                            </Form.Group>
-                                        </Col>
-                                        <Col className="col-2">
-                                            <Form.Group>
-                                                <Form.Label>Cena od</Form.Label>
-                                                <Form.Control type="number" min="0" value={filtry.cenaOd} onChange={(event) => setFiltry({ ...filtry, cenaOd: event.target.value })} />
-                                            </Form.Group>
-                                        </Col>
-                                        <Col className="col-2">
-                                            <Form.Group>
-                                                <Form.Label>Cena do</Form.Label>
-                                                <Form.Control type="number" min="0" value={filtry.cenaDo} onChange={(event) => setFiltry({ ...filtry, cenaDo: event.target.value })} />
-                                            </Form.Group>
-                                        </Col>
-                                        <Col>
-                                            <Form.Group>
-                                                <Form.Label>Kategoria</Form.Label>
-                                                <Form.Select value={filtry.kategoria} onChange={(event) => setFiltry({ ...filtry, kategoria: event.target.value })}>
-                                                    <option value="">Wszystkie</option>
-                                                    <option>Kategoria 1</option>
-                                                    <option>Kategoria 2</option>
-                                                    <option>Kategoria 3</option>
-                                                </Form.Select>
-                                            </Form.Group>
-                                        </Col>
-                                        <Col>
-                                            <Button variant="outline-secondary" type="button" onClick={() => setFiltry({ fraza: '', cenaOd: '', cenaDo: '', kategoria: '' })}>Wyczyść filtry</Button>
-                                        </Col>
-                                    </Row>
+                                <Form className="table-filters-form">
+                                    <Form.Group>
+                                        <Form.Label>Szukaj po nazwie, kodzie lub PKWiU</Form.Label>
+                                        <Form.Control type="text" value={filtry.fraza} onChange={(event) => setFiltry({ ...filtry, fraza: event.target.value })} />
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label>Cena od</Form.Label>
+                                        <Form.Control type="number" min="0" value={filtry.cenaOd} onChange={(event) => setFiltry({ ...filtry, cenaOd: event.target.value })} />
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label>Cena do</Form.Label>
+                                        <Form.Control type="number" min="0" value={filtry.cenaDo} onChange={(event) => setFiltry({ ...filtry, cenaDo: event.target.value })} />
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label>Kategoria</Form.Label>
+                                        <Form.Select value={filtry.kategoria} onChange={(event) => setFiltry({ ...filtry, kategoria: event.target.value })}>
+                                            <option value="">Wszystkie</option>
+                                            <option>Kategoria 1</option>
+                                            <option>Kategoria 2</option>
+                                            <option>Kategoria 3</option>
+                                        </Form.Select>
+                                    </Form.Group>
+                                    <Button variant="outline-secondary" type="button" onClick={() => setFiltry({ fraza: '', cenaOd: '', cenaDo: '', kategoria: '' })}>Wyczyść filtry</Button>
                                 </Form>
                             </Accordion.Body>
                         </Accordion.Item>
