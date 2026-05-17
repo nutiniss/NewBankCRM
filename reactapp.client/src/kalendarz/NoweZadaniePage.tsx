@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -73,6 +73,8 @@ const checklistTemplates = [
     'Przekazanie do analityka',
 ]
 
+const taskReminderOptions = ['Brak', 'Dzień przed', 'W dniu terminu']
+
 type SectionProps = {
     title: string
     icon: string
@@ -116,6 +118,7 @@ const RelatedObjectRow = ({ id, label, placeholder, options }: RelatedObjectRowP
 )
 
 export const NoweZadanie = () => {
+    const [selectedReminder, setSelectedReminder] = useState(taskReminderOptions[0])
     return (
         <Container fluid className="new-meeting-page pb-4">
             <Form>
@@ -193,7 +196,7 @@ export const NoweZadanie = () => {
                                 <Col xs={12}>
                                     <Form.Label>Przypomnienie</Form.Label>
                                     <ButtonGroup className="meeting-reminder-group" aria-label="Wybór przypomnienia dla zadania">
-                                        {['Brak', 'Dzień przed', 'W dniu terminu'].map((reminder, index) => (
+                                        {taskReminderOptions.map((reminder, index) => (
                                             <ToggleButton
                                                 key={reminder}
                                                 id={`taskReminder${index}`}
@@ -201,7 +204,8 @@ export const NoweZadanie = () => {
                                                 variant="outline-primary"
                                                 name="taskReminder"
                                                 value={reminder}
-                                                defaultChecked={index === 0}
+                                                checked={selectedReminder === reminder}
+                                                onChange={(event) => setSelectedReminder(event.currentTarget.value)}
                                             >
                                                 {reminder}
                                             </ToggleButton>
