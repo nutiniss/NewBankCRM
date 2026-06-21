@@ -6,6 +6,7 @@ import Table from 'react-bootstrap/Table'
 import { Link } from 'react-router-dom'
 import { useMemo, useState } from 'react'
 import { Wydarzenie } from '../types/kalendarz/wydarzenie'
+import { applySortDirection, comparePolishDate, compareText, getNextSortConfig, getSortLabel, SortConfig } from '../tableSorting'
 
 const wydarzenia: Wydarzenie[] = [
     { data: '21.04.2026', godzina: '10:30', typ: 'Spotkanie', opis: 'Baltic Logistics Sp. z o.o. — spotkanie zdalne', klient: 'Baltic Logistics Sp. z o.o.' },
@@ -16,6 +17,7 @@ const wydarzenia: Wydarzenie[] = [
 
 export const Kalendarz = () => {
     const [filtry, setFiltry] = useState({ fraza: '', typ: '', priorytet: '' })
+    const [sortowanie, setSortowanie] = useState<SortConfig<'data' | 'godzina' | 'typ' | 'opis'>>({ key: 'data', direction: 'asc' })
 
     const getEditPath = (wydarzenie: Wydarzenie) => {
         if (wydarzenie.typ === 'Spotkanie') {
@@ -25,12 +27,29 @@ export const Kalendarz = () => {
         return `/nowe-zadanie?termin=${encodeURIComponent(wydarzenie.data)}&tryb=edycja`
     }
 
-    const listaPoFiltrowaniu = useMemo(() => wydarzenia.filter((wydarzenie) => {
+    const listaPoFiltrowaniu = useMemo(() => [...wydarzenia.filter((wydarzenie) => {
         const fraza = filtry.fraza.toLowerCase()
         return (!fraza || [wydarzenie.data, wydarzenie.godzina, wydarzenie.opis, wydarzenie.klient].some((wartosc) => wartosc?.toLowerCase().includes(fraza)))
             && (!filtry.typ || wydarzenie.typ === filtry.typ)
             && (!filtry.priorytet || wydarzenie.priorytet === filtry.priorytet)
-    }), [filtry])
+    })].sort((a, b) => applySortDirection(
+        sortowanie.key === 'data' ? comparePolishDate(a.data, b.data) || compareText(a.godzina, b.godzina) : compareText(a[sortowanie.key], b[sortowanie.key]),
+        sortowanie.direction,
+    )), [filtry, sortowanie])
+
+    const dniTygodnia = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek']
+    const datyTygodnia = ['21.04.2026', '22.04.2026', '23.04.2026', '24.04.2026', '25.04.2026']
+    const wydarzeniaWTygodniu = useMemo(() => datyTygodnia.map((data, index) => ({
+        data,
+        dzien: dniTygodnia[index],
+        wydarzenia: listaPoFiltrowaniu.filter((wydarzenie) => wydarzenie.data === data),
+    })), [listaPoFiltrowaniu])
+
+    const naglowekSortowania = (key: typeof sortowanie.key, label: string) => (
+        <button type="button" className="sortable-table-header" onClick={() => setSortowanie((aktualne) => getNextSortConfig(aktualne, key))}>
+            {label} <span>{getSortLabel(sortowanie, key)}</span>
+        </button>
+    )
 
     return (
         <Container fluid>
@@ -45,10 +64,36 @@ export const Kalendarz = () => {
                 </aside>
                 <main className="table-content-area">
                     <div className="table-results-count text-muted">Wyniki: {listaPoFiltrowaniu.length} z {wydarzenia.length}</div>
+                    <section className="weekly-calendar mb-3" aria-label="Kalendarz tygodniowy">
+                        <div className="weekly-calendar-header">
+                            <h2>Kalendarz tygodniowy</h2>
+                            <span>21–25.04.2026</span>
+                        </div>
+                        <div className="weekly-calendar-grid">
+                            {wydarzeniaWTygodniu.map((dzien) => (
+                                <article className="weekly-calendar-day" key={dzien.data}>
+                                    <div className="weekly-calendar-day-header">
+                                        <strong>{dzien.dzien}</strong>
+                                        <span>{dzien.data}</span>
+                                    </div>
+                                    <div className="weekly-calendar-events">
+                                        {dzien.wydarzenia.map((wydarzenie) => (
+                                            <Link to={getEditPath(wydarzenie)} className={`weekly-calendar-event weekly-calendar-event-${wydarzenie.typ.toLowerCase()}`} key={`${wydarzenie.data}-${wydarzenie.godzina}-${wydarzenie.opis}`}>
+                                                <span>{wydarzenie.godzina}</span>
+                                                <strong>{wydarzenie.typ}</strong>
+                                                <small>{wydarzenie.opis}</small>
+                                            </Link>
+                                        ))}
+                                        {dzien.wydarzenia.length === 0 && <p className="weekly-calendar-empty">Brak wydarzeń</p>}
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+                    </section>
                     <div className="business-table-shell">
                         <Table responsive hover className="business-table">
                             <thead>
-                                <tr><th>Data</th><th>Godzina</th><th>Typ</th><th>Opis</th><th className="business-table-actions-header">Akcje</th></tr>
+                                <tr><th>{naglowekSortowania('data', 'Data')}</th><th>{naglowekSortowania('godzina', 'Godzina')}</th><th>{naglowekSortowania('typ', 'Typ')}</th><th>{naglowekSortowania('opis', 'Opis')}</th><th className="business-table-actions-header">Akcje</th></tr>
                             </thead>
                             <tbody>
                                 {listaPoFiltrowaniu.map((item) => (

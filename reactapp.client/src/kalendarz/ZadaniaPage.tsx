@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import { useMemo, useState } from 'react'
 import { Zadanie } from '../types/kalendarz/zadanie'
 import { ZadanieItem } from './ZadanieItem'
+import { applySortDirection, comparePolishDate, compareText, getNextSortConfig, getSortLabel, SortConfig } from '../tableSorting'
 
 const listaZadan: Zadanie[] = [
     { nazwa: 'Aktualizacja analizy finansowej klienta HydroTech', priorytet: 'Wysoki', termin: '22.04.2026', status: 'W toku' },
@@ -17,13 +18,29 @@ const listaZadan: Zadanie[] = [
 
 export const Zadania = () => {
     const [filtry, setFiltry] = useState({ fraza: '', priorytet: '', status: '' })
+    const [sortowanie, setSortowanie] = useState<SortConfig<'nazwa' | 'priorytet' | 'termin' | 'status'>>({ key: 'termin', direction: 'asc' })
 
-    const listaPoFiltrowaniu = useMemo(() => listaZadan.filter((zadanie) => {
+    const listaPoFiltrowaniu = useMemo(() => [...listaZadan.filter((zadanie) => {
         const fraza = filtry.fraza.toLowerCase()
         return (!fraza || [zadanie.nazwa, zadanie.termin].some((wartosc) => wartosc.toLowerCase().includes(fraza)))
             && (!filtry.priorytet || zadanie.priorytet === filtry.priorytet)
             && (!filtry.status || zadanie.status === filtry.status)
-    }), [filtry])
+    })].sort((a, b) => {
+        const priorytety = { Wysoki: 3, Średni: 2, Niski: 1 } as Record<string, number>
+        const wynik = sortowanie.key === 'termin'
+            ? comparePolishDate(a.termin, b.termin)
+            : sortowanie.key === 'priorytet'
+                ? (priorytety[a.priorytet] ?? 0) - (priorytety[b.priorytet] ?? 0)
+                : compareText(a[sortowanie.key], b[sortowanie.key])
+
+        return applySortDirection(wynik, sortowanie.direction)
+    }), [filtry, sortowanie])
+
+    const naglowekSortowania = (key: typeof sortowanie.key, label: string) => (
+        <button type="button" className="sortable-table-header" onClick={() => setSortowanie((aktualne) => getNextSortConfig(aktualne, key))}>
+            {label} <span>{getSortLabel(sortowanie, key)}</span>
+        </button>
+    )
 
     return (
         <Container fluid>
@@ -39,7 +56,7 @@ export const Zadania = () => {
                 <main className="table-content-area">
                     <div className="business-table-shell">
                         <Table responsive hover className="business-table">
-                            <thead><tr><th>Zadanie</th><th>Priorytet</th><th>Termin realizacji</th><th>Status</th><th className="business-table-actions-header">Akcje</th></tr></thead>
+                            <thead><tr><th>{naglowekSortowania('nazwa', 'Zadanie')}</th><th>{naglowekSortowania('priorytet', 'Priorytet')}</th><th>{naglowekSortowania('termin', 'Termin realizacji')}</th><th>{naglowekSortowania('status', 'Status')}</th><th className="business-table-actions-header">Akcje</th></tr></thead>
                             <tbody>
                                 {listaPoFiltrowaniu.map((item) => <ZadanieItem key={`${item.nazwa}-${item.termin}`} zadanie={item} editPath={`/nowe-zadanie?zadanie=${encodeURIComponent(item.nazwa)}&tryb=edycja`} />)}
                                 {listaPoFiltrowaniu.length === 0 && <tr><td colSpan={5} className="text-center text-muted">Brak zadań spełniających wybrane kryteria.</td></tr>}
