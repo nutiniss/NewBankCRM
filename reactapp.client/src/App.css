@@ -1133,16 +1133,39 @@ a {
 
 .opportunity-stage {
     padding: 0.85rem 0.75rem;
+    border: 0;
     border-radius: 0.65rem;
     background: rgba(var(--color1-rgb), 0.68);
     color: var(--color-white);
     text-align: center;
     font-weight: 700;
     white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.opportunity-stage:hover,
+.opportunity-stage:focus-visible {
+    background: rgba(var(--color1-rgb), 0.82);
+    box-shadow: 0 0 0 0.18rem rgba(var(--color4-rgb), 0.2);
+}
+
+.opportunity-stage:focus-visible {
+    outline: 0;
 }
 
 .opportunity-stage.active {
     background: #0b5ea8;
+    transform: translateY(-1px);
+}
+
+.opportunity-align-bottom {
+    display: flex;
+    align-items: flex-end;
+}
+
+.opportunity-align-bottom > * {
+    width: 100%;
 }
 
 .opportunity-inline-action {
