@@ -1,4 +1,5 @@
 export type Okazja = {
+    id?: string;
     klient: string;
     produkt: string;
     etap: string;
