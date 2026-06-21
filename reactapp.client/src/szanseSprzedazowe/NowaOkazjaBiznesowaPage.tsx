@@ -19,7 +19,7 @@ const contacts = ['Jan Nowak', 'Katarzyna Zielińska', 'Michał Wiśniewski', 'A
 const customers = ['Alfa Sp. z o.o.', 'Beta Manufacturing S.A.', 'Centrum Logistyczne Gamma', 'Delta Trade Sp. z o.o.']
 const cases = ['Aktualizacja danych rejestrowych', 'Wniosek kredytowy 02/2026', 'Reklamacja opłaty za przelew']
 const meetings = ['Omówienie potrzeb finansowych', 'Prezentacja oferty leasingowej', 'Negocjacje warunków kredytu']
-const stages = ['Przedstawienie oferty', 'Przygotowanie dokumentacji', 'Przekazanie do opinii', 'Decyzja', 'Negocjacje', 'Koniec']
+const stages = ['Przedstawienie oferty', 'Dokumentacja', 'Przekazanie do opinii', 'Decyzja', 'Negocjacje', 'Zamknięcie']
 
 type SectionProps = { title: string; icon: string; children: ReactNode; className?: string }
 type RelatedObjectRowProps = { id: string; label: string; placeholder: string; options: string[] }
@@ -87,14 +87,13 @@ export const NowaOkazjaBiznesowa = () => {
                                 <Col sm={6}><Form.Check className="meeting-check" type="checkbox" id="opportunityRefinancing" label="Refinansowanie" defaultChecked /></Col>
                                 <Col xs={12}><Form.Group controlId="opportunityRefinancingBank"><Form.Label>Refinansowanie - bank *</Form.Label><Form.Select defaultValue=""><option value="" disabled>Wybierz bank</option>{banks.map((bank) => <option key={bank}>{bank}</option>)}</Form.Select></Form.Group></Col>
                                 <Col sm={6} className="opportunity-align-bottom"><Form.Group controlId="opportunityExpectedSignDate"><Form.Label>Przewidywana data podpisania umowy *</Form.Label><Form.Control type="date" /></Form.Group></Col>
-                                <Col sm={6}><Form.Group controlId="opportunityProbability"><Form.Label>Prawdopodobieństwo *</Form.Label><Form.Select defaultValue=""><option value="" disabled>Wybierz</option>{probabilities.map((probability) => <option key={probability}>{probability}</option>)}</Form.Select></Form.Group></Col>
+                                <Col sm={6} className="opportunity-align-bottom"><Form.Group controlId="opportunityProbability"><Form.Label>Prawdopodobieństwo *</Form.Label><Form.Select defaultValue=""><option value="" disabled>Wybierz</option>{probabilities.map((probability) => <option key={probability}>{probability}</option>)}</Form.Select></Form.Group></Col>
                                 <Col sm={6}><Form.Group controlId="opportunityCompetitors"><Form.Label>Konkurujące banki</Form.Label><Form.Select defaultValue=""><option value="" disabled>Wybierz</option>{banks.map((bank) => <option key={bank}>{bank}</option>)}</Form.Select></Form.Group></Col>
                                 <Col sm={6}><Form.Group controlId="opportunityIncome"><Form.Label>Planowany dochód (PLN)</Form.Label><Form.Control type="number" /></Form.Group></Col>
                                 <Col sm={6} className="opportunity-align-bottom"><Form.Check className="meeting-check" type="checkbox" id="opportunityJoint" label="Szansa wspólna" /></Col>
                                 <Col sm={6}><Form.Group controlId="opportunityAuthor"><Form.Label>Autor</Form.Label><Form.Select defaultValue="Paulina Kowalska">{employees.map((employee) => <option key={employee}>{employee}</option>)}</Form.Select></Form.Group></Col>
                             </Row>
-                        </Section>
-                        <Section title="Udostępnione dla" icon="♙"><div className="opportunity-share-header"><span>Nazwisko i imię</span><span>Telefon</span><Button variant="link" size="sm">Udostępnij</Button></div><div className="opportunity-empty-state">Brak danych</div></Section>
+                        </Section>                       
                     </div>
                 </Col>
 
@@ -110,7 +109,7 @@ export const NowaOkazjaBiznesowa = () => {
                                 <Col sm={6}><Form.Group controlId="opportunityLiquidityCost"><Form.Label>Koszt płynności (%)</Form.Label><Form.Control type="number" step="0.01" /></Form.Group></Col>
                                 <Col sm={6}><Form.Group controlId="opportunityRoe"><Form.Label>ROE szacowane (%)</Form.Label><Form.Control type="number" step="0.01" /></Form.Group></Col>
                                 <Col sm={6}><Form.Group controlId="opportunityProjectName"><Form.Label>Nazwa projektu</Form.Label><Form.Control type="text" /></Form.Group></Col>
-                                <Col sm={6}><Form.Check className="meeting-check" type="checkbox" id="opportunityConsortium" label="Konsorcjum" /></Col>
+                                <Col sm={6} className="opportunity-align-bottom"><Form.Check className="meeting-check" type="checkbox" id="opportunityConsortium" label="Konsorcjum" /></Col>
                                 <Col sm={6}><Form.Group controlId="opportunityCollateral"><Form.Label>Potencjalne zabezpieczenia</Form.Label><Form.Select defaultValue=""><option value="" disabled>Wybierz</option><option>Hipoteka</option><option>Gwarancja</option><option>Cesja należności</option></Form.Select></Form.Group></Col>
                                 <Col xs={12}><Form.Group controlId="opportunityLaunchSchedule"><Form.Label>Harmonogram uruchomienia</Form.Label><Form.Select defaultValue=""><option value="" disabled>Wybierz harmonogram</option><option>Jednorazowo</option><option>Transze miesięczne</option><option>Transze kwartalne</option></Form.Select></Form.Group></Col>
                             </Row>

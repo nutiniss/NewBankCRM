@@ -1155,7 +1155,7 @@ a {
 }
 
 .opportunity-stage.active {
-    background: #0b5ea8;
+    background:rgba(var(--color1-rgb), 1);
     transform: translateY(-1px);
 }
 
