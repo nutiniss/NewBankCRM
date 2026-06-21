@@ -1227,40 +1227,28 @@ a {
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    margin-bottom: 1rem;
-    padding: 0.9rem 1rem;
+    padding: 0.7rem 0.85rem;
     border: 1px solid rgba(var(--color1-rgb), 0.08);
-    border-radius: 0.9rem;
-    background: linear-gradient(135deg, rgba(var(--color5-rgb), 0.3), rgba(255, 255, 255, 0.96));
-    box-shadow: 0 0.5rem 1.4rem rgba(var(--color1-rgb), 0.08);
-}
-
-.pipeline-eyebrow {
-    margin: 0 0 0.1rem;
-    color: rgba(var(--color1-rgb), 0.68);
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    border-radius: 0.85rem;
+    background: linear-gradient(135deg, rgba(var(--color5-rgb), 0.36), rgba(255, 255, 255, 0.96));
+    box-shadow: 0 0.35rem 1rem rgba(var(--color1-rgb), 0.07);
 }
 
 .pipeline-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
     margin: 0;
     color: var(--color1);
-    font-size: clamp(1.45rem, 2vw, 2rem);
-    font-weight: 800;
+    font-size: clamp(1rem, 1.15vw, 1.35rem);
+    line-height: 1.2;
+    font-weight: 700;
 }
 
-.pipeline-toolbar-actions {
+.pipeline-actions {
     display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-}
-
-.pipeline-badge {
-    border: 1px solid rgba(var(--color1-rgb), 0.12);
-    font-weight: 600;
+    align-items: center;
+    white-space: nowrap;
 }
 
 .pipeline-board {
@@ -1307,12 +1295,8 @@ a {
     border-left: 0.25rem solid rgba(var(--color3-rgb), 0.8);
     border-radius: 0.35rem;
     box-shadow: 0 0.4rem 1rem rgba(var(--color1-rgb), 0.08);
-    cursor: grab;
+    cursor: pointer;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.pipeline-card:active {
-    cursor: grabbing;
 }
 
 .pipeline-card:hover {
@@ -1381,11 +1365,11 @@ a {
 
 @media (max-width: 767.98px) {
     .pipeline-toolbar {
-        align-items: flex-start;
         flex-direction: column;
     }
 
-    .pipeline-toolbar-actions {
-        justify-content: flex-start;
+    .pipeline-actions,
+    .pipeline-actions .btn {
+        width: 100%;
     }
 }

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import Badge from 'react-bootstrap/Badge'
+import { Link, useNavigate } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
 import type { Okazja } from '../types/szanseSprzedazowe/okazja'
@@ -27,6 +28,7 @@ const formatDate = (value: string) => new Intl.DateTimeFormat('pl-PL').format(ne
 const isOverdue = (value: string) => new Date(`${value}T00:00:00`) < today
 
 export const Pipeline = () => {
+    const navigate = useNavigate()
     const [opportunities, setOpportunities] = useState(initialOpportunities)
     const [draggedOpportunityId, setDraggedOpportunityId] = useState<string | null>(null)
 
@@ -34,6 +36,8 @@ export const Pipeline = () => {
         stage,
         opportunities: opportunities.filter((opportunity) => opportunity.etap === stage),
     })), [opportunities])
+
+    const getOpportunityEditPath = (opportunity: Okazja) => `/nowa-okazja-biznesowa?id=${encodeURIComponent(opportunity.id ?? '')}&klient=${encodeURIComponent(opportunity.klient)}&produkt=${encodeURIComponent(opportunity.produkt)}&tryb=edycja`
 
     const moveOpportunity = (stage: string) => {
         if (!draggedOpportunityId) return
@@ -46,14 +50,10 @@ export const Pipeline = () => {
 
     return (
         <Container fluid className="pipeline-page pb-4">
-            <div className="pipeline-toolbar">
-                <div>
-                    <p className="pipeline-eyebrow">Szanse sprzedażowe</p>
-                    <h1 className="pipeline-title">Pipeline</h1>
-                </div>
-                <div className="pipeline-toolbar-actions">
-                    <Badge bg="light" text="dark" className="pipeline-badge">Ostatnie aktualizacje</Badge>
-                    <Badge bg="light" text="dark" className="pipeline-badge">Przeciągnij kafelek, aby zmienić etap</Badge>
+            <div className="pipeline-toolbar mb-4">
+                <h1 className="pipeline-title mb-0">Pipeline</h1>
+                <div className="pipeline-actions">
+                    <Link to="/nowa-okazja-biznesowa" className="btn btn-primary">Dodaj</Link>
                 </div>
             </div>
 
@@ -79,8 +79,17 @@ export const Pipeline = () => {
                                         key={opportunity.id}
                                         className={`pipeline-card${overdue ? ' pipeline-card-overdue' : ''}`}
                                         draggable
+                                        onClick={() => navigate(getOpportunityEditPath(opportunity))}
                                         onDragStart={() => setDraggedOpportunityId(opportunity.id ?? null)}
                                         onDragEnd={() => setDraggedOpportunityId(null)}
+                                        role="button"
+                                        tabIndex={0}
+                                        onKeyDown={(event) => {
+                                            if (event.key === 'Enter' || event.key === ' ') {
+                                                event.preventDefault()
+                                                navigate(getOpportunityEditPath(opportunity))
+                                            }
+                                        }}
                                     >
                                         <Card.Body>
                                             <div className="pipeline-card-meta">
