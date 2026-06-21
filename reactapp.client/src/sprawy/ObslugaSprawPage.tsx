@@ -70,13 +70,31 @@ const sprawyStartowe: ObslugiwanaSprawa[] = [
 export const ObslugaSpraw = () => {
     const [sprawy, setSprawy] = useState(sprawyStartowe)
     const [filtryOtwarte, setFiltryOtwarte] = useState(true)
-    const [filtry, setFiltry] = useState({ priorytet: '', status: 'W toku' })
+    const [filtry, setFiltry] = useState({
+        fraza: '',
+        priorytet: '',
+        status: 'W toku',
+        typSprawy: '',
+        wlasciciel: '',
+        terminDo: '',
+    })
     const [wybranyNumer, setWybranyNumer] = useState(sprawyStartowe[0].numer)
 
-    const listaPoFiltrowaniu = useMemo(() => sprawy.filter((sprawa) => (
-        (!filtry.priorytet || sprawa.priorytet === filtry.priorytet)
-        && (!filtry.status || sprawa.status === filtry.status)
-    )), [filtry, sprawy])
+    const opcjeFiltrow = useMemo(() => ({
+        typySpraw: Array.from(new Set(sprawy.map((sprawa) => sprawa.typSprawy))),
+        wlasciciele: Array.from(new Set(sprawy.map((sprawa) => sprawa.wlasciciel))),
+    }), [sprawy])
+
+    const listaPoFiltrowaniu = useMemo(() => sprawy.filter((sprawa) => {
+        const fraza = filtry.fraza.trim().toLowerCase()
+
+        return (!fraza || [sprawa.numer, sprawa.nazwaKlienta, sprawa.typSprawy, sprawa.produkt].some((wartosc) => wartosc.toLowerCase().includes(fraza)))
+            && (!filtry.priorytet || sprawa.priorytet === filtry.priorytet)
+            && (!filtry.status || sprawa.status === filtry.status)
+            && (!filtry.typSprawy || sprawa.typSprawy === filtry.typSprawy)
+            && (!filtry.wlasciciel || sprawa.wlasciciel === filtry.wlasciciel)
+            && (!filtry.terminDo || sprawa.termin <= filtry.terminDo)
+    }), [filtry, sprawy])
 
     const wybranaSprawa = sprawy.find((sprawa) => sprawa.numer === wybranyNumer) ?? listaPoFiltrowaniu[0] ?? sprawy[0]
 
@@ -93,7 +111,13 @@ export const ObslugaSpraw = () => {
                     <Accordion.Header onClick={() => setFiltryOtwarte((otwarte) => !otwarte)}>Filtrowanie i sortowanie</Accordion.Header>
                     <Accordion.Body>
                         <Row className="g-3 align-items-end">
-                            <Col md={3} sm={6}>
+                            <Col lg={4} md={6}>
+                                <Form.Group controlId="caseServiceSearchFilter">
+                                    <Form.Label>Szukaj sprawy</Form.Label>
+                                    <Form.Control placeholder="Numer, klient, typ lub produkt" value={filtry.fraza} onChange={(event) => setFiltry({ ...filtry, fraza: event.target.value })} />
+                                </Form.Group>
+                            </Col>
+                            <Col lg={2} md={3} sm={6}>
                                 <Form.Group controlId="caseServicePriorityFilter">
                                     <Form.Label>Priorytet</Form.Label>
                                     <Form.Select value={filtry.priorytet} onChange={(event) => setFiltry({ ...filtry, priorytet: event.target.value })}>
@@ -104,7 +128,7 @@ export const ObslugaSpraw = () => {
                                     </Form.Select>
                                 </Form.Group>
                             </Col>
-                            <Col md={3} sm={6}>
+                            <Col lg={2} md={3} sm={6}>
                                 <Form.Group controlId="caseServiceStatusFilter">
                                     <Form.Label>Status</Form.Label>
                                     <Form.Select value={filtry.status} onChange={(event) => setFiltry({ ...filtry, status: event.target.value })}>
@@ -115,8 +139,32 @@ export const ObslugaSpraw = () => {
                                     </Form.Select>
                                 </Form.Group>
                             </Col>
-                            <Col md={{ span: 3, offset: 3 }} sm={12}>
-                                <Button variant="outline-secondary" className="w-100" type="button" onClick={() => setFiltry({ priorytet: '', status: '' })}>Wyczyść filtry</Button>
+                            <Col lg={2} md={4} sm={6}>
+                                <Form.Group controlId="caseServiceTypeFilter">
+                                    <Form.Label>Typ sprawy</Form.Label>
+                                    <Form.Select value={filtry.typSprawy} onChange={(event) => setFiltry({ ...filtry, typSprawy: event.target.value })}>
+                                        <option value="">Wszystkie</option>
+                                        {opcjeFiltrow.typySpraw.map((typ) => <option key={typ}>{typ}</option>)}
+                                    </Form.Select>
+                                </Form.Group>
+                            </Col>
+                            <Col lg={2} md={4} sm={6}>
+                                <Form.Group controlId="caseServiceOwnerFilter">
+                                    <Form.Label>Właściciel</Form.Label>
+                                    <Form.Select value={filtry.wlasciciel} onChange={(event) => setFiltry({ ...filtry, wlasciciel: event.target.value })}>
+                                        <option value="">Wszyscy</option>
+                                        {opcjeFiltrow.wlasciciele.map((wlasciciel) => <option key={wlasciciel}>{wlasciciel}</option>)}
+                                    </Form.Select>
+                                </Form.Group>
+                            </Col>
+                            <Col lg={2} md={4} sm={6}>
+                                <Form.Group controlId="caseServiceDueDateFilter">
+                                    <Form.Label>Termin do</Form.Label>
+                                    <Form.Control type="date" value={filtry.terminDo} onChange={(event) => setFiltry({ ...filtry, terminDo: event.target.value })} />
+                                </Form.Group>
+                            </Col>
+                            <Col lg={2} md={4} sm={12}>
+                                <Button variant="outline-secondary" className="w-100" type="button" onClick={() => setFiltry({ fraza: '', priorytet: '', status: '', typSprawy: '', wlasciciel: '', terminDo: '' })}>Wyczyść filtry</Button>
                             </Col>
                         </Row>
                     </Accordion.Body>
@@ -141,7 +189,6 @@ export const ObslugaSpraw = () => {
                 <main className="case-details-panel">
                     <div className="case-details-header">
                         <div>
-                            <p className="case-details-eyebrow">Szczegóły sprawy</p>
                             <h1>{wybranaSprawa.numer}</h1>
                         </div>
                         <Button variant="primary" type="button">Zapisz zmiany</Button>

@@ -1442,20 +1442,24 @@ a {
     gap: 0.35rem;
     width: 100%;
     min-height: 5.25rem;
-    padding: 0.65rem;
+    padding: 0.75rem;
     text-align: left;
-    background: rgba(255, 255, 255, 0.72);
-    border: 3px solid #17131f;
+    background: rgba(255, 255, 255, 0.84);
+    border: 1px solid rgba(var(--color1-rgb), 0.12);
+    border-left: 0.25rem solid rgba(var(--color3-rgb), 0.8);
+    border-radius: 0.7rem;
     color: #17131f;
+    box-shadow: 0 0.4rem 1rem rgba(var(--color1-rgb), 0.08);
     transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .case-ticket:hover,
 .case-ticket:focus,
 .case-ticket.active {
-    border-color: var(--color4);
-    box-shadow: 0 0.5rem 1rem rgba(var(--color1-rgb), 0.16);
-    transform: translateY(-1px);
+    border-color: rgba(var(--color3-rgb), 0.4);
+    border-left-color: var(--color4);
+    box-shadow: 0 0.65rem 1.35rem rgba(var(--color1-rgb), 0.14);
+    transform: translateY(-2px);
 }
 
 .case-ticket-row {
