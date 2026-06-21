@@ -1094,3 +1094,103 @@ a {
         grid-template-columns: 1fr;
     }
 }
+
+.new-opportunity-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid rgba(var(--color1-rgb), 0.08);
+    border-radius: 0.85rem;
+    background: linear-gradient(135deg, rgba(var(--color5-rgb), 0.36), rgba(255, 255, 255, 0.96));
+    box-shadow: 0 0.35rem 1rem rgba(var(--color1-rgb), 0.07);
+}
+
+.new-opportunity-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0;
+    color: var(--color1);
+    font-size: clamp(1rem, 1.15vw, 1.35rem);
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.new-opportunity-actions {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.opportunity-stage-bar {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(8rem, 1fr));
+    gap: 0.5rem;
+    overflow-x: auto;
+}
+
+.opportunity-stage {
+    padding: 0.85rem 0.75rem;
+    border-radius: 0.65rem;
+    background: rgba(var(--color1-rgb), 0.68);
+    color: var(--color-white);
+    text-align: center;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.opportunity-stage.active {
+    background: #0b5ea8;
+}
+
+.opportunity-inline-action {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.5rem;
+}
+
+.opportunity-share-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(7rem, 0.6fr) auto;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 0.75rem;
+    border-radius: 0.65rem;
+    background: rgba(var(--color1-rgb), 0.12);
+    color: var(--color1);
+    font-weight: 700;
+}
+
+.opportunity-empty-state {
+    padding: 1.5rem;
+    color: rgba(var(--color1-rgb), 0.65);
+    text-align: center;
+    font-weight: 600;
+}
+
+@media (max-width: 767.98px) {
+    .new-opportunity-toolbar {
+        flex-direction: column;
+    }
+
+    .new-opportunity-actions,
+    .new-opportunity-actions .btn {
+        width: 100%;
+    }
+
+    .new-opportunity-actions {
+        flex-direction: column-reverse;
+        gap: 0.5rem;
+    }
+
+    .new-opportunity-actions .btn {
+        margin-right: 0 !important;
+    }
+
+    .opportunity-inline-action,
+    .opportunity-share-header {
+        grid-template-columns: 1fr;
+    }
+}
