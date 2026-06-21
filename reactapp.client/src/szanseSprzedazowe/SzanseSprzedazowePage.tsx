@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import { useMemo, useState } from 'react'
 import { Okazja } from '../types/szanseSprzedazowe/okazja'
 import { OkazjaItem } from './OkazjaItem'
+import { applySortDirection, compareNumber, comparePolishDate, compareText, getNextSortConfig, getSortLabel, SortConfig } from '../tableSorting'
 
 const listaOkazji: Okazja[] = [
     { klient: 'Baltic Logistics Sp. z o.o.', produkt: 'Kredyt obrotowy', etap: 'Negocjacje warunków', dataZamkniecia: '28.04.2026', wartosc: 2400000 },
@@ -17,15 +18,30 @@ const listaOkazji: Okazja[] = [
 
 export const SzanseSprzedazowe = () => {
     const [filtry, setFiltry] = useState({ fraza: '', etap: '', wartoscOd: '', wartoscDo: '' })
+    const [sortowanie, setSortowanie] = useState<SortConfig<'klient' | 'produkt' | 'etap' | 'dataZamkniecia' | 'wartosc'>>({ key: 'dataZamkniecia', direction: 'asc' })
 
-    const listaPoFiltrowaniu = useMemo(() => listaOkazji.filter((okazja) => {
+    const listaPoFiltrowaniu = useMemo(() => [...listaOkazji.filter((okazja) => {
         const fraza = filtry.fraza.toLowerCase()
         const wartosc = okazja.wartosc ?? 0
         return (!fraza || [okazja.klient, okazja.produkt].some((wartoscTekstowa) => wartoscTekstowa.toLowerCase().includes(fraza)))
             && (!filtry.etap || okazja.etap === filtry.etap)
             && (!filtry.wartoscOd || wartosc >= Number(filtry.wartoscOd))
             && (!filtry.wartoscDo || wartosc <= Number(filtry.wartoscDo))
-    }), [filtry])
+    })].sort((a, b) => {
+        const wynik = sortowanie.key === 'dataZamkniecia'
+            ? comparePolishDate(a.dataZamkniecia, b.dataZamkniecia)
+            : sortowanie.key === 'wartosc'
+                ? compareNumber(a.wartosc, b.wartosc)
+                : compareText(a[sortowanie.key], b[sortowanie.key])
+
+        return applySortDirection(wynik, sortowanie.direction)
+    }), [filtry, sortowanie])
+
+    const naglowekSortowania = (key: typeof sortowanie.key, label: string) => (
+        <button type="button" className="sortable-table-header" onClick={() => setSortowanie((aktualne) => getNextSortConfig(aktualne, key))}>
+            {label} <span>{getSortLabel(sortowanie, key)}</span>
+        </button>
+    )
 
     return (
         <Container fluid>
@@ -51,10 +67,10 @@ export const SzanseSprzedazowe = () => {
                         <Table responsive hover className="business-table">
                             <thead>
                                 <tr>
-                                    <th>Nazwa klienta</th>
-                                    <th>Produkt</th>
-                                    <th>Etap</th>
-                                    <th>Planowana data zamknięcia etapu</th>
+                                    <th>{naglowekSortowania('klient', 'Nazwa klienta')}</th>
+                                    <th>{naglowekSortowania('produkt', 'Produkt')}</th>
+                                    <th>{naglowekSortowania('etap', 'Etap')}</th>
+                                    <th>{naglowekSortowania('dataZamkniecia', 'Planowana data zamknięcia etapu')}</th>
                                     <th className="business-table-actions-header">Akcje</th>
                                 </tr>
                             </thead>

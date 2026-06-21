@@ -163,8 +163,8 @@ export const ObslugaSpraw = () => {
                                     <Form.Control type="date" value={filtry.terminDo} onChange={(event) => setFiltry({ ...filtry, terminDo: event.target.value })} />
                                 </Form.Group>
                             </Col>
-                            <Col lg={2} md={4} sm={12}>
-                                <Button variant="outline-secondary" className="w-100" type="button" onClick={() => setFiltry({ fraza: '', priorytet: '', status: '', typSprawy: '', wlasciciel: '', terminDo: '' })}>Wyczyść filtry</Button>
+                            <Col lg={2} md={4} sm={12} className="case-service-clear-filter-col">
+                                <Button variant="outline-secondary" type="button" onClick={() => setFiltry({ fraza: '', priorytet: '', status: '', typSprawy: '', wlasciciel: '', terminDo: '' })}>Wyczyść filtry</Button>
                             </Col>
                         </Row>
                     </Accordion.Body>

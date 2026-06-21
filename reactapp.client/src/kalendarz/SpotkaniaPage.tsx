@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import { useMemo, useState } from 'react'
 import { Spotkanie } from '../types/kalendarz/spotkanie'
 import { SpotkanieItem } from './SpotkanieItem'
+import { applySortDirection, comparePolishDate, compareText, getNextSortConfig, getSortLabel, SortConfig } from '../tableSorting'
 
 const listaSpotkan: Spotkanie[] = [
     { firma: 'Alfa Sp. z o.o.', typ: 'Spotkanie', dataIGodzina: '21.04.2026, 10:30', miejsce: 'Bank', temat: 'Analiza potrzeb finansowych', organizator: 'Anna Kowalska', status: 'Zaplanowane' },
@@ -21,13 +22,23 @@ const listaSpotkan: Spotkanie[] = [
 
 export const Spotkania = () => {
     const [filtry, setFiltry] = useState({ fraza: '', miejsce: '', status: '' })
+    const [sortowanie, setSortowanie] = useState<SortConfig<'firma' | 'typ' | 'dataIGodzina' | 'miejsce' | 'temat' | 'organizator' | 'status'>>({ key: 'dataIGodzina', direction: 'asc' })
 
-    const listaPoFiltrowaniu = useMemo(() => listaSpotkan.filter((spotkanie) => {
+    const listaPoFiltrowaniu = useMemo(() => [...listaSpotkan.filter((spotkanie) => {
         const fraza = filtry.fraza.toLowerCase()
         return (!fraza || [spotkanie.firma, spotkanie.dataIGodzina, spotkanie.temat, spotkanie.organizator].some((wartosc) => wartosc.toLowerCase().includes(fraza)))
             && (!filtry.miejsce || spotkanie.miejsce === filtry.miejsce)
             && (!filtry.status || spotkanie.status === filtry.status)
-    }), [filtry])
+    })].sort((a, b) => applySortDirection(
+        sortowanie.key === 'dataIGodzina' ? comparePolishDate(a.dataIGodzina, b.dataIGodzina) : compareText(a[sortowanie.key], b[sortowanie.key]),
+        sortowanie.direction,
+    )), [filtry, sortowanie])
+
+    const naglowekSortowania = (key: typeof sortowanie.key, label: string) => (
+        <button type="button" className="sortable-table-header" onClick={() => setSortowanie((aktualne) => getNextSortConfig(aktualne, key))}>
+            {label} <span>{getSortLabel(sortowanie, key)}</span>
+        </button>
+    )
 
     return (
         <Container fluid>
@@ -45,7 +56,7 @@ export const Spotkania = () => {
                 <main className="table-content-area">
                     <div className="business-table-shell">
                         <Table responsive hover className="business-table">
-                            <thead><tr><th>Firma</th><th>Typ</th><th>Data i godzina</th><th>Miejsce</th><th>Temat</th><th>Organizator</th><th>Status</th><th className="business-table-actions-header">Akcje</th></tr></thead>
+                            <thead><tr><th>{naglowekSortowania('firma', 'Firma')}</th><th>{naglowekSortowania('typ', 'Typ')}</th><th>{naglowekSortowania('dataIGodzina', 'Data i godzina')}</th><th>{naglowekSortowania('miejsce', 'Miejsce')}</th><th>{naglowekSortowania('temat', 'Temat')}</th><th>{naglowekSortowania('organizator', 'Organizator')}</th><th>{naglowekSortowania('status', 'Status')}</th><th className="business-table-actions-header">Akcje</th></tr></thead>
                             <tbody>
                                 {listaPoFiltrowaniu.map((item) => <SpotkanieItem key={`${item.firma}-${item.dataIGodzina}`} spotkanie={item} editPath={`/nowe-spotkanie?firma=${encodeURIComponent(item.firma)}&tryb=edycja`} />)}
                                 {listaPoFiltrowaniu.length === 0 && <tr><td colSpan={8} className="text-center text-muted">Brak spotkań spełniających wybrane kryteria.</td></tr>}

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import { useMemo, useState } from 'react'
 import { Sprawa } from '../types/sprawy/sprawa'
 import { SprawaItem } from './SprawaItem'
+import { applySortDirection, compareText, getNextSortConfig, getSortLabel, SortConfig } from '../tableSorting'
 
 const listaSpraw: Sprawa[] = [
     { numer: 'SPR-2026-0142', tytul: 'Reklamacja opłaty za przelew zagraniczny', typSprawy: 'Reklamacja opłaty', nazwaKlienta: 'Alfa Sp. z o.o.', produkt: 'Rachunek bieżący', priorytet: 'Wysoki', status: 'W toku', wlasciciel: 'A. Doradca', dataZgloszenia: '2026-06-17', termin: '2026-06-24' },
@@ -17,16 +18,22 @@ const listaSpraw: Sprawa[] = [
 
 export const Sprawy = () => {
     const [filtry, setFiltry] = useState({ fraza: '', priorytet: '', status: '', typSprawy: '' })
+    const [sortowanie, setSortowanie] = useState<SortConfig<'numer' | 'tytul' | 'nazwaKlienta' | 'typSprawy' | 'produkt' | 'priorytet' | 'status' | 'wlasciciel' | 'termin'>>({ key: 'termin', direction: 'asc' })
 
-    const listaPoFiltrowaniu = useMemo(() => listaSpraw.filter((sprawa) => {
+    const listaPoFiltrowaniu = useMemo(() => [...listaSpraw.filter((sprawa) => {
         const fraza = filtry.fraza.trim().toLowerCase()
         return (!fraza || [sprawa.numer, sprawa.tytul, sprawa.nazwaKlienta, sprawa.typSprawy, sprawa.produkt].some((wartosc) => wartosc.toLowerCase().includes(fraza)))
             && (!filtry.priorytet || sprawa.priorytet === filtry.priorytet)
             && (!filtry.status || sprawa.status === filtry.status)
             && (!filtry.typSprawy || sprawa.typSprawy === filtry.typSprawy)
-    }), [filtry])
+    })].sort((a, b) => applySortDirection(compareText(a[sortowanie.key], b[sortowanie.key]), sortowanie.direction)), [filtry, sortowanie])
 
     const typySpraw = useMemo(() => Array.from(new Set(listaSpraw.map((sprawa) => sprawa.typSprawy))), [])
+    const naglowekSortowania = (key: typeof sortowanie.key, label: string) => (
+        <button type="button" className="sortable-table-header" onClick={() => setSortowanie((aktualne) => getNextSortConfig(aktualne, key))}>
+            {label} <span>{getSortLabel(sortowanie, key)}</span>
+        </button>
+    )
 
     return (
         <Container fluid>
@@ -81,15 +88,15 @@ export const Sprawy = () => {
                         <Table responsive hover className="business-table">
                             <thead>
                                 <tr>
-                                    <th>Numer</th>
-                                    <th>Tytuł</th>
-                                    <th>Klient</th>
-                                    <th>Typ sprawy</th>
-                                    <th>Produkt</th>
-                                    <th>Priorytet</th>
-                                    <th>Status</th>
-                                    <th>Właściciel</th>
-                                    <th>Termin</th>
+                                    <th>{naglowekSortowania('numer', 'Numer')}</th>
+                                    <th>{naglowekSortowania('tytul', 'Tytuł')}</th>
+                                    <th>{naglowekSortowania('nazwaKlienta', 'Klient')}</th>
+                                    <th>{naglowekSortowania('typSprawy', 'Typ sprawy')}</th>
+                                    <th>{naglowekSortowania('produkt', 'Produkt')}</th>
+                                    <th>{naglowekSortowania('priorytet', 'Priorytet')}</th>
+                                    <th>{naglowekSortowania('status', 'Status')}</th>
+                                    <th>{naglowekSortowania('wlasciciel', 'Właściciel')}</th>
+                                    <th>{naglowekSortowania('termin', 'Termin')}</th>
                                     <th className="business-table-actions-header">Akcje</th>
                                 </tr>
                             </thead>

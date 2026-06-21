@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import { useEffect, useMemo, useState } from 'react'
 import { Klient } from '../types/portfel/klient'
 import { KlientItem } from './KlientItem'
+import { applySortDirection, comparePolishDate, compareText, getNextSortConfig, getSortLabel, SortConfig } from '../tableSorting'
 
 type FiltryKlientow = {
     fraza: string
@@ -95,6 +96,7 @@ const filtrDatyRelacji = (dataRelacji: string, od: string, doWartosci: string) =
 export const MoiKlienci = () => {
     const [listaKlientow, setListaKlientow] = useState<Klient[]>([])
     const [filtry, setFiltry] = useState<FiltryKlientow>(pusteFiltry)
+    const [sortowanie, setSortowanie] = useState<SortConfig<'nazwa' | 'status' | 'branza' | 'dataNawiazaniaRelacji' | 'segment' | 'statusRelacji' | 'statusMbo' | 'kredytowy' | 'kraj'>>({ key: 'nazwa', direction: 'asc' })
 
     useEffect(() => {
         const listaKlientowZApi: Klient[] = [
@@ -260,7 +262,7 @@ export const MoiKlienci = () => {
         setFiltry((aktualne) => ({ ...aktualne, [nazwa]: wartosc }))
     }
 
-    const listaPoFiltrowaniu = useMemo(() => listaKlientow.filter((klient) => {
+    const listaPoFiltrowaniu = useMemo(() => [...listaKlientow.filter((klient) => {
         const pasujeDoFrazy = !filtry.fraza || [
             klient.nazwa,
             klient.nazwaSkrocona,
@@ -290,7 +292,16 @@ export const MoiKlienci = () => {
             && filtrLiczbowy(klient.przychodyNetto, filtry.przychodyNettoOd, filtry.przychodyNettoDo)
             && filtrLiczbowy(klient.liczbaPracownikow, filtry.pracownicyOd, '')
             && filtrDatyRelacji(klient.dataNawiazaniaRelacji, filtry.dataRelacjiOd, filtry.dataRelacjiDo)
-    }), [listaKlientow, filtry])   
+    })].sort((a, b) => applySortDirection(
+        sortowanie.key === 'dataNawiazaniaRelacji' ? comparePolishDate(a.dataNawiazaniaRelacji, b.dataNawiazaniaRelacji) : compareText(a[sortowanie.key], b[sortowanie.key]),
+        sortowanie.direction,
+    )), [listaKlientow, filtry, sortowanie])
+
+    const naglowekSortowania = (key: typeof sortowanie.key, label: string) => (
+        <button type="button" className="sortable-table-header" onClick={() => setSortowanie((aktualne) => getNextSortConfig(aktualne, key))}>
+            {label} <span>{getSortLabel(sortowanie, key)}</span>
+        </button>
+    )
 
     return (
         <Container fluid>
@@ -459,15 +470,15 @@ export const MoiKlienci = () => {
                 <Table responsive hover className="business-table">
                 <thead>
                     <tr>
-                        <th>Nazwa klienta</th>
-                        <th>Status</th>
-                        <th>Branża</th>
-                        <th>Data nawiązania relacji</th>
-                        <th>Segment</th>
-                        <th>Status relacji</th>
-                        <th>Status MBO</th>
-                        <th>Kredytowy</th>
-                        <th>Kraj</th>
+                        <th>{naglowekSortowania('nazwa', 'Nazwa klienta')}</th>
+                        <th>{naglowekSortowania('status', 'Status')}</th>
+                        <th>{naglowekSortowania('branza', 'Branża')}</th>
+                        <th>{naglowekSortowania('dataNawiazaniaRelacji', 'Data nawiązania relacji')}</th>
+                        <th>{naglowekSortowania('segment', 'Segment')}</th>
+                        <th>{naglowekSortowania('statusRelacji', 'Status relacji')}</th>
+                        <th>{naglowekSortowania('statusMbo', 'Status MBO')}</th>
+                        <th>{naglowekSortowania('kredytowy', 'Kredytowy')}</th>
+                        <th>{naglowekSortowania('kraj', 'Kraj')}</th>
                         <th className="business-table-actions-header">Akcje</th>
                     </tr>
                 </thead>
