@@ -33,7 +33,7 @@ export const SzanseSprzedazowe = () => {
                 <aside className="table-filters-sidebar">
                     <Accordion defaultActiveKey="filtrowanie">
                         <Accordion.Item eventKey="filtrowanie">
-                            <Accordion.Header>Filtrowanie i sortowanie</Accordion.Header>
+                            <Accordion.Header>Filtrowanie</Accordion.Header>
                             <Accordion.Body>
                                 <Form className="table-filters-form">
                                     <Form.Group><Form.Label>Szukaj po kliencie lub produkcie</Form.Label><Form.Control type="text" value={filtry.fraza} onChange={(event) => setFiltry({ ...filtry, fraza: event.target.value })} /></Form.Group>

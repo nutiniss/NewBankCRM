@@ -36,7 +36,7 @@ export const Kalendarz = () => {
         <Container fluid>
             <div className="table-view-layout">
                 <aside className="table-filters-sidebar">
-                    <Accordion defaultActiveKey="filtrowanie"><Accordion.Item eventKey="filtrowanie"><Accordion.Header>Filtrowanie i sortowanie</Accordion.Header><Accordion.Body><Form className="table-filters-form">
+                    <Accordion defaultActiveKey="filtrowanie"><Accordion.Item eventKey="filtrowanie"><Accordion.Header>Filtrowanie</Accordion.Header><Accordion.Body><Form className="table-filters-form">
                         <Form.Group><Form.Label>Szukaj po opisie, kliencie lub dacie</Form.Label><Form.Control type="text" value={filtry.fraza} onChange={(event) => setFiltry({ ...filtry, fraza: event.target.value })} /></Form.Group>
                         <Form.Group><Form.Label>Typ</Form.Label><Form.Select value={filtry.typ} onChange={(event) => setFiltry({ ...filtry, typ: event.target.value })}><option value="">Wszystkie</option><option>Spotkanie</option><option>Zadanie</option></Form.Select></Form.Group>
                         <Form.Group><Form.Label>Priorytet zadania</Form.Label><Form.Select value={filtry.priorytet} onChange={(event) => setFiltry({ ...filtry, priorytet: event.target.value })}><option value="">Wszystkie</option><option>Wysoki</option><option>Średni</option><option>Niski</option></Form.Select></Form.Group>

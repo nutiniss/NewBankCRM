@@ -34,7 +34,7 @@ export const Spotkania = () => {
             <div className="table-view-layout">
                 <aside className="table-filters-sidebar">
                     <Accordion defaultActiveKey="filtrowanie">
-                        <Accordion.Item eventKey="filtrowanie"><Accordion.Header>Filtrowanie i sortowanie</Accordion.Header><Accordion.Body><Form className="table-filters-form">
+                        <Accordion.Item eventKey="filtrowanie"><Accordion.Header>Filtrowanie</Accordion.Header><Accordion.Body><Form className="table-filters-form">
                             <Form.Group><Form.Label>Szukaj po firmie, terminie, temacie lub organizatorze</Form.Label><Form.Control type="text" value={filtry.fraza} onChange={(event) => setFiltry({ ...filtry, fraza: event.target.value })} /></Form.Group>
                             <Form.Group><Form.Label>Miejsce</Form.Label><Form.Select value={filtry.miejsce} onChange={(event) => setFiltry({ ...filtry, miejsce: event.target.value })}><option value="">Wszystkie</option><option>Bank</option><option>Siedziba klienta</option><option>Inne</option></Form.Select></Form.Group>
                             <Form.Group><Form.Label>Status</Form.Label><Form.Select value={filtry.status} onChange={(event) => setFiltry({ ...filtry, status: event.target.value })}><option value="">Wszystkie</option><option>Zaplanowane</option><option>Zakończone</option><option>Anulowane</option></Form.Select></Form.Group>

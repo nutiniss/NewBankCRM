@@ -298,7 +298,7 @@ export const MoiKlienci = () => {
                 <aside className="table-filters-sidebar">
                     <Accordion defaultActiveKey="filtrowanie" className="mb-3">
                         <Accordion.Item eventKey="filtrowanie">
-                            <Accordion.Header>Filtrowanie i sortowanie</Accordion.Header>
+                            <Accordion.Header>Filtrowanie</Accordion.Header>
                             <Accordion.Body>
                                 <Form className="table-filters-form">
                                     <Form.Group controlId="clientSearch">

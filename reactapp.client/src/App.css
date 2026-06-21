@@ -732,10 +732,23 @@ a {
 .table-filters-form {
     display: grid;
     gap: 0.85rem;
+    min-height: 100%;
+}
+
+.table-filters-actions {
+    align-self: end;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
 }
 
 .table-filters-form .btn {
-    width: 100%;
+    justify-self: end;
+    width: auto;
+}
+
+.table-filters-actions .btn {
+    min-width: 11rem;
 }
 
 

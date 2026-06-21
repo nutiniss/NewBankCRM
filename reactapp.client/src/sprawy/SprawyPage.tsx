@@ -8,19 +8,25 @@ import { useMemo, useState } from 'react'
 import { Sprawa } from '../types/sprawy/sprawa'
 import { SprawaItem } from './SprawaItem'
 
+const listaSpraw: Sprawa[] = [
+    { numer: 'SPR-2026-0142', tytul: 'Reklamacja opłaty za przelew zagraniczny', typSprawy: 'Reklamacja opłaty', nazwaKlienta: 'Alfa Sp. z o.o.', produkt: 'Rachunek bieżący', priorytet: 'Wysoki', status: 'W toku', wlasciciel: 'A. Doradca', dataZgloszenia: '2026-06-17', termin: '2026-06-24' },
+    { numer: 'SPR-2026-0139', tytul: 'Aktualizacja pełnomocnictw i limitów', typSprawy: 'Zmiana pełnomocnictwa', nazwaKlienta: 'Beta Manufacturing S.A.', produkt: 'Bankowość internetowa', priorytet: 'Średni', status: 'W toku', wlasciciel: 'A. Doradca', dataZgloszenia: '2026-06-14', termin: '2026-06-21' },
+    { numer: 'SPR-2026-0128', tytul: 'Zaświadczenie o obsłudze kredytu', typSprawy: 'Zaświadczenie bankowe', nazwaKlienta: 'Centrum Logistyczne Gamma', produkt: 'Kredyt obrotowy', priorytet: 'Niski', status: 'Nowa', wlasciciel: 'M. Opiekun', dataZgloszenia: '2026-06-09', termin: '2026-06-26' },
+    { numer: 'SPR-2026-0121', tytul: 'Wydanie dokumentacji do rachunku', typSprawy: 'Wydanie dokumentacji', nazwaKlienta: 'Delta Trade Sp. z o.o.', produkt: 'Rachunek bieżący', priorytet: 'Średni', status: 'Oczekuje na klienta', wlasciciel: 'P. Kowalska', dataZgloszenia: '2026-06-06', termin: '2026-06-28' },
+]
+
 export const Sprawy = () => {
-    const listaSpraw: Sprawa[] = [
-        { numer: 'SPR-001', tytul: 'Reklamacja polisy', priorytet: 'Wysoki', status: 'Otwarte' },
-        { numer: 'SPR-002', tytul: 'Aktualizacja pełnomocnictwa', priorytet: 'Średni', status: 'W toku' },
-    ]
-    const [filtry, setFiltry] = useState({ fraza: '', priorytet: '', status: '' })
+    const [filtry, setFiltry] = useState({ fraza: '', priorytet: '', status: '', typSprawy: '' })
 
     const listaPoFiltrowaniu = useMemo(() => listaSpraw.filter((sprawa) => {
-        const fraza = filtry.fraza.toLowerCase()
-        return (!fraza || [sprawa.numer, sprawa.tytul].some((wartosc) => wartosc.toLowerCase().includes(fraza)))
+        const fraza = filtry.fraza.trim().toLowerCase()
+        return (!fraza || [sprawa.numer, sprawa.tytul, sprawa.nazwaKlienta, sprawa.typSprawy, sprawa.produkt].some((wartosc) => wartosc.toLowerCase().includes(fraza)))
             && (!filtry.priorytet || sprawa.priorytet === filtry.priorytet)
             && (!filtry.status || sprawa.status === filtry.status)
-    }), [filtry, listaSpraw])
+            && (!filtry.typSprawy || sprawa.typSprawy === filtry.typSprawy)
+    }), [filtry])
+
+    const typySpraw = useMemo(() => Array.from(new Set(listaSpraw.map((sprawa) => sprawa.typSprawy))), [])
 
     return (
         <Container fluid>
@@ -28,12 +34,19 @@ export const Sprawy = () => {
                 <aside className="table-filters-sidebar">
                     <Accordion defaultActiveKey="filtrowanie">
                         <Accordion.Item eventKey="filtrowanie">
-                            <Accordion.Header>Filtrowanie i sortowanie</Accordion.Header>
+                            <Accordion.Header>Filtrowanie</Accordion.Header>
                             <Accordion.Body>
                                 <Form className="table-filters-form">
                                     <Form.Group>
-                                        <Form.Label>Szukaj po numerze lub tytule</Form.Label>
+                                        <Form.Label>Szukaj po numerze, tytule, kliencie, typie lub produkcie</Form.Label>
                                         <Form.Control type="text" value={filtry.fraza} onChange={(event) => setFiltry({ ...filtry, fraza: event.target.value })} />
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label>Typ sprawy</Form.Label>
+                                        <Form.Select value={filtry.typSprawy} onChange={(event) => setFiltry({ ...filtry, typSprawy: event.target.value })}>
+                                            <option value="">Wszystkie</option>
+                                            {typySpraw.map((typ) => <option key={typ}>{typ}</option>)}
+                                        </Form.Select>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Priorytet</Form.Label>
@@ -42,18 +55,22 @@ export const Sprawy = () => {
                                             <option>Wysoki</option>
                                             <option>Średni</option>
                                             <option>Niski</option>
+                                            <option>Krytyczny</option>
                                         </Form.Select>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Status</Form.Label>
                                         <Form.Select value={filtry.status} onChange={(event) => setFiltry({ ...filtry, status: event.target.value })}>
                                             <option value="">Wszystkie</option>
-                                            <option>Otwarte</option>
+                                            <option>Nowa</option>
                                             <option>W toku</option>
-                                            <option>Zamknięte</option>
+                                            <option>Oczekuje na klienta</option>
+                                            <option>Zamknięta</option>
                                         </Form.Select>
                                     </Form.Group>
-                                    <Button variant="outline-secondary" type="button" onClick={() => setFiltry({ fraza: '', priorytet: '', status: '' })}>Wyczyść filtry</Button>
+                                    <div className="table-filters-actions">
+                                        <Button variant="outline-secondary" type="button" onClick={() => setFiltry({ fraza: '', priorytet: '', status: '', typSprawy: '' })}>Wyczyść filtry</Button>
+                                    </div>
                                 </Form>
                             </Accordion.Body>
                         </Accordion.Item>
@@ -66,14 +83,19 @@ export const Sprawy = () => {
                                 <tr>
                                     <th>Numer</th>
                                     <th>Tytuł</th>
+                                    <th>Klient</th>
+                                    <th>Typ sprawy</th>
+                                    <th>Produkt</th>
                                     <th>Priorytet</th>
                                     <th>Status</th>
+                                    <th>Właściciel</th>
+                                    <th>Termin</th>
                                     <th className="business-table-actions-header">Akcje</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {listaPoFiltrowaniu.map((item, index) => <SprawaItem key={index} sprawa={item} editPath={`/nowa-sprawa?numer=${encodeURIComponent(item.numer)}&tryb=edycja`} />)}
-                                {listaPoFiltrowaniu.length === 0 && <tr><td colSpan={5} className="text-center text-muted">Brak spraw spełniających wybrane kryteria.</td></tr>}
+                                {listaPoFiltrowaniu.map((item) => <SprawaItem key={item.numer} sprawa={item} editPath={`/nowa-sprawa?numer=${encodeURIComponent(item.numer)}&tryb=edycja`} />)}
+                                {listaPoFiltrowaniu.length === 0 && <tr><td colSpan={10} className="text-center text-muted">Brak spraw spełniających wybrane kryteria.</td></tr>}
                             </tbody>
                         </Table>
                     </div>

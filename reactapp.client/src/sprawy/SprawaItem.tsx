@@ -12,8 +12,13 @@ export const SprawaItem = (props: SprawaProps) => {
         <tr>
             <td>{sprawa.numer}</td>
             <td>{sprawa.tytul}</td>
+            <td>{sprawa.nazwaKlienta}</td>
+            <td>{sprawa.typSprawy}</td>
+            <td>{sprawa.produkt}</td>
             <td>{sprawa.priorytet}</td>
             <td>{sprawa.status}</td>
+            <td>{sprawa.wlasciciel}</td>
+            <td>{sprawa.termin}</td>
             <td className="business-table-actions-cell">
                 <Link to={editPath} className="btn btn-outline-primary btn-sm table-action-button">Edytuj</Link>
             </td>
