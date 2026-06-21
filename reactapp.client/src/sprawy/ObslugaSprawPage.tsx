@@ -110,7 +110,7 @@ export const ObslugaSpraw = () => {
                 <Accordion.Item eventKey="filtry">
                     <Accordion.Header onClick={() => setFiltryOtwarte((otwarte) => !otwarte)}>Filtrowanie</Accordion.Header>
                     <Accordion.Body>
-                        <Row className="g-3 align-items-end">
+                        <Row className="g-2 align-items-end">
                             <Col lg={4} md={6}>
                                 <Form.Group controlId="caseServiceSearchFilter">
                                     <Form.Label>Szukaj sprawy</Form.Label>

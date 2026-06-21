@@ -173,7 +173,7 @@ export const NowaSprawa = () => {
                             <Section title="Dokumenty i zgody" icon="⇪">
                                 <Row className="g-3">
                                     <Col sm={6}><Form.Check className="meeting-check" type="checkbox" id="casePowerOfAttorney" label="Zweryfikowano reprezentację" /></Col>
-                                    <Col sm={6}><Form.Check className="meeting-check" type="checkbox" id="caseConsent" label="Zgody i dyspozycje kompletne" /></Col>
+                                    <Col sm={6}><Form.Check className="meeting-check" type="checkbox" id="caseConsent" label="Zgody i dyspozycje " /></Col>
                                     <Col xs={12}>
                                         <div className="meeting-upload-box">
                                             <div className="meeting-upload-icon" aria-hidden="true">⇪</div>

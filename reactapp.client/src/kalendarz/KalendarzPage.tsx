@@ -10,7 +10,7 @@ import { applySortDirection, comparePolishDate, compareText, getNextSortConfig, 
 
 const wydarzenia: Wydarzenie[] = [
     { data: '21.04.2026', godzina: '10:30', typ: 'Spotkanie', opis: 'Baltic Logistics Sp. z o.o. — spotkanie zdalne', klient: 'Baltic Logistics Sp. z o.o.' },
-    { data: '22.04.2026', godzina: '09:00', typ: 'Zadanie', opis: 'Aktualizacja analizy finansowej klienta HydroTech', priorytet: 'Wysoki' },
+    { data: '23.04.2026', godzina: '09:00', typ: 'Zadanie', opis: 'Aktualizacja analizy finansowej klienta HydroTech', priorytet: 'Wysoki' },
     { data: '22.04.2026', godzina: '13:00', typ: 'Spotkanie', opis: 'MediCore Group — spotkanie stacjonarne', klient: 'MediCore Group' },
     { data: '24.04.2026', godzina: '08:30', typ: 'Zadanie', opis: 'Przygotowanie oferty cross-sellingowej dla MediCore', priorytet: 'Średni' },
 ]
@@ -63,7 +63,6 @@ export const Kalendarz = () => {
                     </Form></Accordion.Body></Accordion.Item></Accordion>
                 </aside>
                 <main className="table-content-area">
-                    <div className="table-results-count text-muted">Wyniki: {listaPoFiltrowaniu.length} z {wydarzenia.length}</div>
                     <section className="weekly-calendar mb-3" aria-label="Kalendarz tygodniowy">
                         <div className="weekly-calendar-header">
                             <h2>Kalendarz tygodniowy</h2>

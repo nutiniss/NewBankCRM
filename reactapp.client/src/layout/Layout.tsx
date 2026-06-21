@@ -33,7 +33,7 @@ const oferty: Oferta[] = [
 ];
 
 export function Layout() {
-    const [isSideBannerCollapsed, setIsSideBannerCollapsed] = useState(false);
+    const [isSideBannerCollapsed, setIsSideBannerCollapsed] = useState(true);
 
     return (
         <div className="app d-flex flex-column min-vh-100">

@@ -1400,6 +1400,17 @@ a {
     color: var(--color1);
 }
 
+.case-service-filters .form-label {
+    color: rgba(var(--color1-rgb), 0.78);
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+.case-service-filters .form-select, .form-control {
+    border-color: rgba(var(--color1-rgb), 0.18);
+    border-radius: 0.75rem;
+}
+
 .case-service-filters .accordion-item {
     overflow: hidden;
     border: 0;
@@ -1590,8 +1601,8 @@ a {
 
 .weekly-calendar-header h2 {
     margin: 0;
-    font-size: 1.05rem;
-    font-weight: 800;
+    font-size: 1rem;
+    font-weight: 700;
 }
 
 .weekly-calendar-header span {
@@ -1798,12 +1809,14 @@ a {
     display: flex;
     justify-content: flex-end;
     align-self: flex-end;
+    margin-left: auto;
 }
 
 .case-service-clear-filter-col .btn {
     width: auto;
     min-width: 11rem;
 }
+
 
 @media (max-width: 991.98px) {
     .weekly-calendar-grid {
