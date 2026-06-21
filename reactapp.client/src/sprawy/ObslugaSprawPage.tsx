@@ -108,7 +108,7 @@ export const ObslugaSpraw = () => {
         <Container fluid className="case-service-page pb-4">
             <Accordion activeKey={filtryOtwarte ? 'filtry' : undefined} className="case-service-filters mb-3">
                 <Accordion.Item eventKey="filtry">
-                    <Accordion.Header onClick={() => setFiltryOtwarte((otwarte) => !otwarte)}>Filtrowanie i sortowanie</Accordion.Header>
+                    <Accordion.Header onClick={() => setFiltryOtwarte((otwarte) => !otwarte)}>Filtrowanie</Accordion.Header>
                     <Accordion.Body>
                         <Row className="g-3 align-items-end">
                             <Col lg={4} md={6}>

@@ -8,14 +8,14 @@ import type { Okazja } from '../types/szanseSprzedazowe/okazja'
 const stages = ['Przedstawienie oferty', 'Dokumentacja', 'Przekazanie do opinii', 'Decyzja', 'Negocjacje', 'Zamknięcie']
 
 const initialOpportunities: Okazja[] = [
-    { id: '000920', klient: 'Accenture Sp. z o.o.', produkt: 'Finansowanie floty', etap: 'Przedstawienie oferty', dataZamkniecia: '2026-07-10', wartosc: 20000000 },
+    { id: '000920', klient: 'Firma Konsultingowa S.A.', produkt: 'Finansowanie floty', etap: 'Przedstawienie oferty', dataZamkniecia: '2026-07-10', wartosc: 20000000 },
     { id: '000785', klient: 'Baltic Logistics Sp. z o.o.', produkt: 'Kredyt inwestycyjny', etap: 'Przedstawienie oferty', dataZamkniecia: '2026-06-18', wartosc: 10000000 },
     { id: '000700', klient: 'Delta Trade Sp. z o.o.', produkt: 'Bankowość transakcyjna', etap: 'Przekazanie do opinii', dataZamkniecia: '2026-07-12', wartosc: 60000 },
     { id: '000598', klient: 'Centrum Logistyczne Gamma', produkt: 'Gotówka', etap: 'Przekazanie do opinii', dataZamkniecia: '2026-06-15', wartosc: 50000 },
     { id: '000420', klient: 'Alfa Sp. z o.o.', produkt: 'Treasury', etap: 'Dokumentacja', dataZamkniecia: '2026-06-10', wartosc: 5000000 },
     { id: '000789', klient: 'TRE IRS', produkt: 'Instrumenty pochodne', etap: 'Dokumentacja', dataZamkniecia: '2026-07-01', wartosc: 3000000 },
-    { id: '000617', klient: 'Accenture Sp. z o.o.', produkt: 'TRE FX Hedge', etap: 'Dokumentacja', dataZamkniecia: '2026-07-18', wartosc: 2000000 },
-    { id: '000555', klient: 'Accenture Sp. z o.o.', produkt: 'Karty Charge', etap: 'Negocjacje', dataZamkniecia: '2026-07-10', wartosc: 30000 },
+    { id: '000617', klient: 'Firma Konsultingowa S.A.', produkt: 'TRE FX Hedge', etap: 'Dokumentacja', dataZamkniecia: '2026-07-18', wartosc: 2000000 },
+    { id: '000555', klient: 'Firma Konsultingowa S.A.', produkt: 'Karty Charge', etap: 'Negocjacje', dataZamkniecia: '2026-07-10', wartosc: 30000 },
     { id: '000696', klient: 'Beta Manufacturing S.A.', produkt: 'Kredyt akwizycyjny', etap: 'Negocjacje', dataZamkniecia: '2026-08-16', wartosc: 70000000 },
     { id: '000717', klient: 'GreenPol Energia', produkt: 'Kredyt inwestycyjny', etap: 'Zamknięcie', dataZamkniecia: '2026-06-16', wartosc: 20000000 },
     { id: '000828', klient: 'MediCore Group', produkt: 'TRE Invest', etap: 'Zamknięcie', dataZamkniecia: '2026-07-10', wartosc: 4000000 },
