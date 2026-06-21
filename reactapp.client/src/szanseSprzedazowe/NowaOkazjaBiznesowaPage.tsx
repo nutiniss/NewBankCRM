@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -47,16 +47,29 @@ const RelatedObjectRow = ({ id, label, placeholder, options }: RelatedObjectRowP
     </div>
 )
 
-export const NowaOkazjaBiznesowa = () => (
-    <Container fluid className="new-meeting-page pb-4">
+export const NowaOkazjaBiznesowa = () => {
+    const [activeStage, setActiveStage] = useState(stages[0])
+
+    return (
+        <Container fluid className="new-meeting-page pb-4">
         <Form>
             <div className="new-opportunity-toolbar mb-4">
-                <h1 className="new-opportunity-title mb-0">Dodawanie szansy sprzedażowej</h1>
+                <h1 className="new-opportunity-title mb-0">Dodaj szansę sprzedażową</h1>
                 <div className="new-opportunity-actions"><Button variant="info" className="me-2">Anuluj</Button><Button variant="primary">Zapisz</Button></div>
             </div>
 
             <div className="opportunity-stage-bar mb-4" aria-label="Etapy procesu sprzedaży">
-                {stages.map((stage, index) => <div key={stage} className={`opportunity-stage ${index === 0 ? 'active' : ''}`}>{stage}</div>)}
+                {stages.map((stage) => (
+                    <button
+                        key={stage}
+                        type="button"
+                        className={`opportunity-stage ${activeStage === stage ? 'active' : ''}`}
+                        aria-pressed={activeStage === stage}
+                        onClick={() => setActiveStage(stage)}
+                    >
+                        {stage}
+                    </button>
+                ))}
             </div>
 
             <Row className="g-4 align-items-stretch">
@@ -73,11 +86,11 @@ export const NowaOkazjaBiznesowa = () => (
                                 <Col sm={6}><Form.Check className="meeting-check" type="checkbox" id="opportunityRenewal" label="Odnowienie" /></Col>
                                 <Col sm={6}><Form.Check className="meeting-check" type="checkbox" id="opportunityRefinancing" label="Refinansowanie" defaultChecked /></Col>
                                 <Col xs={12}><Form.Group controlId="opportunityRefinancingBank"><Form.Label>Refinansowanie - bank *</Form.Label><Form.Select defaultValue=""><option value="" disabled>Wybierz bank</option>{banks.map((bank) => <option key={bank}>{bank}</option>)}</Form.Select></Form.Group></Col>
-                                <Col sm={6}><Form.Group controlId="opportunityExpectedSignDate"><Form.Label>Przewidywana data podpisania umowy *</Form.Label><Form.Control type="date" /></Form.Group></Col>
+                                <Col sm={6} className="opportunity-align-bottom"><Form.Group controlId="opportunityExpectedSignDate"><Form.Label>Przewidywana data podpisania umowy *</Form.Label><Form.Control type="date" /></Form.Group></Col>
                                 <Col sm={6}><Form.Group controlId="opportunityProbability"><Form.Label>Prawdopodobieństwo *</Form.Label><Form.Select defaultValue=""><option value="" disabled>Wybierz</option>{probabilities.map((probability) => <option key={probability}>{probability}</option>)}</Form.Select></Form.Group></Col>
                                 <Col sm={6}><Form.Group controlId="opportunityCompetitors"><Form.Label>Konkurujące banki</Form.Label><Form.Select defaultValue=""><option value="" disabled>Wybierz</option>{banks.map((bank) => <option key={bank}>{bank}</option>)}</Form.Select></Form.Group></Col>
                                 <Col sm={6}><Form.Group controlId="opportunityIncome"><Form.Label>Planowany dochód (PLN)</Form.Label><Form.Control type="number" /></Form.Group></Col>
-                                <Col sm={6}><Form.Check className="meeting-check" type="checkbox" id="opportunityJoint" label="Szansa wspólna" /></Col>
+                                <Col sm={6} className="opportunity-align-bottom"><Form.Check className="meeting-check" type="checkbox" id="opportunityJoint" label="Szansa wspólna" /></Col>
                                 <Col sm={6}><Form.Group controlId="opportunityAuthor"><Form.Label>Autor</Form.Label><Form.Select defaultValue="Paulina Kowalska">{employees.map((employee) => <option key={employee}>{employee}</option>)}</Form.Select></Form.Group></Col>
                             </Row>
                         </Section>
@@ -109,11 +122,12 @@ export const NowaOkazjaBiznesowa = () => (
                 <Col xl={4}>
                     <div className="meeting-stack">
                         <Section title="Opis szansy" icon="✎"><Form.Group controlId="opportunityDescription"><Form.Label>Opis szansy</Form.Label><Form.Control as="textarea" rows={6} maxLength={5000} placeholder="0/5000" /></Form.Group></Section>
-                        <Section title="Parametry wniosku" icon="☑"><Row className="g-3"><Col sm={6}><Form.Group controlId="opportunityApplicationDate"><Form.Label>Data przyjęcia wniosku</Form.Label><Form.Control type="date" /></Form.Group></Col><Col sm={6}><Form.Group controlId="opportunityApplicationSendDate"><Form.Label>Planowana data wysyłki wniosku</Form.Label><Form.Control type="date" /></Form.Group></Col><Col sm={6}><Form.Group controlId="opportunityStatus"><Form.Label>Status</Form.Label><Form.Select defaultValue="W toku">{statuses.map((status) => <option key={status}>{status}</option>)}</Form.Select></Form.Group></Col><Col sm={6}><Form.Group controlId="opportunityForecast"><Form.Label>Forecast/Backup</Form.Label><Form.Select defaultValue=""><option value="" disabled>Wybierz</option><option>Forecast</option><option>Backup</option></Form.Select></Form.Group></Col><Col sm={6}><Form.Group controlId="opportunityFastTrack"><Form.Label>FastTrack</Form.Label><Form.Select defaultValue=""><option value="" disabled>Wybierz</option><option>Tak</option><option>Nie</option></Form.Select></Form.Group></Col><Col sm={6}><Form.Group controlId="opportunityRisk"><Form.Label>Poziom ryzyka</Form.Label><Form.Select defaultValue=""><option value="" disabled>Wybierz</option>{riskLevels.map((risk) => <option key={risk}>{risk}</option>)}</Form.Select></Form.Group></Col></Row></Section>
+                        <Section title="Parametry wniosku" icon="☑"><Row className="g-3"><Col sm={6} className="opportunity-align-bottom"><Form.Group controlId="opportunityApplicationDate"><Form.Label>Data przyjęcia wniosku</Form.Label><Form.Control type="date" /></Form.Group></Col><Col sm={6}><Form.Group controlId="opportunityApplicationSendDate"><Form.Label>Planowana data wysyłki wniosku</Form.Label><Form.Control type="date" /></Form.Group></Col><Col sm={6}><Form.Group controlId="opportunityStatus"><Form.Label>Status</Form.Label><Form.Select defaultValue="W toku">{statuses.map((status) => <option key={status}>{status}</option>)}</Form.Select></Form.Group></Col><Col sm={6}><Form.Group controlId="opportunityForecast"><Form.Label>Forecast/Backup</Form.Label><Form.Select defaultValue=""><option value="" disabled>Wybierz</option><option>Forecast</option><option>Backup</option></Form.Select></Form.Group></Col><Col sm={6}><Form.Group controlId="opportunityFastTrack"><Form.Label>FastTrack</Form.Label><Form.Select defaultValue=""><option value="" disabled>Wybierz</option><option>Tak</option><option>Nie</option></Form.Select></Form.Group></Col><Col sm={6}><Form.Group controlId="opportunityRisk"><Form.Label>Poziom ryzyka</Form.Label><Form.Select defaultValue=""><option value="" disabled>Wybierz</option>{riskLevels.map((risk) => <option key={risk}>{risk}</option>)}</Form.Select></Form.Group></Col></Row></Section>
                         <Section title="Powiązane obiekty" icon="⧉"><div className="meeting-related-list"><RelatedObjectRow id="opportunityRelatedCustomer" label="Klient" placeholder="Wybierz klienta" options={customers} /><RelatedObjectRow id="opportunityRelatedContact" label="Osoba kontaktowa" placeholder="Wybierz osobę" options={contacts} /><RelatedObjectRow id="opportunityRelatedCase" label="Sprawa" placeholder="Wybierz sprawę" options={cases} /><RelatedObjectRow id="opportunityRelatedMeeting" label="Spotkanie" placeholder="Wybierz spotkanie" options={meetings} /></div></Section>
                     </div>
                 </Col>
             </Row>
         </Form>
-    </Container>
-)
+        </Container>
+    )
+}
