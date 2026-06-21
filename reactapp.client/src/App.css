@@ -1373,3 +1373,147 @@ a {
         width: 100%;
     }
 }
+
+.case-service-page {
+    color: var(--color1);
+}
+
+.case-service-filters .accordion-item {
+    overflow: hidden;
+    border: 0;
+    border-radius: 1rem 1rem 0.25rem 0.25rem;
+    background: rgba(var(--color5-rgb), 0.18);
+}
+
+.case-service-filters .accordion-button {
+    background: linear-gradient(90deg, var(--color1), var(--color2));
+    color: var(--color-white);
+    font-weight: 700;
+    box-shadow: none;
+}
+
+.case-service-filters .accordion-button::after {
+    filter: brightness(0) invert(1);
+}
+
+.case-service-filters .accordion-body {
+    background: rgba(var(--color5-rgb), 0.22);
+}
+
+.case-service-workspace {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 1rem;
+    align-items: stretch;
+}
+
+.case-list-panel,
+.case-details-panel {
+    background: rgba(var(--color5-rgb), 0.18);
+    border: 1px solid rgba(var(--color1-rgb), 0.08);
+    box-shadow: 0 0.75rem 1.5rem rgba(var(--color1-rgb), 0.08);
+}
+
+.case-list-panel {
+    min-height: 36rem;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.case-list-panel h2 {
+    margin: 0;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(90deg, var(--color1), var(--color2));
+    color: var(--color-white);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.case-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.85rem;
+}
+
+.case-ticket {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    width: 100%;
+    min-height: 5.25rem;
+    padding: 0.65rem;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.72);
+    border: 3px solid #17131f;
+    color: #17131f;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.case-ticket:hover,
+.case-ticket:focus,
+.case-ticket.active {
+    border-color: var(--color4);
+    box-shadow: 0 0.5rem 1rem rgba(var(--color1-rgb), 0.16);
+    transform: translateY(-1px);
+}
+
+.case-ticket-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+}
+
+.case-ticket-client {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.case-list-empty {
+    margin: 1rem 0 0;
+    color: rgba(var(--color1-rgb), 0.7);
+}
+
+.case-details-panel {
+    min-height: 36rem;
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+}
+
+.case-details-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(var(--color1-rgb), 0.12);
+}
+
+.case-details-eyebrow {
+    margin-bottom: 0.2rem;
+    color: var(--color3);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.case-details-header h1 {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+@media (max-width: 991.98px) {
+    .case-service-workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .case-list-panel,
+    .case-details-panel {
+        min-height: auto;
+    }
+}

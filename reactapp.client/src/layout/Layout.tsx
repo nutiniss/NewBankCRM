@@ -86,6 +86,7 @@ export function Layout() {
 
                             <NavDropdown title="Sprawy" id="sprawy-menu" className="menu-dropdown">
                                 <NavDropdown.Item as={Link} to="/sprawy">Sprawy</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/obsluga-spraw">Obsługa spraw</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/nowa-sprawa">Nowa sprawa</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>

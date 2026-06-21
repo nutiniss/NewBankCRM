@@ -17,6 +17,7 @@ import { Pipeline } from './szanseSprzedazowe/PipelinePage';
 import { NowaOkazjaBiznesowa } from './szanseSprzedazowe/NowaOkazjaBiznesowaPage';
 import { Sprawy } from './sprawy/SprawyPage';
 import { NowaSprawa } from './sprawy/NowaSprawaPage';
+import { ObslugaSpraw } from './sprawy/ObslugaSprawPage';
 import { Towary } from './towar/TowaryPage';
 import { Towar } from './towar/TowarPage';
 import { Samochody } from './samochod/SamochodyPage';
@@ -69,6 +70,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
                 </Route>
                 <Route path='/nowa-sprawa' element={<Layout />}>
                     <Route index element={<NowaSprawa />} />
+                </Route>
+                <Route path='/obsluga-spraw' element={<Layout />}>
+                    <Route index element={<ObslugaSpraw />} />
                 </Route>
                 <Route path='/towary' element={<Layout />}>
                     <Route index element={<Towary />} />
