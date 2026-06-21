@@ -2,6 +2,7 @@ import Card from 'react-bootstrap/Card'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
+import ProgressBar from 'react-bootstrap/ProgressBar'
 import { PieChart } from 'react-minimal-pie-chart'
 
 const formatCurrency = (value: number) => value.toLocaleString('pl-PL', { style: 'currency', currency: 'PLN', maximumFractionDigits: 0 })
@@ -90,9 +91,11 @@ export const AnalizaPortfela = () => {
                                             <span>{branza.nazwa}</span>
                                             <strong>{formatCurrency(branza.wartosc)}</strong>
                                         </div>
-                                        <div className="analysis-bar-track">
-                                            <div className="analysis-bar-fill" style={{ width: `${(branza.wartosc / maksymalnaWartoscBranzy) * 100}%` }} />
-                                        </div>
+                                        <ProgressBar
+                                            now={(branza.wartosc / maksymalnaWartoscBranzy) * 100}
+                                            className="analysis-progress"
+                                            aria-label={`Ekspozycja branży ${branza.nazwa}`}
+                                        />
                                     </div>
                                 ))}
                             </div>

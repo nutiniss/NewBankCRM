@@ -1755,15 +1755,14 @@ a {
     font-size: 0.9rem;
 }
 
-.analysis-bar-track {
+.analysis-progress {
     overflow: hidden;
     height: 0.75rem;
     border-radius: 999px;
     background: rgba(var(--color5-rgb), 0.34);
 }
 
-.analysis-bar-fill {
-    height: 100%;
+.analysis-progress .progress-bar {
     border-radius: inherit;
     background: linear-gradient(90deg, var(--color2), var(--color4));
 }
