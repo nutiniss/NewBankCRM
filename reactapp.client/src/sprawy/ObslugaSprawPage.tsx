@@ -6,6 +6,24 @@ import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Toast from 'react-bootstrap/Toast'
+import ToastContainer from 'react-bootstrap/ToastContainer'
+import Tooltip from 'react-bootstrap/Tooltip'
+
+type TooltipLabelProps = {
+    children: string
+    tooltip: string
+}
+
+const TooltipLabel = ({ children, tooltip }: TooltipLabelProps) => (
+    <span className="label-with-tooltip">
+        {children}
+        <OverlayTrigger placement="top" overlay={<Tooltip id={`tooltip-${children.replace(/\s+/g, '-').toLowerCase()}`}>{tooltip}</Tooltip>}>
+            <span className="tooltip-info-icon" role="img" aria-label={`Podpowiedź: ${children}`} tabIndex={0}>?</span>
+        </OverlayTrigger>
+    </span>
+)
 
 type ObslugiwanaSprawa = {
     numer: string
@@ -79,6 +97,7 @@ export const ObslugaSpraw = () => {
         terminDo: '',
     })
     const [wybranyNumer, setWybranyNumer] = useState(sprawyStartowe[0].numer)
+    const [pokazToast, setPokazToast] = useState(false)
 
     const opcjeFiltrow = useMemo(() => ({
         typySpraw: Array.from(new Set(sprawy.map((sprawa) => sprawa.typSprawy))),
@@ -104,6 +123,10 @@ export const ObslugaSpraw = () => {
         )))
     }
 
+    const zapiszZmiany = () => {
+        setPokazToast(true)
+    }
+
     return (
         <Container fluid className="case-service-page pb-4">
             <Accordion activeKey={filtryOtwarte ? 'filtry' : undefined} className="case-service-filters mb-3">
@@ -119,7 +142,7 @@ export const ObslugaSpraw = () => {
                             </Col>
                             <Col lg={2} md={3} sm={6}>
                                 <Form.Group controlId="caseServicePriorityFilter">
-                                    <Form.Label>Priorytet</Form.Label>
+                                    <Form.Label><TooltipLabel tooltip="Wskazuje pilność obsługi i pomaga porządkować kolejność pracy.">Priorytet</TooltipLabel></Form.Label>
                                     <Form.Select value={filtry.priorytet} onChange={(event) => setFiltry({ ...filtry, priorytet: event.target.value })}>
                                         <option value="">Wszystkie</option>
                                         <option>Niski</option>
@@ -130,7 +153,7 @@ export const ObslugaSpraw = () => {
                             </Col>
                             <Col lg={2} md={3} sm={6}>
                                 <Form.Group controlId="caseServiceStatusFilter">
-                                    <Form.Label>Status</Form.Label>
+                                    <Form.Label><TooltipLabel tooltip="Aktualny etap obsługi sprawy widoczny na liście spraw.">Status</TooltipLabel></Form.Label>
                                     <Form.Select value={filtry.status} onChange={(event) => setFiltry({ ...filtry, status: event.target.value })}>
                                         <option value="">Wszystkie</option>
                                         <option>Nowa</option>
@@ -141,7 +164,7 @@ export const ObslugaSpraw = () => {
                             </Col>
                             <Col lg={2} md={4} sm={6}>
                                 <Form.Group controlId="caseServiceTypeFilter">
-                                    <Form.Label>Typ sprawy</Form.Label>
+                                    <Form.Label><TooltipLabel tooltip="Kategoria procesu, np. reklamacja, zaświadczenie albo zmiana uprawnień.">Typ sprawy</TooltipLabel></Form.Label>
                                     <Form.Select value={filtry.typSprawy} onChange={(event) => setFiltry({ ...filtry, typSprawy: event.target.value })}>
                                         <option value="">Wszystkie</option>
                                         {opcjeFiltrow.typySpraw.map((typ) => <option key={typ}>{typ}</option>)}
@@ -150,7 +173,7 @@ export const ObslugaSpraw = () => {
                             </Col>
                             <Col lg={2} md={4} sm={6}>
                                 <Form.Group controlId="caseServiceOwnerFilter">
-                                    <Form.Label>Właściciel</Form.Label>
+                                    <Form.Label><TooltipLabel tooltip="Osoba odpowiedzialna za dalszą obsługę i kontakt z klientem.">Właściciel</TooltipLabel></Form.Label>
                                     <Form.Select value={filtry.wlasciciel} onChange={(event) => setFiltry({ ...filtry, wlasciciel: event.target.value })}>
                                         <option value="">Wszyscy</option>
                                         {opcjeFiltrow.wlasciciele.map((wlasciciel) => <option key={wlasciciel}>{wlasciciel}</option>)}
@@ -191,25 +214,36 @@ export const ObslugaSpraw = () => {
                         <div>
                             <h1>{wybranaSprawa.numer}</h1>
                         </div>
-                        <Button variant="primary" type="button">Zapisz zmiany</Button>
+                        <OverlayTrigger placement="left" overlay={<Tooltip id="tooltip-save-case">Zapisuje aktualnie wybraną sprawę i pokazuje potwierdzenie operacji.</Tooltip>}>
+                            <Button variant="primary" type="button" onClick={zapiszZmiany}>Zapisz zmiany</Button>
+                        </OverlayTrigger>
                     </div>
                     <Form>
                         <Row className="g-3">
-                            <Col lg={6}><Form.Group><Form.Label>Nazwa klienta</Form.Label><Form.Control value={wybranaSprawa.nazwaKlienta} onChange={(event) => aktualizujSprawe('nazwaKlienta', event.target.value)} /></Form.Group></Col>
-                            <Col lg={3}><Form.Group><Form.Label>Data zgłoszenia</Form.Label><Form.Control type="date" value={wybranaSprawa.dataZgloszenia} onChange={(event) => aktualizujSprawe('dataZgloszenia', event.target.value)} /></Form.Group></Col>
-                            <Col lg={3}><Form.Group><Form.Label>Termin</Form.Label><Form.Control type="date" value={wybranaSprawa.termin} onChange={(event) => aktualizujSprawe('termin', event.target.value)} /></Form.Group></Col>
-                            <Col lg={4}><Form.Group><Form.Label>Typ sprawy</Form.Label><Form.Control value={wybranaSprawa.typSprawy} onChange={(event) => aktualizujSprawe('typSprawy', event.target.value)} /></Form.Group></Col>
-                            <Col lg={4}><Form.Group><Form.Label>Produkt</Form.Label><Form.Control value={wybranaSprawa.produkt} onChange={(event) => aktualizujSprawe('produkt', event.target.value)} /></Form.Group></Col>
-                            <Col lg={2}><Form.Group><Form.Label>Priorytet</Form.Label><Form.Select value={wybranaSprawa.priorytet} onChange={(event) => aktualizujSprawe('priorytet', event.target.value)}><option>Niski</option><option>Średni</option><option>Wysoki</option></Form.Select></Form.Group></Col>
-                            <Col lg={2}><Form.Group><Form.Label>Status</Form.Label><Form.Select value={wybranaSprawa.status} onChange={(event) => aktualizujSprawe('status', event.target.value)}><option>Nowa</option><option>W toku</option><option>Zamknięta</option></Form.Select></Form.Group></Col>
-                            <Col lg={4}><Form.Group><Form.Label>Właściciel</Form.Label><Form.Control value={wybranaSprawa.wlasciciel} onChange={(event) => aktualizujSprawe('wlasciciel', event.target.value)} /></Form.Group></Col>
-                            <Col xs={12}><Form.Group><Form.Label>Opis sprawy</Form.Label><Form.Control as="textarea" rows={4} value={wybranaSprawa.opis} onChange={(event) => aktualizujSprawe('opis', event.target.value)} /></Form.Group></Col>
-                            <Col md={6}><Form.Group><Form.Label>Oczekiwany rezultat</Form.Label><Form.Control as="textarea" rows={3} value={wybranaSprawa.oczekiwanyRezultat} onChange={(event) => aktualizujSprawe('oczekiwanyRezultat', event.target.value)} /></Form.Group></Col>
-                            <Col md={6}><Form.Group><Form.Label>Następny krok</Form.Label><Form.Control as="textarea" rows={3} value={wybranaSprawa.nastepnyKrok} onChange={(event) => aktualizujSprawe('nastepnyKrok', event.target.value)} /></Form.Group></Col>
+                            <Col lg={6}><Form.Group><Form.Label><TooltipLabel tooltip="Pełna nazwa firmy lub osoby, której dotyczy sprawa.">Nazwa klienta</TooltipLabel></Form.Label><Form.Control value={wybranaSprawa.nazwaKlienta} onChange={(event) => aktualizujSprawe('nazwaKlienta', event.target.value)} /></Form.Group></Col>
+                            <Col lg={3}><Form.Group><Form.Label><TooltipLabel tooltip="Dzień przyjęcia sprawy do obsługi w CRM.">Data zgłoszenia</TooltipLabel></Form.Label><Form.Control type="date" value={wybranaSprawa.dataZgloszenia} onChange={(event) => aktualizujSprawe('dataZgloszenia', event.target.value)} /></Form.Group></Col>
+                            <Col lg={3}><Form.Group><Form.Label><TooltipLabel tooltip="Planowana data zakończenia lub kolejnego rozliczenia sprawy.">Termin</TooltipLabel></Form.Label><Form.Control type="date" value={wybranaSprawa.termin} onChange={(event) => aktualizujSprawe('termin', event.target.value)} /></Form.Group></Col>
+                            <Col lg={4}><Form.Group><Form.Label><TooltipLabel tooltip="Kategoria procesu, np. reklamacja, zaświadczenie albo zmiana uprawnień.">Typ sprawy</TooltipLabel></Form.Label><Form.Control value={wybranaSprawa.typSprawy} onChange={(event) => aktualizujSprawe('typSprawy', event.target.value)} /></Form.Group></Col>
+                            <Col lg={4}><Form.Group><Form.Label><TooltipLabel tooltip="Produkt bankowy powiązany ze zgłoszeniem klienta.">Produkt</TooltipLabel></Form.Label><Form.Control value={wybranaSprawa.produkt} onChange={(event) => aktualizujSprawe('produkt', event.target.value)} /></Form.Group></Col>
+                            <Col lg={2}><Form.Group><Form.Label><TooltipLabel tooltip="Wskazuje pilność obsługi i pomaga porządkować kolejność pracy.">Priorytet</TooltipLabel></Form.Label><Form.Select value={wybranaSprawa.priorytet} onChange={(event) => aktualizujSprawe('priorytet', event.target.value)}><option>Niski</option><option>Średni</option><option>Wysoki</option></Form.Select></Form.Group></Col>
+                            <Col lg={2}><Form.Group><Form.Label><TooltipLabel tooltip="Aktualny etap obsługi sprawy widoczny na liście spraw.">Status</TooltipLabel></Form.Label><Form.Select value={wybranaSprawa.status} onChange={(event) => aktualizujSprawe('status', event.target.value)}><option>Nowa</option><option>W toku</option><option>Zamknięta</option></Form.Select></Form.Group></Col>
+                            <Col lg={4}><Form.Group><Form.Label><TooltipLabel tooltip="Osoba odpowiedzialna za dalszą obsługę i kontakt z klientem.">Właściciel</TooltipLabel></Form.Label><Form.Control value={wybranaSprawa.wlasciciel} onChange={(event) => aktualizujSprawe('wlasciciel', event.target.value)} /></Form.Group></Col>
+                            <Col xs={12}><Form.Group><Form.Label><TooltipLabel tooltip="Najważniejsze informacje wejściowe i kontekst zgłoszenia.">Opis sprawy</TooltipLabel></Form.Label><Form.Control as="textarea" rows={4} value={wybranaSprawa.opis} onChange={(event) => aktualizujSprawe('opis', event.target.value)} /></Form.Group></Col>
+                            <Col md={6}><Form.Group><Form.Label><TooltipLabel tooltip="Docelowy efekt, którego oczekuje klient lub bank.">Oczekiwany rezultat</TooltipLabel></Form.Label><Form.Control as="textarea" rows={3} value={wybranaSprawa.oczekiwanyRezultat} onChange={(event) => aktualizujSprawe('oczekiwanyRezultat', event.target.value)} /></Form.Group></Col>
+                            <Col md={6}><Form.Group><Form.Label><TooltipLabel tooltip="Najbliższa czynność do wykonania po zapisaniu zmian.">Następny krok</TooltipLabel></Form.Label><Form.Control as="textarea" rows={3} value={wybranaSprawa.nastepnyKrok} onChange={(event) => aktualizujSprawe('nastepnyKrok', event.target.value)} /></Form.Group></Col>
                         </Row>
                     </Form>
                 </main>
             </div>
+            <ToastContainer position="bottom-end" className="case-save-toast p-3">
+                <Toast bg="success" show={pokazToast} onClose={() => setPokazToast(false)} delay={3200} autohide>
+                    <Toast.Header>
+                        <strong className="me-auto">Zmiany zapisane</strong>
+                        <small>{wybranaSprawa.numer}</small>
+                    </Toast.Header>
+                    <Toast.Body className="text-white">Sprawa {wybranaSprawa.numer} została zaktualizowana w widoku obsługi.</Toast.Body>
+                </Toast>
+            </ToastContainer>
         </Container>
     )
 }
