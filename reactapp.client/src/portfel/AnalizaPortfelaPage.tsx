@@ -65,7 +65,7 @@ export const AnalizaPortfela = () => {
                         <Card.Body>
                             <Card.Title>Struktura portfela według segmentu</Card.Title>
                             <div className="analysis-pie-layout">
-                                <PieChart data={segmenty} lineWidth={42} rounded animate />
+                                <PieChart data={segmenty}  animate />
                                 <ul className="analysis-legend">
                                     {segmenty.map((segment) => (
                                         <li key={segment.title}>

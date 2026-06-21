@@ -227,9 +227,15 @@ a {
     flex-wrap: wrap;
 }
 
+.app-main {
+    display: flex;
+    padding-top: 1rem;
+}
 
 .layout-main-container {
     padding-right: 0;
+    display: flex;
+    flex: 1;
 }
 
 .layout-main-grid {
@@ -238,7 +244,8 @@ a {
     display: grid;
     grid-template-columns: minmax(0, 1fr) var(--side-banner-width);
     gap: 1rem;
-    align-items: start;
+    align-items: stretch;
+    flex: 1;
 }
 
 .layout-main-grid:has(.layout-side-banner-collapsed) {
@@ -253,9 +260,9 @@ a {
     position: sticky;
     top: 0;
     display: flex;
-    align-self: start;
-    height: 100vh;
-    min-height: 24rem;
+    align-self: stretch;
+    height: auto;
+    min-height: 16rem;
     border-radius: 0;
     background: #EEDADF;
     color: var(--color2);
@@ -375,8 +382,10 @@ a {
 }
 
 @media (max-width: 991.98px) {
+
     .layout-main-container {
         padding-right: calc(var(--bs-gutter-x) * 0.5);
+        display: block;
     }
 
     .layout-main-grid,
@@ -1288,7 +1297,7 @@ a {
     justify-content: space-between;
     gap: 0.5rem;
     padding: 0.75rem 0.8rem;
-    background: rgba(var(--color1-rgb), 0.72);
+    background: rgba(var(--color1-rgb), 1);
     color: var(--color-white);
     font-size: 0.9rem;
     font-weight: 800;
@@ -1682,7 +1691,9 @@ a {
 .analysis-kpi-card .card-title,
 .analysis-chart-card .card-title {
     color: var(--color1);
-    font-weight: 800;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
 }
 
 .analysis-kpi-card .card-text {

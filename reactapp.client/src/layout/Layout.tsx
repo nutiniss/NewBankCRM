@@ -20,16 +20,16 @@ const oferty: Oferta[] = [
         opis: 'Długoterminowe wsparcie rozwoju przedsiębiorstwa z harmonogramem spłat dopasowanym do cyklu inwestycji.',
         image: '/image/kredytInwestycyjny.png',
     },
-    {
-        tytul: 'Kredyt obrotowy',
-        opis: 'Szybki dostęp do środków na bieżące wydatki operacyjne i sezonowe zwiększenie skali działalności.',
-        image: '/image/kredytObrotowy.png',
-    },
-    {
-        tytul: 'Leasing Transport',
-        opis: 'Nowoczesna flota bez angażowania własnego kapitału, z przewidywalnymi kosztami i uproszczonym procesem decyzyjnym.',
-        image: '/image/leasing.png',
-    },
+    // {
+    //     tytul: 'Kredyt obrotowy',
+    //     opis: 'Szybki dostęp do środków na bieżące wydatki operacyjne i sezonowe zwiększenie skali działalności.',
+    //     image: '/image/kredytObrotowy.png',
+    // },
+    // {
+    //     tytul: 'Leasing Transport',
+    //     opis: 'Nowoczesna flota bez angażowania własnego kapitału, z przewidywalnymi kosztami i uproszczonym procesem decyzyjnym.',
+    //     image: '/image/leasing.png',
+    // },
 ];
 
 export function Layout() {
@@ -104,7 +104,7 @@ export function Layout() {
                 </Container>
             </Navbar>
 
-            <main className="ps-3 pe-0 mt-3 flex-grow-1">
+            <main className="app-main ps-3 pe-0 flex-grow-1">
                 <Container fluid className="layout-main-container">
                     <div className="layout-main-grid">
                         <section className="layout-main-content">
